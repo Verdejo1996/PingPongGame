@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b086ee6cbc42226408df1867beaf7374, type: 3}
+  m_Name: Freeze_PowerUp
+  m_EditorClassIdentifier: 
+  powerUpName: Freeze
+  icon: {fileID: 21300000, guid: af32787527a19154096600878011d2a6, type: 3}
+  duration: 3
+  slowFactor: 0.5
