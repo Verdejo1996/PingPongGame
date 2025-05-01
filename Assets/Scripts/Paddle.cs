@@ -13,6 +13,8 @@ public class Paddle : MonoBehaviour
     public float jumpDuration = 0.5f; // Duración del salto
     private bool isJumping = false;
 
+    Vector3 originalPos;
+
     public Transform aimTarget;
     public Transform serveTarget;
     public Transform ball;
@@ -37,6 +39,7 @@ public class Paddle : MonoBehaviour
 
     void Start()
     {
+        originalPos = aimTarget.position;
         shot_Controller = GetComponent<Shot_Controller>();
         //currentShot = shot_Controller.topSpin;
         hitting = false;
@@ -62,6 +65,7 @@ public class Paddle : MonoBehaviour
         else if(Input.GetKeyUp(KeyCode.LeftShift))
         {
             hitting = false;
+            aimTarget.position = originalPos;
         }
 
         if (Input.GetKeyDown(KeyCode.Z))
@@ -79,7 +83,7 @@ public class Paddle : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.Z))
         {
             hitting = false;
-            
+            aimTarget.position = originalPos;
         }
 
         if (Input.GetKeyDown(KeyCode.F) && controller.currentServer == "Player")
