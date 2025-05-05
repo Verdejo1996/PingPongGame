@@ -11,6 +11,7 @@ public enum TutorialPhase
     Move,
     ServeIntro,
     Serving,
+    HitIntro,
     HitPractice,
     Completed
 }
@@ -21,11 +22,11 @@ public class Tutorial : MonoBehaviour
     public bool isPaused = true;
     public TextMeshPro boardTutorial;
     //private int step = 0;
-    [SerializeField]
-    Game_Controller controller;
+    public Tutorial_Manager manager;
 
     public GameObject collectableObject;
     public Transform[] spawnPoints;
+    public Transform[] spawnPointsServe;
     private float spawnInterval = 5f;
     private int collectedCount = 0;
 
@@ -33,6 +34,9 @@ public class Tutorial : MonoBehaviour
 
     private int succesfulServesRequired = 3;
     private int succesfulServesCount = 0;
+
+    private int succesfulHitRequired = 3;
+    private int succesfulHitCount = 0;
 
     private string[] tutorialSteps =
     {
@@ -53,7 +57,7 @@ public class Tutorial : MonoBehaviour
     void Start()
     {
         Debug.Log(collectedCount.ToString());
-        currentPhase = TutorialPhase.ServeIntro;
+        currentPhase = TutorialPhase.HitIntro;
         StartCoroutine(SpawnRoutine());
     /*        Time.timeScale = 0f;
             StartCoroutine(TutorialSequence());*/
@@ -80,6 +84,18 @@ public class Tutorial : MonoBehaviour
             if(currentPhase == TutorialPhase.Move && collectedCount < 3)
             {
                 SpawnItem();
+            }
+            yield return new WaitForSeconds(spawnInterval);
+
+            if (currentPhase == TutorialPhase.Serving && succesfulServesCount < 3)
+            {
+                SpawnItemServe();
+            }
+            yield return new WaitForSeconds(spawnInterval);
+
+            if (currentPhase == TutorialPhase.HitPractice && succesfulHitCount < 3)
+            {
+                SpawnItemHit();
             }
             yield return new WaitForSeconds(spawnInterval);
         }
@@ -117,11 +133,25 @@ public class Tutorial : MonoBehaviour
                 break;
             case TutorialPhase.Serving:
                 // Mostrar instrucciones de saque
-                //boardTutorial.text = "Ahora vamos a aprender el saque.";
                 UpdateTutorialText();
+                if (succesfulServesCount >= succesfulServesRequired)
+                {
+                    boardTutorial.text = "Bien hecho! Si estas listo, presiona ENTER para continuar.";
+                }
+                Tutorial.instance.CompletePhase();
+                break;
+            case TutorialPhase.HitIntro:
+                // Mostrar instrucciones de golpe
+                UpdateTutorialText();
+                Tutorial.instance.CompletePhase();
                 break;
             case TutorialPhase.HitPractice:
                 // Mostrar instrucciones de golpe
+                UpdateTutorialText();
+                if (succesfulHitCount >= succesfulHitRequired)
+                {
+                    boardTutorial.text = "Bien hecho! Si estas listo, presiona ENTER para continuar.";
+                }
                 break;
             case TutorialPhase.Completed:
                 // Fin del tutorial
@@ -145,6 +175,13 @@ public class Tutorial : MonoBehaviour
             enbaleObjects[2].SetActive(false);
             enbaleObjects[3].SetActive(false);
         }
+        if (currentPhase == TutorialPhase.HitIntro)
+        {
+            enbaleObjects[0].SetActive(true);
+            enbaleObjects[1].SetActive(false);
+            enbaleObjects[2].SetActive(true);
+            enbaleObjects[3].SetActive(true);
+        }
     }
 
 /*    IEnumerator TutorialSequence()
@@ -165,6 +202,18 @@ public class Tutorial : MonoBehaviour
         collectedCount++;
         Debug.Log(collectedCount.ToString());
     }
+
+    public void CollectItemServe()
+    {
+        succesfulServesCount++;
+        Debug.Log(succesfulServesCount.ToString());
+    }
+
+    public void CollectItemHit()
+    {
+        succesfulHitCount++;
+        Debug.Log(succesfulHitCount.ToString());
+    }
     void UpdateTutorialText()
     {
         if(currentPhase == TutorialPhase.Move)
@@ -173,11 +222,19 @@ public class Tutorial : MonoBehaviour
         }
         if(currentPhase == TutorialPhase.ServeIntro)
         {
-            boardTutorial.text = "Vamos a practicar el servicio. Presiona ENTER.";
+            boardTutorial.text = "Vamos a practicar el servicio. \nApunta a los objetivos. \nPresiona ENTER.";
         }
         if (currentPhase == TutorialPhase.Serving)
         {
             boardTutorial.text = "Manteniendo presionada la tecla F y las flechas podes apuntar. \nCuando sueltes, la pelota saldrá.";
+        }
+        if(currentPhase == TutorialPhase.HitIntro)
+        {
+            boardTutorial.text = "Ahora practiquemos el tiro. Golpea la bola siguiendo estos pasos. \nPresiona ENTER.";
+        }
+        if(currentPhase == TutorialPhase.HitPractice)
+        {
+            boardTutorial.text = "Presiona Z o Shift + las flechas para apuntar. \nSoltar al momento de hacer contacto con la bola.";
         }
     }
 
@@ -188,17 +245,17 @@ public class Tutorial : MonoBehaviour
         Instantiate(collectableObject, spawnPoints[points].position, Quaternion.identity);
     }
 
-    void FinishTutorial()
+    void SpawnItemServe()
     {
-        if(controller.playerScore > 5)
-        {
-            boardTutorial.gameObject.SetActive(true);
-            boardTutorial.text = "Para terminar el tutorial presiona Enter.";
+        int points = UnityEngine.Random.Range(0, spawnPointsServe.Length);
 
-            if(Input.GetKeyDown(KeyCode.Return))
-            {
-                SceneManager.LoadScene("Game");
-            }
-        }
+        Instantiate(collectableObject, spawnPointsServe[points].position, Quaternion.identity);
+    }
+
+    void SpawnItemHit()
+    {
+        int points = UnityEngine.Random.Range(0, spawnPointsServe.Length);
+
+        Instantiate(collectableObject, spawnPointsServe[points].position, Quaternion.identity);
     }
 }
