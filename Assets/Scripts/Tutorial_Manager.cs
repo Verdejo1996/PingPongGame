@@ -19,7 +19,6 @@ public class Tutorial_Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SetServer();
 
         keyMap = new Dictionary<KeyCode, int>
         {
@@ -28,9 +27,9 @@ public class Tutorial_Manager : MonoBehaviour
             { KeyCode.UpArrow, 2 },
             { KeyCode.DownArrow, 3 },
             { KeyCode.F, 4 },
-/*            { KeyCode.Z, 5 },
-            { KeyCode.LeftShift, 6 }*/
         };
+        
+        SetServer();
     }
 
     // Update is called once per frame
@@ -48,9 +47,9 @@ public class Tutorial_Manager : MonoBehaviour
         }
         if (Tutorial.instance.currentPhase == TutorialPhase.HitIntro || Tutorial.instance.currentPhase == TutorialPhase.HitPractice)
         {
+            StartCoroutine(WaitBeforeServe());
             ball.SetServePosition(new Vector3(0, 2f, 7)); // Posición de la IA
             ball.GetComponent<Rigidbody>().useGravity = false;
-            StartCoroutine(WaitBeforeServe());
         }
     }
 
@@ -63,7 +62,7 @@ public class Tutorial_Manager : MonoBehaviour
             if (Tutorial.instance.currentPhase == TutorialPhase.HitPractice)
             {
                 ia_Tutorial.Serve();
-                Tutorial.instance.isPaused = false;
+                //Tutorial.instance.isPaused = false;
             }
             Tutorial.instance.isPaused = true;
             yield return new WaitForSeconds(5f);
