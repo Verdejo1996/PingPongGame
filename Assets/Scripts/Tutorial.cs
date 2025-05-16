@@ -57,7 +57,7 @@ public class Tutorial : MonoBehaviour
     void Start()
     {
         Debug.Log(collectedCount.ToString());
-        currentPhase = TutorialPhase.HitIntro;
+        currentPhase = TutorialPhase.Move;
         StartCoroutine(SpawnRoutine());
     /*        Time.timeScale = 0f;
             StartCoroutine(TutorialSequence());*/
@@ -67,6 +67,7 @@ public class Tutorial : MonoBehaviour
     {
         ActiveObjects();
         ShowNextInstruccion();
+        Debug.Log(currentPhase.ToString());
 /*        FinishTutorial();
 
         if(Input.GetKeyUp(KeyCode.R))
@@ -107,8 +108,8 @@ public class Tutorial : MonoBehaviour
         {
             currentPhase++;
             isPaused = true;
-            ShowNextInstruccion();
         }
+        //ShowNextInstruccion();
     }
 
     private void ShowNextInstruccion()
@@ -129,11 +130,19 @@ public class Tutorial : MonoBehaviour
                 // Mostrar instrucciones de saque
                 //boardTutorial.text = "Ahora vamos a aprender el saque.";
                 UpdateTutorialText();
+                if (isPaused)
+                {
+                    manager.SetServer();
+                }
                 Tutorial.instance.CompletePhase();
                 break;
             case TutorialPhase.Serving:
                 // Mostrar instrucciones de saque
                 UpdateTutorialText();
+                if (isPaused)
+                {
+                    manager.SetServer();
+                }
                 if (succesfulServesCount >= succesfulServesRequired)
                 {
                     boardTutorial.text = "Bien hecho! Si estas listo, presiona ENTER para continuar.";
@@ -143,18 +152,36 @@ public class Tutorial : MonoBehaviour
             case TutorialPhase.HitIntro:
                 // Mostrar instrucciones de golpe
                 UpdateTutorialText();
+                if (isPaused)
+                {
+                    manager.SetServer();
+                }
                 Tutorial.instance.CompletePhase();
                 break;
             case TutorialPhase.HitPractice:
                 // Mostrar instrucciones de golpe
                 UpdateTutorialText();
+                if (isPaused)
+                {
+                    manager.SetServer();
+                    isPaused = false;
+                }
                 if (succesfulHitCount >= succesfulHitRequired)
                 {
                     boardTutorial.text = "Bien hecho! Si estas listo, presiona ENTER para continuar.";
                 }
+                Tutorial.instance.CompletePhase();
                 break;
             case TutorialPhase.Completed:
                 // Fin del tutorial
+                isPaused = true;
+                UpdateTutorialText();
+                if (isPaused)
+                {
+                    manager.currentServer = "Player";
+                    manager.SetServer();
+                    isPaused = false;
+                }
                 break;
         }
     }
@@ -167,13 +194,13 @@ public class Tutorial : MonoBehaviour
             enbaleObjects[1].SetActive(false);
             enbaleObjects[2].SetActive(false);
             enbaleObjects[3].SetActive(false);
+            enbaleObjects[4].SetActive(false);
+            enbaleObjects[5].SetActive(false);
         }
         if(currentPhase == TutorialPhase.ServeIntro)
         {
             enbaleObjects[0].SetActive(true);
             enbaleObjects[1].SetActive(true);
-            enbaleObjects[2].SetActive(false);
-            enbaleObjects[3].SetActive(false);
         }
         if (currentPhase == TutorialPhase.HitIntro)
         {
@@ -181,6 +208,12 @@ public class Tutorial : MonoBehaviour
             enbaleObjects[1].SetActive(false);
             enbaleObjects[2].SetActive(true);
             enbaleObjects[3].SetActive(true);
+        }
+        if((currentPhase == TutorialPhase.Completed))
+        {
+            enbaleObjects[1].SetActive(true);
+            enbaleObjects[4].SetActive(true);
+            enbaleObjects[5].SetActive(true);
         }
     }
 
@@ -235,6 +268,10 @@ public class Tutorial : MonoBehaviour
         if(currentPhase == TutorialPhase.HitPractice)
         {
             boardTutorial.text = "Presiona Z o Shift + las flechas para apuntar. \nSoltar al momento de hacer contacto con la bola.";
+        }
+        if(currentPhase == TutorialPhase.Completed)
+        {
+            boardTutorial.text = "Ahora podemos jugar. Cuando estes listo termina el tutorial.";
         }
     }
 

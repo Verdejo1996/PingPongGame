@@ -70,6 +70,7 @@ public class Tutorial_Paddle : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.F) && Tutorial.instance.currentPhase == TutorialPhase.Serving)
         {
+            Tutorial.instance.isPaused = false;
             serving = false;
             Serve();
         }
@@ -181,8 +182,17 @@ public class Tutorial_Paddle : MonoBehaviour
         {
             Vector3 dir = aimTarget.position - transform.position;
             other.GetComponent<Rigidbody>().velocity = dir.normalized * currentShot.hitForce + new Vector3(0, currentShot.upForce, 0);
-            Ball_Tutorial ball = other.gameObject.GetComponent<Ball_Tutorial>();
 
+        }
+        if (other.CompareTag("Ball") && Tutorial.instance.currentPhase == TutorialPhase.Completed)
+        {
+            Vector3 dir = aimTarget.position - transform.position;
+            other.GetComponent<Rigidbody>().velocity = dir.normalized * currentShot.hitForce + new Vector3(0, currentShot.upForce, 0);
+
+            Ball_Tutorial ball = other.gameObject.GetComponent<Ball_Tutorial>();
+            ball.hasTouchedTable = false;
+            ball.tableAfterNet = false;
+            ball.RegisterHit("Player");
         }
     }
 }

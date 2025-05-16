@@ -671,6 +671,11 @@ MonoBehaviour:
   - {fileID: 119186465}
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   pressedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  playerScore: 0
+  botScore: 0
+  currentServer: 
+  lastHitter: 
+  endTutorial: 0
 --- !u!1 &73067797
 GameObject:
   m_ObjectHideFlags: 0
@@ -1835,7 +1840,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
@@ -3866,6 +3871,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfad9cb8f04a246479565d7fdb89349c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitNetLast: 0
+  validServe: 0
+  tableAfterNet: 0
+  hasTouchedTable: 0
 --- !u!1 &825367415
 GameObject:
   m_ObjectHideFlags: 0
@@ -6437,7 +6446,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
@@ -7137,7 +7146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c05703181cc59214d8a45d3cd398be7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPhase: 3
+  currentPhase: 0
   isPaused: 1
   boardTutorial: {fileID: 653897521}
   manager: {fileID: 62006526}
@@ -7155,6 +7164,8 @@ MonoBehaviour:
   - {fileID: 73067797}
   - {fileID: 35023701}
   - {fileID: 298087845}
+  - {fileID: 1606745686}
+  - {fileID: 397304895}
 --- !u!4 &1761104625
 Transform:
   m_ObjectHideFlags: 0

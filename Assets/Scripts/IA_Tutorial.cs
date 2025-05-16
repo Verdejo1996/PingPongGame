@@ -35,7 +35,7 @@ public class IA_Tutorial : MonoBehaviour
     //Realiza el movimiento siguiendo la trayectoria de la pelota.
     void Move()
     {
-        if (Tutorial.instance.currentPhase == TutorialPhase.Completed)
+        if (Tutorial.instance.currentPhase == TutorialPhase.Completed && Tutorial.instance.isPaused == false)
         {
             targetposition.x = ball.position.x;
             transform.position = Vector3.MoveTowards(transform.position, targetposition, speed * Time.deltaTime);
@@ -74,9 +74,17 @@ public class IA_Tutorial : MonoBehaviour
 
     public void Serve()
     {
-        if (Tutorial.instance.currentPhase == TutorialPhase.HitPractice && Tutorial.instance.isPaused == true)
+        if (Tutorial.instance.currentPhase == TutorialPhase.HitPractice && Tutorial.instance.isPaused == false)
         {
-            Tutorial.instance.isPaused = false;
+            //Tutorial.instance.isPaused = false;
+            Shot currentServe = PickServe();
+
+            Vector3 dir = PickServeTarget() - transform.position;
+            ballGameObject.GetComponent<Rigidbody>().useGravity = true;
+            ballGameObject.GetComponent<Rigidbody>().velocity = dir.normalized * currentServe.hitForce + new Vector3(0, currentServe.upForce, 0);
+        }
+        else if(Tutorial.instance.currentPhase == TutorialPhase.Completed && Tutorial.instance.isPaused == false)
+        {
             Shot currentServe = PickServe();
 
             Vector3 dir = PickServeTarget() - transform.position;
@@ -106,7 +114,18 @@ public class IA_Tutorial : MonoBehaviour
 
             Vector3 dir = PickTarget() - transform.position;
             other.GetComponent<Rigidbody>().velocity = dir.normalized * currentShot.hitForce + new Vector3(0, currentShot.upForce, 0);
-            //Ball ball = other.gameObject.GetComponent<Ball>();
+        }
+        if (other.CompareTag("Ball") && Tutorial.instance.currentPhase == TutorialPhase.Completed)
+        {
+            Shot currentShot = PickShot();
+
+            Vector3 dir = PickTarget() - transform.position;
+            other.GetComponent<Rigidbody>().velocity = dir.normalized * currentShot.hitForce + new Vector3(0, currentShot.upForce, 0);
+
+            Ball_Tutorial ball = other.gameObject.GetComponent<Ball_Tutorial>();
+            ball.hasTouchedTable = false;
+            ball.tableAfterNet = false;
+            ball.RegisterHit("Player");
         }
     }
 }

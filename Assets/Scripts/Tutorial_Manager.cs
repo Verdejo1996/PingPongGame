@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Tutorial_Manager : MonoBehaviour
 {
+    public static Tutorial_Manager Instance;
     public Ball_Tutorial ball;
     public Tutorial_Paddle paddle;
     public IA_Tutorial ia_Tutorial;
@@ -15,6 +16,14 @@ public class Tutorial_Manager : MonoBehaviour
     public Color pressedColor = Color.red;
 
     private Dictionary<KeyCode, int> keyMap;
+
+    public int playerScore;
+    public int botScore;
+    public string currentServer;
+    private int totalPointsInRound;
+    public string lastHitter;
+
+    public bool endTutorial;
 
     // Start is called before the first frame update
     void Start()
@@ -29,27 +38,43 @@ public class Tutorial_Manager : MonoBehaviour
             { KeyCode.F, 4 },
         };
         
-        SetServer();
+        //SetServer();
     }
 
     // Update is called once per frame
     void Update()
     {
         ArrowsColors();
+        //SetServer();
     }
 
-    void SetServer()
+    public void SetServer()
     {
-        if(Tutorial.instance.currentPhase == TutorialPhase.ServeIntro || Tutorial.instance.currentPhase == TutorialPhase.Serving)
+        if(Tutorial.instance.currentPhase == TutorialPhase.ServeIntro || Tutorial.instance.currentPhase == TutorialPhase.Serving || Tutorial.instance.currentPhase == TutorialPhase.Completed)
         {
             ball.SetServePosition(new Vector3(0, 2.5f, -7)); // Ajusta la posición para el jugador
             ball.GetComponent<Rigidbody>().useGravity = false;
         }
-        if (Tutorial.instance.currentPhase == TutorialPhase.HitIntro || Tutorial.instance.currentPhase == TutorialPhase.HitPractice)
+        if (Tutorial.instance.currentPhase == TutorialPhase.HitPractice)
         {
-            StartCoroutine(WaitBeforeServe());
+            Tutorial.instance.isPaused = false;
             ball.SetServePosition(new Vector3(0, 2f, 7)); // Posición de la IA
             ball.GetComponent<Rigidbody>().useGravity = false;
+            StartCoroutine(WaitBeforeServe());
+        }
+        if(Tutorial.instance.currentPhase == TutorialPhase.Completed)
+        {
+            if (currentServer == "Player")
+            {
+                ball.SetServePosition(new Vector3(0, 2.5f, -7)); // Ajusta la posición para el jugador
+                ball.GetComponent<Rigidbody>().useGravity = false;
+            }
+            else
+            {
+                ball.SetServePosition(new Vector3(0, 2f, 7)); // Posición de la IA
+                ball.GetComponent<Rigidbody>().useGravity = false;
+                StartCoroutine(WaitBeforeServe());
+            }
         }
     }
 
@@ -57,16 +82,8 @@ public class Tutorial_Manager : MonoBehaviour
     {
         yield return new WaitForSeconds(5f); // Espera 3 segundos antes de servir
 
-        while (true)
-        {
-            if (Tutorial.instance.currentPhase == TutorialPhase.HitPractice)
-            {
-                ia_Tutorial.Serve();
-                //Tutorial.instance.isPaused = false;
-            }
-            Tutorial.instance.isPaused = true;
-            yield return new WaitForSeconds(5f);
-        }
+        ia_Tutorial.Serve();
+        yield return new WaitForSeconds(5f);
     }
 
     void ArrowsColors()
@@ -80,5 +97,59 @@ public class Tutorial_Manager : MonoBehaviour
             if (Input.GetKeyUp(key))
                 keyImages[index].color = normalColor;
         }
+    }
+
+    void CheckScore()
+    {
+        if (playerScore == 11 || botScore == 11)
+        {
+            EndTutorial();
+            return;
+        }
+        //Chequeamos si los puntos dan resto 0 para cambiar de servicio.
+        if (totalPointsInRound % 2 == 0)
+        {
+            ChangeServer();
+        }
+        SetServer();
+    }
+
+    public void AddPointToLastHitter()
+    {
+        if (lastHitter == "Player")
+            playerScore++;
+        else if (lastHitter == "Bot")
+            botScore++;
+
+        totalPointsInRound++;
+        CheckScore();
+        Debug.Log("Puntaje - Jugador: " + playerScore + " | Oponente: " + botScore);
+    }
+
+    public void AddPointToOpponent()
+    {
+        if (lastHitter == "Player")
+            botScore++;
+        else if (lastHitter == "Bot")
+            playerScore++;
+
+        totalPointsInRound++;
+        CheckScore();
+        Debug.Log("Puntaje - Jugador: " + playerScore + " | Oponente: " + botScore);
+    }
+
+    public void UpdateLastHitter(string hitter)
+    {
+        lastHitter = hitter;
+    }
+
+    void ChangeServer()
+    {
+        currentServer = (currentServer == "Player") ? "Bot" : "Player";
+    }
+
+    void EndTutorial()
+    {
+        endTutorial = true;
     }
 }
