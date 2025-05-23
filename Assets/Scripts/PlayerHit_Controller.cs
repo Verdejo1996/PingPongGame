@@ -6,10 +6,12 @@ using UnityEngine.UI;
 
 public class PlayerHit_Controller : MonoBehaviour
 {
+
     [Header("Movimiento del jugador")]
     public float moveSpeed = 5f;
 
     [Header("Golpe")]
+    public Ball_Tutorial ballTutorial;
     public Transform ballTransform;
     public Rigidbody ballRb;
     public Transform racketTransform;
@@ -132,7 +134,7 @@ public class PlayerHit_Controller : MonoBehaviour
     void ServeBall(string type)
     {
         ballRb.useGravity = true;
-
+        isServing = false;
         Vector3 direction = GetServeDirection();
         float finalForce = serveForce;
 
@@ -164,6 +166,7 @@ public class PlayerHit_Controller : MonoBehaviour
         if (distance <= hitRange)
         {
             StartCoroutine(HitAnimation(type));
+
         }
         else
         {
@@ -206,6 +209,7 @@ public class PlayerHit_Controller : MonoBehaviour
         }
 
         isHitting = false;
+        ballTutorial.RegisterHit("Player");
     }
 
     Vector3 GetDirection()

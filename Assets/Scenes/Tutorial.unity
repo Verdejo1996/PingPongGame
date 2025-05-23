@@ -1036,7 +1036,7 @@ Transform:
   m_GameObject: {fileID: 128658905}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.26}
+  m_LocalPosition: {x: 0, y: 0.03, z: -0.26}
   m_LocalScale: {x: 0.1, y: 1.01, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1268,7 +1268,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball: {fileID: 816766493}
   speed: 5
-  targets: []
+  targets:
+  - {fileID: 1106564468}
+  - {fileID: 2094812750}
+  - {fileID: 560921678}
   serveTargets:
   - {fileID: 390891591}
   - {fileID: 630697990}
@@ -1607,12 +1610,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  ballTutorial: {fileID: 816766499}
   ballTransform: {fileID: 816766493}
   ballRb: {fileID: 816766495}
   racketTransform: {fileID: 352612883}
   hitRange: 2
-  hitForce: 10
-  upForce: 3
+  hitForce: 13
+  upForce: 5
   serveStartPosition: {fileID: 0}
   ballHoldPosition: {fileID: 0}
   serveForce: 10
@@ -2285,7 +2289,7 @@ Transform:
   m_GameObject: {fileID: 560396443}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.26}
+  m_LocalPosition: {x: 0, y: 0.03, z: 0.26}
   m_LocalScale: {x: 0.1, y: 1.01, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3894,6 +3898,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 352612886}
+  managerTutorial: {fileID: 62006526}
   hitNetLast: 0
   validServe: 0
   tableAfterNet: 0
@@ -7753,7 +7758,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c05703181cc59214d8a45d3cd398be7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPhase: 5
+  currentPhase: 1
   isPaused: 1
   boardTutorial: {fileID: 653897521}
   manager: {fileID: 62006526}

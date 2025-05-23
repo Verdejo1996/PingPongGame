@@ -6,6 +6,7 @@ public class Ball_Tutorial : MonoBehaviour
 {
     private Rigidbody rb;
     public Tutorial_Paddle player;
+    public Tutorial_Manager managerTutorial;
 
     [SerializeField]
     private bool hitNetLast = false;
@@ -37,7 +38,7 @@ public class Ball_Tutorial : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Wall") && Tutorial.instance.currentPhase == TutorialPhase.Serving)
+        if (collision.gameObject.CompareTag("Wall") && Tutorial.instance.currentPhase == TutorialPhase.Serving || Tutorial.instance.currentPhase == TutorialPhase.Completed)
         {
             Tutorial.instance.isPaused = true;
             player.ResetServe();
@@ -45,7 +46,7 @@ public class Ball_Tutorial : MonoBehaviour
             GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             SetServePosition(new Vector3(0, 2.5f, -7)); // Ajusta la posición para el jugador
         }
-        if (collision.gameObject.CompareTag("Wall") && Tutorial.instance.currentPhase == TutorialPhase.HitPractice)
+        if (collision.gameObject.CompareTag("Wall") && Tutorial.instance.currentPhase == TutorialPhase.HitPractice || Tutorial.instance.currentPhase == TutorialPhase.Completed)
         {
             Tutorial.instance.isPaused = true;
             GetComponent<Rigidbody>().velocity = Vector3.zero;
@@ -55,30 +56,32 @@ public class Ball_Tutorial : MonoBehaviour
 
         //A partir de esta linea es para el tutorial completado
         #region
-        if (Tutorial.instance.currentPhase == TutorialPhase.Completed && collision.gameObject.CompareTag("tableBot") && Tutorial_Manager.Instance.currentServer == "Player")
+
+        if (collision.gameObject.CompareTag("tableBot") && managerTutorial.currentServer == "Player")
         {
             validServe = true;
         }
-        if (Tutorial.instance.currentPhase == TutorialPhase.Completed && collision.gameObject.CompareTag("tablePlayer") && Tutorial_Manager.Instance.currentServer == "Bot")
+        if (collision.gameObject.CompareTag("tablePlayer") && managerTutorial.currentServer == "Bot")
         {
             validServe = true;
         }
-        if (Tutorial.instance.currentPhase == TutorialPhase.Completed && collision.gameObject.CompareTag("Net"))
+        if (collision.gameObject.CompareTag("Net"))
         {
             hitNetLast = true;
 
         }
-        if (Tutorial.instance.currentPhase == TutorialPhase.Completed && hitNetLast)
+        if (hitNetLast)
         {
-            if (collision.gameObject.CompareTag("tableBot") && Tutorial_Manager.Instance.lastHitter == "Player")
+            if (collision.gameObject.CompareTag("tableBot") && managerTutorial.lastHitter == "Player")
             {
                 tableAfterNet = true;
             }
-            else if (collision.gameObject.CompareTag("tablePlayer") && Tutorial_Manager.Instance.lastHitter == "Bot")
+            else if (collision.gameObject.CompareTag("tablePlayer") && managerTutorial.lastHitter == "Bot")
             {
                 tableAfterNet = true;
             }
         }
+        
         #endregion
     }
 
@@ -96,7 +99,7 @@ public class Ball_Tutorial : MonoBehaviour
             Debug.Log(hitNetLast);
             Debug.Log(validServe);
             Debug.Log("Golpe por " + lastHitterAfterTable);
-            if (!Tutorial_Manager.Instance.endTutorial)
+            if (!managerTutorial.endTutorial)
             {
                 ScoreValidation();
                 ResetState();
@@ -106,7 +109,7 @@ public class Ball_Tutorial : MonoBehaviour
 
     public void RegisterHit(string hitterTag)
     {
-        Tutorial_Manager.Instance.UpdateLastHitter(hitterTag);
+        managerTutorial.UpdateLastHitter(hitterTag);
 
         if (hasTouchedTable || !hasTouchedTable)
         {
@@ -121,7 +124,7 @@ public class Ball_Tutorial : MonoBehaviour
         if (Tutorial.instance.currentPhase == TutorialPhase.Completed && !validServe)
         {
             Debug.Log("Punto para el oponente: Servicio inválido");
-            Tutorial_Manager.Instance.AddPointToOpponent();
+            managerTutorial.AddPointToOpponent();
         }
         else
         {
@@ -129,22 +132,22 @@ public class Ball_Tutorial : MonoBehaviour
             {
                 if (hasTouchedTable && lastHitterAfterTable != "")
                 {
-                    Tutorial_Manager.Instance.AddPointToLastHitter();
+                    managerTutorial.AddPointToLastHitter();
                 }
                 else if (!hasTouchedTable && lastHitterAfterTable != "")
                 {
-                    Tutorial_Manager.Instance.AddPointToOpponent();
+                    managerTutorial.AddPointToOpponent();
                 }
             }
             else if(Tutorial.instance.currentPhase == TutorialPhase.Completed)
             {
                 if (lastHitterAfterTable != "" && !tableAfterNet)
                 {
-                    Tutorial_Manager.Instance.AddPointToOpponent();
+                    managerTutorial.AddPointToOpponent();
                 }
                 else if (lastHitterAfterTable != "" && tableAfterNet)
                 {
-                    Tutorial_Manager.Instance.AddPointToLastHitter();
+                    managerTutorial.AddPointToLastHitter();
                 }
             }
         }

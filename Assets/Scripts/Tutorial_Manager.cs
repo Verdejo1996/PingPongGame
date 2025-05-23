@@ -28,7 +28,7 @@ public class Tutorial_Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        currentServer = "Player";
         keyMap = new Dictionary<KeyCode, int>
         {
             { KeyCode.LeftArrow, 0 },
@@ -51,8 +51,9 @@ public class Tutorial_Manager : MonoBehaviour
 
     public void SetServer()
     {
-        if(Tutorial.instance.currentPhase == TutorialPhase.ServeIntro || Tutorial.instance.currentPhase == TutorialPhase.Serving || Tutorial.instance.currentPhase == TutorialPhase.Completed)
+        if(Tutorial.instance.currentPhase == TutorialPhase.ServeIntro || Tutorial.instance.currentPhase == TutorialPhase.Serving)
         {
+            Tutorial.instance.isPaused = false;
             ball.SetServePosition(paddle.transform.position); // Ajusta la posición para el jugador
             ball.GetComponent<Rigidbody>().useGravity = false;
         }
@@ -65,15 +66,16 @@ public class Tutorial_Manager : MonoBehaviour
         }
         if(Tutorial.instance.currentPhase == TutorialPhase.Completed)
         {
-            if (currentServer == "Player")
+            Tutorial.instance.isPaused = false;
+            if(currentServer == "Player")
             {
                 ball.SetServePosition(paddle.transform.position); // Ajusta la posición para el jugador
-                ball.GetComponent<Rigidbody>().useGravity = false;
+                //ball.GetComponent<Rigidbody>().useGravity = false;
             }
             else
             {
                 ball.SetServePosition(new Vector3(0, 2f, 7)); // Posición de la IA
-                ball.GetComponent<Rigidbody>().useGravity = false;
+                //ball.GetComponent<Rigidbody>().useGravity = false;
                 StartCoroutine(WaitBeforeServe());
             }
         }
@@ -100,7 +102,7 @@ public class Tutorial_Manager : MonoBehaviour
         }
     }
 
-    void CheckScore()
+    public void CheckScore()
     {
         if (playerScore == 11 || botScore == 11)
         {

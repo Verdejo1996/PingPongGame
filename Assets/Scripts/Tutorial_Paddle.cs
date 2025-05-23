@@ -164,12 +164,13 @@ public class Tutorial_Paddle : MonoBehaviour
     public float moveSpeed = 5f;
 
     [Header("Golpe")]
+    public Ball_Tutorial ballTutorial;
     public Transform ballTransform;
     public Rigidbody ballRb;
     public Transform racketTransform;
     public float hitRange = 2f;
-    public float hitForce = 10f;
-    public float upForce = 3f;
+    public float hitForce = 13f;
+    public float upForce = 5f;
 
     [Header("Servicio")]
     [SerializeField] Transform serveStartPosition;
@@ -203,7 +204,8 @@ public class Tutorial_Paddle : MonoBehaviour
     {
         Movement();
         Debug.Log(isServing);
-        if (isServing && !serveInProgress && Tutorial.instance.currentPhase == TutorialPhase.Serving || Tutorial.instance.currentPhase == TutorialPhase.Completed)
+
+        if (isServing && !serveInProgress && Tutorial.instance.currentPhase == TutorialPhase.Serving)
         {
             // Lanzar el servicio
             if (!isCharging && Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.X))
@@ -230,11 +232,12 @@ public class Tutorial_Paddle : MonoBehaviour
                 ServeBall(currentServeKey == KeyCode.Z ? "Topspin" : "Slice");
                 serveChargeBar.gameObject.SetActive(false);
                 isCharging = false;
+                isServing = false;
             }
             //ResetServe();
         }
-        isServing = false;
-        if (!isHitting && !isServing && Tutorial.instance.currentPhase == TutorialPhase.HitPractice || Tutorial.instance.currentPhase == TutorialPhase.Completed)
+        //isServing = false;
+        if (!isHitting && !isServing && Tutorial.instance.currentPhase == TutorialPhase.HitPractice)
         {
             KeyInput();
         }
@@ -286,7 +289,9 @@ public class Tutorial_Paddle : MonoBehaviour
 
     void ServeBall(string type)
     {
+
         ballRb.useGravity = true;
+        Debug.Log(ballRb.useGravity);
 
         Vector3 direction = GetServeDirection();
         float finalForce = serveForce;
@@ -361,6 +366,11 @@ public class Tutorial_Paddle : MonoBehaviour
         }
 
         isHitting = false;
+        if (!isServing)
+        {
+            ballTutorial.RegisterHit("Player");
+
+        }
     }
 
     Vector3 GetDirection()

@@ -57,7 +57,7 @@ public class Tutorial : MonoBehaviour
     void Start()
     {
         Debug.Log(collectedCount.ToString());
-        currentPhase = TutorialPhase.Completed;
+        currentPhase = TutorialPhase.ServeIntro;
         StartCoroutine(SpawnRoutine());
     /*        Time.timeScale = 0f;
             StartCoroutine(TutorialSequence());*/
@@ -68,6 +68,7 @@ public class Tutorial : MonoBehaviour
         ActiveObjects();
         ShowNextInstruccion();
         Debug.Log(currentPhase.ToString());
+        Debug.Log(isPaused);
 /*        FinishTutorial();
 
         if(Input.GetKeyUp(KeyCode.R))
@@ -177,9 +178,9 @@ public class Tutorial : MonoBehaviour
                 UpdateTutorialText();
                 if (isPaused)
                 {
-                    manager.currentServer = "Player";
+                    //manager.currentServer = "Player";
                     manager.SetServer();
-                    isPaused = false;
+                    //isPaused = false;
                 }
                 break;
         }
