@@ -27,7 +27,7 @@ public class Tutorial : MonoBehaviour
     public GameObject collectableObject;
     public Transform[] spawnPoints;
     public Transform[] spawnPointsServe;
-    private float spawnInterval = 5f;
+    private float spawnInterval = 3f;
     private int collectedCount = 0;
 
     public GameObject[] enbaleObjects;
@@ -57,7 +57,7 @@ public class Tutorial : MonoBehaviour
     void Start()
     {
         Debug.Log(collectedCount.ToString());
-        currentPhase = TutorialPhase.Move;
+        currentPhase = TutorialPhase.Completed;
         StartCoroutine(SpawnRoutine());
     /*        Time.timeScale = 0f;
             StartCoroutine(TutorialSequence());*/
@@ -174,7 +174,6 @@ public class Tutorial : MonoBehaviour
                 break;
             case TutorialPhase.Completed:
                 // Fin del tutorial
-                isPaused = true;
                 UpdateTutorialText();
                 if (isPaused)
                 {

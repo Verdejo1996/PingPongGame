@@ -5,6 +5,7 @@ using UnityEngine;
 public class Ball_Tutorial : MonoBehaviour
 {
     private Rigidbody rb;
+    public Tutorial_Paddle player;
 
     [SerializeField]
     private bool hitNetLast = false;
@@ -39,6 +40,7 @@ public class Ball_Tutorial : MonoBehaviour
         if (collision.gameObject.CompareTag("Wall") && Tutorial.instance.currentPhase == TutorialPhase.Serving)
         {
             Tutorial.instance.isPaused = true;
+            player.ResetServe();
             GetComponent<Rigidbody>().velocity = Vector3.zero;
             GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             SetServePosition(new Vector3(0, 2.5f, -7)); // Ajusta la posición para el jugador

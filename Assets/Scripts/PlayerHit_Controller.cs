@@ -1,165 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Tutorial_Paddle : MonoBehaviour
+public class PlayerHit_Controller : MonoBehaviour
 {
-    /*  public float speed = 3f;
-
-      public Player_Controller player;
-
-
-      Vector3 originalPos;
-
-      public Transform aimTarget;
-      public Transform serveTarget;
-      public Transform ball;
-      public Ball_Tutorial ballGameObject;
-      [SerializeField]
-      bool hitting;
-      [SerializeField]
-      bool serving;
-
-      Shot_Controller shot_Controller;
-      Shot currentShot;
-
-      void Start()
-      {
-          originalPos = aimTarget.position;
-          shot_Controller = GetComponent<Shot_Controller>();
-          //currentShot = shot_Controller.topSpin;
-          hitting = false;
-          serving = false;
-      }
-
-      void Update()
-      {
-
-          float h = Input.GetAxisRaw("Horizontal") * speed;
-          float v = Input.GetAxisRaw("Vertical") * speed;
-
-          if (Input.GetKeyDown(KeyCode.LeftShift) && Tutorial.instance.currentPhase == TutorialPhase.HitPractice)
-          {
-              hitting = true;
-              currentShot = shot_Controller.topSpin;
-          }
-          else if (Input.GetKeyUp(KeyCode.LeftShift))
-          {
-              hitting = false;
-              aimTarget.position = originalPos;
-          }
-
-          if (Input.GetKeyDown(KeyCode.Z) && Tutorial.instance.currentPhase == TutorialPhase.HitPractice)
-          {
-              hitting = true;
-              currentShot = shot_Controller.flat;
-          }
-          else if (Input.GetKeyUp(KeyCode.Z))
-          {
-              hitting = false;
-              aimTarget.position = originalPos;
-          }
-
-          if (Input.GetKeyDown(KeyCode.F) && Tutorial.instance.currentPhase == TutorialPhase.Serving)
-          {
-              serving = true;
-              currentShot = shot_Controller.flatServe;
-          }
-          else if (Input.GetKeyUp(KeyCode.F) && Tutorial.instance.currentPhase == TutorialPhase.Serving)
-          {
-              Tutorial.instance.isPaused = false;
-              serving = false;
-              Serve();
-          }
-
-          if (Input.GetKeyDown(KeyCode.G) && Tutorial.instance.currentPhase == TutorialPhase.Serving)
-          {
-              serving = true;
-              currentShot = shot_Controller.kickServe;
-          }
-          else if (Input.GetKeyUp(KeyCode.G) && Tutorial.instance.currentPhase == TutorialPhase.Serving)
-          {
-              Serve();
-
-          }
-
-          if (hitting *//*&& controller.playing*//*)
-          {
-              //Movemos el target de tiro pero no podemos movernos nosotros.
-              if (player.precisionActive)
-              {
-                  Vector3 aimNewPosition = aimTarget.position + speed * 2 * Time.deltaTime * new Vector3(h, 0, v);
-
-                  aimNewPosition.x = Mathf.Clamp(aimNewPosition.x, -4f, 4f);
-                  aimNewPosition.z = Mathf.Clamp(aimNewPosition.z, 1f, 4.2f);
-
-                  aimTarget.position = aimNewPosition;
-              }
-              else
-              {
-                  Vector3 aimNewPosition = aimTarget.position + speed * 2 * Time.deltaTime * new Vector3(h, 0, v);
-
-                  aimNewPosition.x = Mathf.Clamp(aimNewPosition.x, -5f, 5f);
-                  aimNewPosition.z = Mathf.Clamp(aimNewPosition.z, 1f, 5f);
-
-                  aimTarget.position = aimNewPosition;
-              }
-          }   
-          else if (serving)
-          {
-              //Movemos el target de servicio pero no podemos movernos nosotros.
-              Vector3 aimNewPosition = serveTarget.position + speed * 2 * Time.deltaTime * new Vector3(h, 0, v);
-
-              aimNewPosition.x = Mathf.Clamp(aimNewPosition.x, -5f, 5f);
-              aimNewPosition.z = Mathf.Clamp(aimNewPosition.z, -4f, -2f);
-
-              serveTarget.position = aimNewPosition;
-          }
-          // Movimiento del jugador si NO está golpeando ni sirviendo
-          else if (!hitting && !serving)
-          {
-              Vector3 newPosition = transform.position + speed * Time.deltaTime * new Vector3(h, 0, v);
-              newPosition.x = Mathf.Clamp(newPosition.x, -6f, 6f);
-              newPosition.z = Mathf.Clamp(newPosition.z, -8f, -1f);
-              newPosition.y = Mathf.Clamp(newPosition.y, -1f, 5f);
-              transform.position = newPosition;
-          }
-      }
-
-      void Serve()
-      {
-          serving = false;
-          //controller.playing = true;
-          ballGameObject.GetComponent<Rigidbody>().useGravity = true;
-
-          //Posicionamos la pelota por encima del jugador, luego le damos la direccion al target y le aplicamos velocidad.
-          ball.transform.position = transform.position + new Vector3(0.2f, 1, 0);
-          Vector3 dir = serveTarget.position - transform.position;
-          ball.GetComponent<Rigidbody>().velocity = dir.normalized * currentShot.hitForce + new Vector3(0, currentShot.upForce, 0);
-
-
-      }
-      private void OnTriggerEnter(Collider other)
-      {
-          if (other.CompareTag("Ball"))
-          {
-              Vector3 dir = aimTarget.position - transform.position;
-              other.GetComponent<Rigidbody>().velocity = dir.normalized * currentShot.hitForce + new Vector3(0, currentShot.upForce, 0);
-
-          }
-          if (other.CompareTag("Ball") && Tutorial.instance.currentPhase == TutorialPhase.Completed)
-          {
-              Vector3 dir = aimTarget.position - transform.position;
-              other.GetComponent<Rigidbody>().velocity = dir.normalized * currentShot.hitForce + new Vector3(0, currentShot.upForce, 0);
-
-              Ball_Tutorial ball = other.gameObject.GetComponent<Ball_Tutorial>();
-              ball.hasTouchedTable = false;
-              ball.tableAfterNet = false;
-              ball.RegisterHit("Player");
-          }
-      }*/
-
     [Header("Movimiento del jugador")]
     public float moveSpeed = 5f;
 
@@ -202,8 +48,8 @@ public class Tutorial_Paddle : MonoBehaviour
     void Update()
     {
         Movement();
-        Debug.Log(isServing);
-        if (isServing && !serveInProgress && Tutorial.instance.currentPhase == TutorialPhase.Serving || Tutorial.instance.currentPhase == TutorialPhase.Completed)
+
+        if (isServing && !serveInProgress)
         {
             // Lanzar el servicio
             if (!isCharging && Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.X))
@@ -231,10 +77,9 @@ public class Tutorial_Paddle : MonoBehaviour
                 serveChargeBar.gameObject.SetActive(false);
                 isCharging = false;
             }
-            //ResetServe();
         }
-        isServing = false;
-        if (!isHitting && !isServing && Tutorial.instance.currentPhase == TutorialPhase.HitPractice || Tutorial.instance.currentPhase == TutorialPhase.Completed)
+
+        if (!isHitting && !isServing)
         {
             KeyInput();
         }
@@ -247,7 +92,7 @@ public class Tutorial_Paddle : MonoBehaviour
 
     void Movement()
     {
-        if (CanMove())
+        if(CanMove())
         {
             float h = Input.GetAxisRaw("Horizontal"); // Flechas izquierda/derecha
             float v = Input.GetAxisRaw("Vertical");   // Flechas arriba/abajo
@@ -348,7 +193,7 @@ public class Tutorial_Paddle : MonoBehaviour
 
         //if (type == "topspin")
 
-
+        
         ballRb.velocity = force;
 
         // Retornar la paleta a su posición

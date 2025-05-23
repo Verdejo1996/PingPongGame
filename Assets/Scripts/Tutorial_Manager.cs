@@ -35,7 +35,8 @@ public class Tutorial_Manager : MonoBehaviour
             { KeyCode.RightArrow, 1 },
             { KeyCode.UpArrow, 2 },
             { KeyCode.DownArrow, 3 },
-            { KeyCode.F, 4 },
+            { KeyCode.Z, 4 },
+            { KeyCode.X, 5 }
         };
         
         //SetServer();
@@ -52,7 +53,7 @@ public class Tutorial_Manager : MonoBehaviour
     {
         if(Tutorial.instance.currentPhase == TutorialPhase.ServeIntro || Tutorial.instance.currentPhase == TutorialPhase.Serving || Tutorial.instance.currentPhase == TutorialPhase.Completed)
         {
-            ball.SetServePosition(new Vector3(0, 2.5f, -7)); // Ajusta la posición para el jugador
+            ball.SetServePosition(paddle.transform.position); // Ajusta la posición para el jugador
             ball.GetComponent<Rigidbody>().useGravity = false;
         }
         if (Tutorial.instance.currentPhase == TutorialPhase.HitPractice)
@@ -66,7 +67,7 @@ public class Tutorial_Manager : MonoBehaviour
         {
             if (currentServer == "Player")
             {
-                ball.SetServePosition(new Vector3(0, 2.5f, -7)); // Ajusta la posición para el jugador
+                ball.SetServePosition(paddle.transform.position); // Ajusta la posición para el jugador
                 ball.GetComponent<Rigidbody>().useGravity = false;
             }
             else
