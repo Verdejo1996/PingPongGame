@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b9f13fd5d2cb884886cc827dbaa3822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUp: {fileID: 11400000, guid: ae5a53824ba48e14aab7d235fa4847f3, type: 2}
+  powerUp: {fileID: 11400000, guid: fc21f24d90dd2404aa56fdbe7bc7ac67, type: 2}
   pickUpEffect: {fileID: 7861246791180186722, guid: 335a54380eb3fa34dbda80c1c34affe2,
     type: 3}
 --- !u!1 &8477831278777965619

@@ -136,8 +136,6 @@ public class Player_Controller : MonoBehaviour
 
     public void SuperHit()
     {
-        superHitActive = true;
-        Debug.Log(superHitActive);
         StartCoroutine(DeactivateAfterTime(() => superHitActive = false, duration));
     }
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,6 +9,7 @@ public class PlayerHit_Controller : MonoBehaviour
 {
     [Header("Gameplay")]
     public Game_Controller controller;
+    public Player_Controller player;
 
     [Header("Movimiento del jugador")]
     public float moveSpeed = 5f;
@@ -18,15 +20,25 @@ public class PlayerHit_Controller : MonoBehaviour
     public Rigidbody ballRb;
     public Transform racketTransform;
     public float hitRange = 2f;
-    public float hitForce = 10f;
+    public float hitForce;
     public float upForce = 5f;
 
     [Header("Servicio")]
     [SerializeField] Transform serveStartPosition;
     [SerializeField] Transform ballHoldPosition;
-    [SerializeField] float serveForce = 10f;
+    [SerializeField] float serveForce;
     [SerializeField] Slider serveChargeBar;
+    [SerializeField] Image idealZoneImage;
     [SerializeField] float chargeSpeed = 1.0f; // velocidad de carga visual
+    [SerializeField] float minServeForce = 7f;
+    [SerializeField] float maxServeForce = 12f;
+    [SerializeField] float idealChargeMin = 0.6f;
+    [SerializeField] float idealChargeMax = 0.8f;
+    [SerializeField] Color normalColor = new(0, 1, 0, 0.4f); // verde suave
+    [SerializeField] Color glowColor = new(1, 1, 0, 0.7f);   // amarillo brillante
+    [SerializeField] private TMP_Text feedbackText;
+    [SerializeField] private float feedbackDuration = 1.5f;
+    [SerializeField] private Color perfectColor = Color.red;
 
 
     [Header("Paleta")]
@@ -46,6 +58,7 @@ public class PlayerHit_Controller : MonoBehaviour
 
     private void Start()
     {
+        UpdateIdealZoneIndicator();
         isCharging = false;
         serveInProgress = false;
         isServing = false;
@@ -115,6 +128,20 @@ public class PlayerHit_Controller : MonoBehaviour
             chargeValue += Time.deltaTime * chargeSpeed;
             chargeValue = Mathf.Clamp01(chargeValue);
             serveChargeBar.value = chargeValue;
+            if (isCharging)
+            {
+                float currentValue = serveChargeBar.value;
+
+                bool isInIdealRange = currentValue >= idealChargeMin && currentValue <= idealChargeMax;
+
+                // Cambiamos el color según si está en el rango
+                idealZoneImage.color = isInIdealRange ? glowColor : normalColor;
+
+                if(isInIdealRange)
+                {
+                    ShowPerfectFeedback();
+                }
+            }
         }
 
         // Soltar y servir
@@ -136,7 +163,15 @@ public class PlayerHit_Controller : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.Z))
         {
-            hitForce = 13f;
+            if (player.superHitActive)
+            {
+                hitForce = 15f;
+                player.SuperHit();
+            }
+            else
+            {
+                hitForce = 12f;
+            }
         }
         
         if (Input.GetKeyDown(KeyCode.X))
@@ -150,7 +185,7 @@ public class PlayerHit_Controller : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.X))
         {
-            hitForce = 10f;
+            hitForce = 9f;
         }
     }
 
@@ -159,7 +194,7 @@ public class PlayerHit_Controller : MonoBehaviour
         ballRb.useGravity = true;
         isServing = false;
         Vector3 direction = GetServeDirection();
-        float finalForce = serveForce;
+        
 
         // Aplicar efecto
         if (type == "Topspin")
@@ -173,7 +208,15 @@ public class PlayerHit_Controller : MonoBehaviour
             direction += Vector3.up * 0.15f;
         }
 
-        ballRb.velocity = direction.normalized * finalForce;
+        serveForce = Mathf.Lerp(minServeForce, maxServeForce, chargeValue);
+
+        bool perfectTiming = chargeValue >= idealChargeMin && chargeValue <= idealChargeMax;
+        if (perfectTiming)
+        {
+            Debug.Log("Saque perfecto");
+        }
+
+        ballRb.velocity = direction.normalized * serveForce;
         ballGame.RegisterHit("Player");
     }
 
@@ -229,6 +272,8 @@ public class PlayerHit_Controller : MonoBehaviour
             racketTransform.localPosition = Vector3.Lerp(transform.position, initialRacketLocalPos, t);
             yield return null;
         }
+        ballGame.hasTouchedTable = false;
+        ballGame.tableAfterNet = false;
         ballGame.RegisterHit("Player");
     }
 
@@ -379,5 +424,40 @@ public class PlayerHit_Controller : MonoBehaviour
             Gizmos.color = Color.cyan;
             Gizmos.DrawWireSphere(racketTransform.position, hitRange);
         }
+    }
+
+    void UpdateIdealZoneIndicator()
+    {
+        RectTransform rt = idealZoneImage.GetComponent<RectTransform>();
+
+        float totalWidth = serveChargeBar.GetComponent<RectTransform>().rect.width;
+
+        float idealStart = idealChargeMin * totalWidth;
+        float idealEnd = idealChargeMax * totalWidth;
+        float idealWidth = idealEnd - idealStart;
+
+        // Ajustar la posición y el tamaño
+        rt.anchorMin = new Vector2(0, 0);
+        rt.anchorMax = new Vector2(0, 1);
+        rt.pivot = new Vector2(0, 0.5f);
+        rt.anchoredPosition = new Vector2(idealStart, 0);
+        rt.sizeDelta = new Vector2(idealWidth, 0);
+    }
+
+    void ShowPerfectFeedback()
+    {
+        feedbackText.text = "¡Max!";
+        feedbackText.color = perfectColor;
+        feedbackText.gameObject.SetActive(true);
+
+        // Iniciar fade-out
+        StopAllCoroutines();
+        StartCoroutine(HideFeedbackAfterDelay());
+    }
+
+    IEnumerator HideFeedbackAfterDelay()
+    {
+        yield return new WaitForSeconds(feedbackDuration);
+        feedbackText.gameObject.SetActive(false);
     }
 }

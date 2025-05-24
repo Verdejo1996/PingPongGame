@@ -1,17 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class IA_Controller : MonoBehaviour
 {
     public Transform ball;
+    public Rigidbody ballRb;
     public Transform aimTarget;
     public float speed;
    
     public Game_Controller controller;
 
-    Vector3 targetposition;
-    Vector3 inicialPos;
+    Vector3 targetPosition;
+    Vector3 initialPos;
 
     public Transform[] targets;
     public Transform[] serveTargets;
@@ -19,11 +21,16 @@ public class IA_Controller : MonoBehaviour
     Shot_Controller shot_controller;
     public Ball ballGameObject;
 
+    public float anticipationDelay = 0.2f; // tiempo que tarda en reaccionar
+    public float reactionTimer = 0f;
+
+    private bool anticipatingShot;
+
     void Start()
     {
-        targetposition = transform.position;
         shot_controller = GetComponent<Shot_Controller>();
-        inicialPos = transform.position;
+        initialPos = transform.position;
+        targetPosition = initialPos;
     }
 
     void Update()
@@ -35,16 +42,63 @@ public class IA_Controller : MonoBehaviour
     //Realiza el movimiento siguiendo la trayectoria de la pelota.
     void Move()
     {
-        if(controller.playing)
+        /*        if(controller.playing)
+                {
+                    targetposition.x = ball.position.x;
+                    transform.position = Vector3.MoveTowards(transform.position, targetposition, speed * Time.deltaTime);
+                }
+                else
+                {
+                    transform.position = inicialPos;    
+                }*/
+
+/*        if (controller.playing)
         {
-            targetposition.x = ball.position.x;
-            transform.position = Vector3.MoveTowards(transform.position, targetposition, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, initialPos, speed * Time.deltaTime);
+            anticipatingShot = false;
+            float Velocity = ball.GetComponent<Rigidbody>().velocity.z;
+            Debug.Log("Z Velocity: " + Velocity);
+            return;
+        }*/
+
+        float zVelocity = ball.GetComponent<Rigidbody>().velocity.z;
+        Debug.Log("Z Velocity: " + zVelocity);
+
+        // Solo reacciona si la pelota va hacia la IA
+        if (zVelocity > 0f && controller.playing) // pelota viene hacia IA
+        {
+            if (!anticipatingShot)
+            {
+                reactionTimer = anticipationDelay;
+                anticipatingShot = true;
+            }
+
+            if (reactionTimer > 0)
+            {
+                reactionTimer -= Time.deltaTime;
+                return; // esperamos un poco antes de movernos
+            }
+
+            // Verificamos si la pelota va a caer dentro del campo
+            float predictedX = ball.position.x;
+            if (predictedX < -7f || predictedX > 7f)
+            {
+                // Pelota va fuera del ancho de la mesa
+                return;
+            }
+
+            // Me muevo hacia la posición x de la pelota
+            targetPosition = new Vector3(predictedX, transform.position.y, transform.position.z);
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
         }
         else
         {
-            transform.position = inicialPos;    
+            // Si la pelota no viene hacia la IA, volver al centro
+            transform.position = Vector3.MoveTowards(transform.position, initialPos, speed * Time.deltaTime);
+            anticipatingShot = false;
         }
     }
+
 
     Vector3 PickTarget()
     {
