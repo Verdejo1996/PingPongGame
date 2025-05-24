@@ -9,10 +9,6 @@ public class Paddle : MonoBehaviour
     public Game_Controller controller;
     public Player_Controller player;
 
-    public float jumpHeight = 2f; // Altura del salto
-    public float jumpDuration = 0.5f; // Duración del salto
-    private bool isJumping = false;
-
     Vector3 originalPos;
 
     public Transform aimTarget;
@@ -149,40 +145,6 @@ public class Paddle : MonoBehaviour
             newPosition.y = Mathf.Clamp(newPosition.y, -1f, 5f);
             transform.position = newPosition;
         }
-
-        if (Input.GetKeyDown(KeyCode.Space) && !isJumping) // Presiona espacio para saltar
-        {
-            StartCoroutine(Jump());
-        }
-    }
-
-    IEnumerator Jump()
-    {
-        isJumping = true;
-        float elapsedTime = 0f;
-
-        Vector3 startPosition = transform.position;
-        Vector3 targetPosition = startPosition + Vector3.up * jumpHeight;
-
-        // Subir
-        while (elapsedTime < jumpDuration / 2)
-        {
-            transform.position = new Vector3(startPosition.x, Mathf.Lerp(startPosition.y, targetPosition.y, (elapsedTime / (jumpDuration / 2))), startPosition.z);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        // Bajar
-        elapsedTime = 0f;
-        while (elapsedTime < jumpDuration / 2)
-        {
-            transform.position = new Vector3(startPosition.x, Mathf.Lerp(targetPosition.y, startPosition.y, (elapsedTime / (jumpDuration / 2))), startPosition.z);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        transform.position = new Vector3(startPosition.x, startPosition.y, startPosition.z); // Asegurar que vuelva exacto
-        isJumping = false;
     }
 
     void Serve()
@@ -273,10 +235,4 @@ public class Paddle : MonoBehaviour
         }
         return false;
     }*/
-
-    IEnumerator DeactivateAfterTime(System.Action onEnd, float seconds)
-    {
-        yield return new WaitForSeconds(seconds);
-        onEnd?.Invoke();
-    }
 }

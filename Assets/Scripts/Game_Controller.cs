@@ -15,6 +15,7 @@ public class Game_Controller : MonoBehaviour
     public Transform ballStartPosition;
 
     public IA_Controller iaGameObject;
+    public PlayerHit_Controller playerHitController;
     
     public bool playing;
     public bool endGame;
@@ -59,12 +60,12 @@ public class Game_Controller : MonoBehaviour
 
     void SetServer()
     {
-        if (currentServer == "Player")
+        if (currentServer == "Player" && !playing)
         {
-            ball.SetServePosition(new Vector3(0, 2.5f, -7)); // Ajusta la posición para el jugador
+            ball.SetServePosition(playerHitController.transform.position); // Ajusta la posición para el jugador
             ball.GetComponent<Rigidbody>().useGravity = false;
         }
-        else
+        else if(currentServer == "Bot" && !playing)
         {
             ball.SetServePosition(new Vector3(0, 2f, 7)); // Posición de la IA
             ball.GetComponent<Rigidbody>().useGravity = false;

@@ -69,6 +69,15 @@ public class Ball : MonoBehaviour
             controller.playing = false;
             GetComponent<Rigidbody>().velocity = Vector3.zero;
             GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+            Debug.Log(hasTouchedTable);
+            Debug.Log(hitNetLast);
+            Debug.Log(validServe);
+            Debug.Log("Golpe por " + lastHitterAfterTable);
+            if (!controller.endGame)
+            {
+                ScoreValidation();
+                ResetState();
+            }
         }
         if (collision.gameObject.CompareTag("tableBot") && controller.currentServer == "Player")
         {
@@ -102,7 +111,7 @@ public class Ball : MonoBehaviour
         {
             hasTouchedTable = true;
         }
-        if(other.CompareTag("Out"))
+/*        if(other.CompareTag("Out"))
         {
             controller.playing = false;
 
@@ -115,7 +124,7 @@ public class Ball : MonoBehaviour
                 ScoreValidation();  
                 ResetState();
             }
-        }
+        }*/
     }
 
     //Metodo para validar las distintas opciones que hay para sumar puntos.

@@ -6,18 +6,20 @@ using UnityEngine.UI;
 
 public class PlayerHit_Controller : MonoBehaviour
 {
+    [Header("Gameplay")]
+    public Game_Controller controller;
 
     [Header("Movimiento del jugador")]
     public float moveSpeed = 5f;
 
     [Header("Golpe")]
-    public Ball_Tutorial ballTutorial;
+    public Ball ballGame;
     public Transform ballTransform;
     public Rigidbody ballRb;
     public Transform racketTransform;
     public float hitRange = 2f;
     public float hitForce = 10f;
-    public float upForce = 3f;
+    public float upForce = 5f;
 
     [Header("Servicio")]
     [SerializeField] Transform serveStartPosition;
@@ -31,12 +33,12 @@ public class PlayerHit_Controller : MonoBehaviour
     public float racketSpeed = 20f;
     public float racketReturnSpeed = 10f;
     private Vector3 initialRacketLocalPos;
-    private bool isHitting = false;
-    private bool isServing = true;
+    private bool isHitting;
+    private bool isServing;
     //private bool ballBouncedOnPlayerSide = false;
-    private bool serveInProgress = false;
-    //private bool ballHeld = true;
-    private bool isCharging = false;
+    private bool serveInProgress;
+    private bool ballHeld = true;
+    private bool isCharging;
     private float chargeValue = 0f;
     private KeyCode currentServeKey;
 
@@ -44,6 +46,10 @@ public class PlayerHit_Controller : MonoBehaviour
 
     private void Start()
     {
+        isCharging = false;
+        serveInProgress = false;
+        isServing = false;
+        isHitting = false;
         //shot_Controller = GetComponent<Shot_Controller>();
         initialRacketLocalPos = racketTransform.localPosition;
     }
@@ -51,37 +57,16 @@ public class PlayerHit_Controller : MonoBehaviour
     {
         Movement();
 
-        if (isServing && !serveInProgress)
+        if (!isServing && !serveInProgress && !controller.playing)
         {
-            // Lanzar el servicio
-            if (!isCharging && Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.X))
+            if (ballHeld && controller.currentServer == "Player")
             {
-                currentServeKey = Input.GetKeyDown(KeyCode.Z) ? KeyCode.Z : KeyCode.X;
-                isCharging = true;
-                chargeValue = 0f;
-                serveChargeBar.value = 0f;
-                serveChargeBar.gameObject.SetActive(true);
+                ballTransform.position = ballHoldPosition.position;
             }
-
-            // Cargar barra mientras se mantiene presionada la tecla
-            if (isCharging && Input.GetKey(currentServeKey))
-            {
-                chargeValue += Time.deltaTime * chargeSpeed;
-                chargeValue = Mathf.Clamp01(chargeValue);
-                serveChargeBar.value = chargeValue;
-            }
-
-            // Soltar y servir
-            if (isCharging && Input.GetKeyUp(currentServeKey))
-            {
-                Tutorial.instance.isPaused = false;
-                ServeBall(currentServeKey == KeyCode.Z ? "Topspin" : "Slice");
-                serveChargeBar.gameObject.SetActive(false);
-                isCharging = false;
-            }
+            ServeBall();
         }
 
-        if (!isHitting && !isServing)
+        if (!isHitting && !isServing && controller.playing)
         {
             KeyInput();
         }
@@ -112,22 +97,60 @@ public class PlayerHit_Controller : MonoBehaviour
         }
     }
 
+    void ServeBall()
+    {
+        // Lanzar el servicio
+        if (!isCharging && Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.X))
+        {
+            currentServeKey = Input.GetKeyDown(KeyCode.Z) ? KeyCode.Z : KeyCode.X;
+            isCharging = true;
+            chargeValue = 0f;
+            serveChargeBar.value = 0f;
+            serveChargeBar.gameObject.SetActive(true);
+        }
+
+        // Cargar barra mientras se mantiene presionada la tecla
+        if (isCharging && Input.GetKey(currentServeKey))
+        {
+            chargeValue += Time.deltaTime * chargeSpeed;
+            chargeValue = Mathf.Clamp01(chargeValue);
+            serveChargeBar.value = chargeValue;
+        }
+
+        // Soltar y servir
+        if (isCharging && Input.GetKeyUp(currentServeKey))
+        {
+            ServeBall(currentServeKey == KeyCode.Z ? "Topspin" : "Slice");
+            serveChargeBar.gameObject.SetActive(false);
+            isCharging = false;
+            isServing = false;
+            controller.playing = true;
+        }
+    }
+
     void KeyInput()
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
             TryHitBall("topspin");
+        }
+        else if (Input.GetKeyUp(KeyCode.Z))
+        {
             hitForce = 13f;
         }
-        else if (Input.GetKeyDown(KeyCode.X))
+        
+        if (Input.GetKeyDown(KeyCode.X))
         {
             TryHitBall("slice");
-            hitForce = 10f;
+
             Vector3 posBall = ballTransform.position;
             float topEffect = Time.deltaTime * 0.5f;
             posBall.y -= topEffect;
             ballTransform.position = posBall;
-
+        }
+        else if (Input.GetKeyUp(KeyCode.X))
+        {
+            hitForce = 10f;
         }
     }
 
@@ -151,7 +174,7 @@ public class PlayerHit_Controller : MonoBehaviour
         }
 
         ballRb.velocity = direction.normalized * finalForce;
-
+        ballGame.RegisterHit("Player");
     }
 
     public void ResetServe()
@@ -176,7 +199,6 @@ public class PlayerHit_Controller : MonoBehaviour
 
     IEnumerator HitAnimation(string type)
     {
-        isHitting = true;
 
         posInicial = transform.position;
 
@@ -207,9 +229,7 @@ public class PlayerHit_Controller : MonoBehaviour
             racketTransform.localPosition = Vector3.Lerp(transform.position, initialRacketLocalPos, t);
             yield return null;
         }
-
-        isHitting = false;
-        ballTutorial.RegisterHit("Player");
+        ballGame.RegisterHit("Player");
     }
 
     Vector3 GetDirection()
