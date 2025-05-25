@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class PowerUp_Controller : MonoBehaviour
 {
-
+    [Header("Arrays")]
     public GameObject[] powerUpPrefabs;
     public Transform[] spawnPoints;
+
+    [Header("Intervalo")]
     public float spawnInterval = 10f;
+
+    [Header("Instancia")]
     public Player_Controller playerController;
+    public PowerUp_Manager powerUpManager;
 
     private bool canSpawn = true;
 
@@ -26,7 +31,7 @@ public class PowerUp_Controller : MonoBehaviour
 
         while (true)
         {
-            if (canSpawn && PowerUp_Manager.Instance.CanSpawnPowerUp(playerController))
+            if (canSpawn && powerUpManager.CanSpawnPowerUp(playerController))
             {
                 SpawnPowerUp();
             }

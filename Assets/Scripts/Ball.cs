@@ -1,29 +1,27 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+    [Header("Gameplay")]
     private Rigidbody rb;
     public Game_Controller controller;
+
+    [Header("Banderas")]
     public bool bounceTable = false;
     public bool hasTouchedTable = false;
-    [SerializeField]
-    private bool hitNetLast = false;
+    [SerializeField] private bool hitNetLast = false;
     private string lastHitterAfterTable = "";
-    [SerializeField]
-    bool validServe = false;
-
+    [SerializeField] bool validServe = false;
     public bool tableAfterNet = false;
+    public bool isCurveShotActive = false;
 
-    //[SerializeField] private Paddle paddle;
+    [Header("Trail Renderer")]
     [SerializeField] private TrailRenderer trailBall;
     [SerializeField] private Color colorSoft = Color.blue;
     [SerializeField] private Color colorStrong = Color.red;
     [SerializeField] private Camera_Shake cameraShake;
 
-    public bool isCurveShotActive = false;
     private float duration = 3f;
 
     void Start()

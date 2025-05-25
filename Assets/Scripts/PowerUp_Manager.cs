@@ -6,9 +6,10 @@ public class PowerUp_Manager : MonoBehaviour
 {
     public static PowerUp_Manager Instance {  get; private set; }
 
-    private List<GameObject> activeScenePowerUps = new List<GameObject>();
-    private PowerUp_Controller powerUpController;
-    private Player_Controller player;
+    private List<GameObject> activeScenePowerUps = new();
+    [Header("Instancia")]
+    public PowerUp_Controller powerUpController;
+    public Player_Controller player;
 
     private void Awake()
     {
@@ -48,7 +49,10 @@ public class PowerUp_Manager : MonoBehaviour
 
     public void NotifyPlayerUsedPowerUp(Player_Controller player)
     {
-        CheckIfShouldResume();
+        if(player != null)
+        {
+            CheckIfShouldResume();
+        }
     }
 
     void CheckIfShouldPause()

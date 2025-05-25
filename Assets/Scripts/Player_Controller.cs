@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class Player_Controller : MonoBehaviour
 {
+    [Header("Instancias")]
     public List<Base_PowerUp> ListPowerUps = new();
+    public PowerUp_Manager powerUp_Manager;
+    public IA_Controller iA_Controller;
+    public Ball ball;
+    public HUD_Controller hud_Controller;
 
     //public GameObject player;
     //public Paddle paddle;
-    public IA_Controller iA_Controller;
-    public Ball ball;
-
+    [Header("Power Up Activo")]
     public bool precisionActive = false;
     public bool superHitActive = false;
     public bool shieldActive = false;
@@ -18,9 +21,9 @@ public class Player_Controller : MonoBehaviour
     public bool hasSuperHitPowerUp = false;
     public bool hasShieldPowerUp = false;
     public bool hasFreezePowerUp = false;
-    public float duration = 5f;
     public GameObject prefabShield;
-    public HUD_Controller hud_Controller;
+    public float duration = 5f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -80,7 +83,7 @@ public class Player_Controller : MonoBehaviour
         Debug.Log($"Intentando activar: {ListPowerUps[index].name}");
         ListPowerUps[index].Activate(this); // Le pasás el contexto
         ListPowerUps.RemoveAt(index);
-        PowerUp_Manager.Instance.NotifyPlayerUsedPowerUp(this);
+        powerUp_Manager.NotifyPlayerUsedPowerUp(this);
         hud_Controller.UpdateHUD(ListPowerUps);
 /*        if (index < ListPowerUps.Count)
         {

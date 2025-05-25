@@ -5,26 +5,26 @@ using UnityEngine;
 
 public class IA_Controller : MonoBehaviour
 {
+    [Header("Gameplay")]
+    public Game_Controller controller;
     public Transform ball;
     public Rigidbody ballRb;
-    public Transform aimTarget;
+    public Ball ballGameObject;
     public float speed;
-   
-    public Game_Controller controller;
 
+    [Header("Vectores")]
     Vector3 targetPosition;
     Vector3 initialPos;
 
+    [Header("Golpe")]
+    public Transform aimTarget;
     public Transform[] targets;
     public Transform[] serveTargets;
-
-    Shot_Controller shot_controller;
-    public Ball ballGameObject;
-
     public float anticipationDelay = 0.2f; // tiempo que tarda en reaccionar
     public float reactionTimer = 0f;
-
     private bool anticipatingShot;
+
+    Shot_Controller shot_controller;
 
     void Start()
     {
@@ -62,7 +62,6 @@ public class IA_Controller : MonoBehaviour
         }*/
 
         float zVelocity = ball.GetComponent<Rigidbody>().velocity.z;
-        Debug.Log("Z Velocity: " + zVelocity);
 
         // Solo reacciona si la pelota va hacia la IA
         if (zVelocity > 0f && controller.playing) // pelota viene hacia IA

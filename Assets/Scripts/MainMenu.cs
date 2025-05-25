@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
     public GameObject optionsPanel;
     public void Play()
     {
-        SceneManager.LoadScene("Tutorial"); // Cambia por el nombre de tu escena
+        SceneManager.LoadScene("Game"); // Cambia por el nombre de tu escena
     }
 
     public void MostrarOpciones()
