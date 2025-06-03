@@ -173,9 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUpPrefabs:
-  - {fileID: 5844350718227040164, guid: 7177c04f5cfe47347bd588754996fc0e, type: 3}
-  - {fileID: 5844350718227040164, guid: 81e317ae0de7f994691257b1185c965e, type: 3}
-  - {fileID: 5844350718227040164, guid: 0212ff097eeca1b4dadd88c223f805f8, type: 3}
+  - {fileID: 3815028451921150199, guid: d93f4e201c41c494d9985f02f659d00a, type: 3}
   spawnPoints:
   - {fileID: 1749140497}
   - {fileID: 1963304336}
@@ -8247,6 +8245,7 @@ MonoBehaviour:
   iA_Controller: {fileID: 886997725}
   ball: {fileID: 1648606457}
   hud_Controller: {fileID: 684713841}
+  player_hit_Controller: {fileID: 1834164485}
   precisionActive: 0
   superHitActive: 0
   shieldActive: 0

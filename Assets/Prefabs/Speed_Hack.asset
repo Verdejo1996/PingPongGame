@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24d868d16ad3880408544e305bd975d7, type: 3}
-  m_Name: Power Up_Super Hit
+  m_Script: {fileID: 11500000, guid: 3f0866fb90ee2394bbb5e9f3633ef897, type: 3}
+  m_Name: Speed_Hack
   m_EditorClassIdentifier: 
-  powerUpName: SuperHit
-  icon: {fileID: 21300000, guid: cf959638f120e0a4c99f1abacb778b11, type: 3}
-  player: {fileID: 0}
+  powerUpName: SpeedHack
+  icon: {fileID: 21300000, guid: 81d5576f41c189545bd335fab7d7a71a, type: 3}

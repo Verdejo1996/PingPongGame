@@ -10,9 +10,9 @@ public class Player_Controller : MonoBehaviour
     public IA_Controller iA_Controller;
     public Ball ball;
     public HUD_Controller hud_Controller;
+    public PlayerHit_Controller player_hit_Controller;
 
     //public GameObject player;
-    //public Paddle paddle;
     [Header("Power Up Activo")]
     public bool precisionActive = false;
     public bool superHitActive = false;
@@ -23,13 +23,6 @@ public class Player_Controller : MonoBehaviour
     public bool hasFreezePowerUp = false;
     public GameObject prefabShield;
     public float duration = 5f;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
