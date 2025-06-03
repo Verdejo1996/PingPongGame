@@ -66,6 +66,8 @@ public class IA_Controller : MonoBehaviour
         // Solo reacciona si la pelota va hacia la IA
         if (zVelocity > 0f && controller.playing) // pelota viene hacia IA
         {
+            Vector3 target = transform.position;
+
             if (!anticipatingShot)
             {
                 reactionTimer = anticipationDelay;
@@ -78,17 +80,41 @@ public class IA_Controller : MonoBehaviour
                 return; // esperamos un poco antes de movernos
             }
 
-            // Verificamos si la pelota va a caer dentro del campo
-            float predictedX = ball.position.x;
-            if (predictedX < -7f || predictedX > 7f)
+            if (ballGameObject.hasTouchedTable)
             {
-                // Pelota va fuera del ancho de la mesa
-                return;
+                target.x = ball.position.x;
+            }
+            else
+            {
+                /*                // Verificamos si la pelota va a caer dentro del campo
+                                float predictedX = ball.position.x;
+                                float predictedZ = ball.position.z;
+                                if (predictedX < -7f || predictedX > 7f || predictedZ > 5.2)
+                                {
+                                    // Pelota va fuera del ancho y largo de la mesa
+                                    return;
+                                }*/
+                // Predecimos donde va a caer
+                float timeToReach = (7f - ball.position.z) / ballRb.velocity.z;
+                //Debug.Log($"PredictedX  {timeToReach}");
+                float predictedX = ball.position.x + ballRb.velocity.x * timeToReach;
+                //Debug.Log($"PredictedX  {predictedX}");
+                // Si va a caer dentro del campo, seguirla
+                if (predictedX > -7.5f && predictedX < 7.5f)
+                {
+                    target.x = predictedX;
+                }
+                else
+                {
+                    return; // No la sigue si va fuera y aún no picó
+                }
+
             }
 
+
             // Me muevo hacia la posición x de la pelota
-            targetPosition = new Vector3(predictedX, transform.position.y, transform.position.z);
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+            //targetPosition = new Vector3(predictedX, transform.position.y, transform.position.z);
+            transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
         }
         else
         {

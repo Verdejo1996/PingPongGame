@@ -57,7 +57,7 @@ public class Player_Controller : MonoBehaviour
                         break;
                     }
                 }*/
-        Debug.Log(this.name);
+        //Debug.Log(this.name);
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Debug.Log($"Presionaste {KeyCode.Alpha1}, activando powerUp");
