@@ -56,6 +56,8 @@ public class PlayerHit_Controller : MonoBehaviour
 
     private Vector3 posInicial;
 
+    private float anguloActualX = 0f;
+
     private void Start()
     {
         UpdateIdealZoneIndicator();
@@ -65,6 +67,9 @@ public class PlayerHit_Controller : MonoBehaviour
         isHitting = false;
         //shot_Controller = GetComponent<Shot_Controller>();
         initialRacketLocalPos = racketTransform.localPosition;
+
+        anguloActualX = transform.localEulerAngles.x;
+        if (anguloActualX > 180) anguloActualX -= 360; // Para trabajar de -180 a 180
     }
     void Update()
     {
@@ -98,6 +103,7 @@ public class PlayerHit_Controller : MonoBehaviour
             float v = Input.GetAxisRaw("Vertical");   // Flechas arriba/abajo
 
             Vector3 move = new Vector3(h, 0f, v).normalized;
+            float velocidadRotacion = 100f;
 
             if (move != Vector3.zero)
             {
@@ -106,6 +112,21 @@ public class PlayerHit_Controller : MonoBehaviour
                 newPosition.z = Mathf.Clamp(newPosition.z, -8f, -1f);
                 newPosition.y = Mathf.Clamp(newPosition.y, -1f, 5f);
                 transform.position = newPosition;
+            }
+
+            float delta = velocidadRotacion * Time.deltaTime;
+
+            if (Input.GetKey(KeyCode.LeftArrow) && anguloActualX < 180)
+            {
+                float incremento = Mathf.Min(delta, 180 - anguloActualX);
+                transform.Rotate(Vector3.up, incremento, Space.Self);
+                anguloActualX += incremento;
+            }
+            else if (Input.GetKey(KeyCode.RightArrow) && anguloActualX > 0)
+            {
+                float decremento = Mathf.Min(delta, anguloActualX);
+                transform.Rotate(Vector3.down, decremento, Space.Self);
+                anguloActualX -= decremento;
             }
         }
     }
