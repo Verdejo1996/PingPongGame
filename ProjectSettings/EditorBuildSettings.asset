@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Menu.unity
+    path: Assets/Scenes/Menu/Menu.unity
     guid: 8a7095c66215ea74e82da4b4ecfcb80e
   - enabled: 1
-    path: Assets/Scenes/Planet Earth.unity
+    path: Assets/Scenes/Planet Earth/Planet Earth.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects: {}
