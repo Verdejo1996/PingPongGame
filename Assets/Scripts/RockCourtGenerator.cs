@@ -10,7 +10,7 @@ public class RockCourtGenerator : MonoBehaviour
     public float spacing = 1.0f;
     public Transform courtParent;
 
-    private List<GameObject> tiles = new List<GameObject>();
+    private List<GameObject> tiles = new();
     private float yOffset = -0.31f; // Altura fija
 
     void Start()
