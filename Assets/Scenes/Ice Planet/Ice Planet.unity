@@ -5104,6 +5104,23 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 1692303684}
+    - target: {fileID: 6689808395693631693, guid: 8eb6a9ca7cc08e04f96e654d296741ae,
+        type: 3}
+      propertyPath: powerUpPrefabs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6689808395693631693, guid: 8eb6a9ca7cc08e04f96e654d296741ae,
+        type: 3}
+      propertyPath: powerUpPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 5844350718227040164, guid: d5f0dd937882454459c0325732ed1027,
+        type: 3}
+    - target: {fileID: 6689808395693631693, guid: 8eb6a9ca7cc08e04f96e654d296741ae,
+        type: 3}
+      propertyPath: powerUpPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 5844350718227040164, guid: 81e317ae0de7f994691257b1185c965e,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8895,6 +8912,11 @@ PrefabInstance:
       objectReference: {fileID: 2043557760}
     - target: {fileID: 90066334624457181, guid: 4b6d7fe03be104844b9708bfeb2bee6e,
         type: 3}
+      propertyPath: hitRange
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 90066334624457181, guid: 4b6d7fe03be104844b9708bfeb2bee6e,
+        type: 3}
       propertyPath: controller
       value: 
       objectReference: {fileID: 84614328}
@@ -8918,6 +8940,16 @@ PrefabInstance:
       propertyPath: serveChargeBar
       value: 
       objectReference: {fileID: 1903635825}
+    - target: {fileID: 90066334624457181, guid: 4b6d7fe03be104844b9708bfeb2bee6e,
+        type: 3}
+      propertyPath: ballHoldPosition
+      value: 
+      objectReference: {fileID: 1692303686}
+    - target: {fileID: 90066334624457181, guid: 4b6d7fe03be104844b9708bfeb2bee6e,
+        type: 3}
+      propertyPath: serveStartPosition
+      value: 
+      objectReference: {fileID: 1692303686}
     - target: {fileID: 1895055693512851243, guid: 4b6d7fe03be104844b9708bfeb2bee6e,
         type: 3}
       propertyPath: m_Name
@@ -9022,6 +9054,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 915ff743c79b4dc4586cd15b4a10581a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1692303686 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8905584660112409617, guid: 4b6d7fe03be104844b9708bfeb2bee6e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1692303683}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1697609584
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11081,7 +11119,7 @@ SceneRoots:
   - {fileID: 523841466}
   - {fileID: 831549677}
   - {fileID: 6897457}
-  - {fileID: 1692303683}
   - {fileID: 963501181}
   - {fileID: 852240029}
   - {fileID: 1788384251}
+  - {fileID: 1692303683}

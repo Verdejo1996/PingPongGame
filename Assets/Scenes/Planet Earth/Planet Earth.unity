@@ -3028,6 +3028,7 @@ MonoBehaviour:
   ballRb: {fileID: 0}
   ballGameObject: {fileID: 1648606457}
   speed: 6
+  slipperyFactor: 1.5
   aimTarget: {fileID: 1893963790}
   targets:
   - {fileID: 1893963790}
@@ -3038,6 +3039,7 @@ MonoBehaviour:
   - {fileID: 1013268958}
   anticipationDelay: 0.2
   reactionTimer: 0
+  isSlippery: 0
 --- !u!54 &691676331
 Rigidbody:
   m_ObjectHideFlags: 0

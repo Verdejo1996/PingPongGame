@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using TMPro;
 using UnityEngine;
 
@@ -11,6 +12,8 @@ public class IA_Controller : MonoBehaviour
     public Rigidbody ballRb;
     public Ball ballGameObject;
     public float speed;
+    public float slipperyFactor = 3f;
+
 
     [Header("Vectores")]
     Vector3 targetPosition;
@@ -25,6 +28,9 @@ public class IA_Controller : MonoBehaviour
     private bool anticipatingShot;
 
     Shot_Controller shot_controller;
+    public bool isSlippery;
+    private Vector3 velocity = Vector3.zero; // Velocidad interna usada por SmoothDamp
+    public float smoothTime = 0.2f; // Tiempo en el que debería alcanzar la posición objetivo
 
     void Start()
     {
@@ -42,29 +48,8 @@ public class IA_Controller : MonoBehaviour
     //Realiza el movimiento siguiendo la trayectoria de la pelota.
     void Move()
     {
-        /*        if(controller.playing)
-                {
-                    targetposition.x = ball.position.x;
-                    transform.position = Vector3.MoveTowards(transform.position, targetposition, speed * Time.deltaTime);
-                }
-                else
-                {
-                    transform.position = inicialPos;    
-                }*/
-
-/*        if (controller.playing)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, initialPos, speed * Time.deltaTime);
-            anticipatingShot = false;
-            float Velocity = ball.GetComponent<Rigidbody>().velocity.z;
-            Debug.Log("Z Velocity: " + Velocity);
-            return;
-        }*/
-
-        //float zVelocity = ball.GetComponent<Rigidbody>().velocity.z;
-
         // Solo reacciona si la pelota va hacia la IA
-        if (controller.lastHitter == "Player") // pelota viene hacia IA
+        if (controller.lastHitter == "Player" && controller.playing) // pelota viene hacia IA
         {
             if (!anticipatingShot)
             {
@@ -80,7 +65,16 @@ public class IA_Controller : MonoBehaviour
 
             targetPosition.x = ball.position.x;
 
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+            if (isSlippery)
+            {
+                float currentSmoothTime = smoothTime * slipperyFactor;
+                Vector3 target = new(targetPosition.x, transform.position.y, transform.position.z);
+                transform.position = Vector3.SmoothDamp(transform.position, target, ref velocity, currentSmoothTime);
+            }
+            else
+            {
+                transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+            }
         }
         else
         {

@@ -10,27 +10,12 @@ public class PickUp_PowerUp : MonoBehaviour
     public Base_PowerUp powerUp;
 
     public GameObject pickUpEffect;
-    /*    private void OnTriggerEnter(Collider other)
-        {
-            if (other.CompareTag("Player"))
-            {
-                other.GetComponent<Paddle>().ColectPowerUp(powerUp);
-
-                if (pickUpEffect != null)
-                {
-                    Instantiate(pickUpEffect, transform.position, Quaternion.identity);
-                }
-                Destroy(gameObject);
-            }
-        }*/
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
-        {
-            var player = other.GetComponent<Player_Controller>();
-
-            if (player != null)
+        {          
+            if (other.TryGetComponent<Player_Controller>(out var player))
             {
                 player.ColectPowerUp(powerUp);
                 PowerUp_Manager.Instance.UnregisterPowerUp(this.gameObject);

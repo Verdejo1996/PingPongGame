@@ -28,10 +28,6 @@ public class Player_Controller : MonoBehaviour
     void Update()
     {
         CheckForActivation();
-        if(ListPowerUps.Count > 0)
-        {
-            Debug.Log($"PowerUp disponible: {ListPowerUps[0].name}");
-        }
     }
 
     public void ColectPowerUp(Base_PowerUp type)
