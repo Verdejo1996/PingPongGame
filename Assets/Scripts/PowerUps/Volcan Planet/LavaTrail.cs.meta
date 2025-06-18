@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 4c6cb0da39a8fd5479b556b0408495d4
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - icon: {instanceID: 0}
+  - lavaMaterial: {fileID: 2100000, guid: 842136f4129c2c54badde4451476f4fa, type: 2}
+  - ball: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

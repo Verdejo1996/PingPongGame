@@ -7,6 +7,7 @@ public class Ball : MonoBehaviour
     [Header("Gameplay")]
     private Rigidbody rb;
     public Game_Controller controller;
+    [SerializeField] private GameObject lavaAreaPrefab;
 
     [Header("Banderas")]
     public bool bounceTable = false;
@@ -22,6 +23,7 @@ public class Ball : MonoBehaviour
     [SerializeField] private Color colorSoft = Color.blue;
     [SerializeField] private Color colorStrong = Color.red;
     [SerializeField] private Camera_Shake cameraShake;
+    public bool isLavaActive;
 
     private float duration = 3f;
 
@@ -101,6 +103,11 @@ public class Ball : MonoBehaviour
             {
                 tableAfterNet = true;
             }
+        }
+        if(isLavaActive && collision.gameObject.CompareTag("tableBot"))
+        {
+            ContactPoint contact = collision.contacts[0];
+            Instantiate(lavaAreaPrefab, contact.point + new Vector3(0, 1, 4), Quaternion.identity);
         }
     }
 

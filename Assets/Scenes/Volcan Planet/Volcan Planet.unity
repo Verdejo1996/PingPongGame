@@ -97,9 +97,9 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: b175639c649261745a2230c8be138108,
+  m_LightingDataAsset: {fileID: 112000000, guid: 185b09d6fe302814db5b9b17ee2e7ff0,
     type: 2}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: 4407d951dab6a4642aa8ce7793f51cbe,
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 320d8214c02335847be625449714746c,
     type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -11647,6 +11647,17 @@ PrefabInstance:
       propertyPath: cameraShake
       value: 
       objectReference: {fileID: 1676357857}
+    - target: {fileID: 2647781572340080506, guid: 0ac7f0a8ece2a564bb515dcff06954b6,
+        type: 3}
+      propertyPath: lavaAreaPrefab
+      value: 
+      objectReference: {fileID: 5221371134549783356, guid: 400677e2fe987584a8c408454c93d578,
+        type: 3}
+    - target: {fileID: 2647781572340080506, guid: 0ac7f0a8ece2a564bb515dcff06954b6,
+        type: 3}
+      propertyPath: hasTouchedTable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9203847066887631826, guid: 0ac7f0a8ece2a564bb515dcff06954b6,
         type: 3}
       propertyPath: m_Name
@@ -19902,6 +19913,16 @@ PrefabInstance:
       propertyPath: serveChargeBar
       value: 
       objectReference: {fileID: 927541624}
+    - target: {fileID: 90066334624457181, guid: 4b6d7fe03be104844b9708bfeb2bee6e,
+        type: 3}
+      propertyPath: ballHoldPosition
+      value: 
+      objectReference: {fileID: 1751465996}
+    - target: {fileID: 90066334624457181, guid: 4b6d7fe03be104844b9708bfeb2bee6e,
+        type: 3}
+      propertyPath: serveStartPosition
+      value: 
+      objectReference: {fileID: 1751465996}
     - target: {fileID: 1895055693512851243, guid: 4b6d7fe03be104844b9708bfeb2bee6e,
         type: 3}
       propertyPath: m_Name
@@ -20006,6 +20027,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 922ac85e0efc4514fb1659b7ad8663bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1751465996 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8905584660112409617, guid: 4b6d7fe03be104844b9708bfeb2bee6e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1751465993}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1753914693
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22503,6 +22530,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1751465995}
+    - target: {fileID: 2637254926937083356, guid: 8eb6a9ca7cc08e04f96e654d296741ae,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -16
+      objectReference: {fileID: 0}
     - target: {fileID: 4102823091390620632, guid: 8eb6a9ca7cc08e04f96e654d296741ae,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -22553,11 +22585,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5032226155075842900, guid: 8eb6a9ca7cc08e04f96e654d296741ae,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5526699744843131473, guid: 8eb6a9ca7cc08e04f96e654d296741ae,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -16
+      objectReference: {fileID: 0}
     - target: {fileID: 6689808395693631693, guid: 8eb6a9ca7cc08e04f96e654d296741ae,
         type: 3}
       propertyPath: playerController
       value: 
       objectReference: {fileID: 1751465995}
+    - target: {fileID: 6689808395693631693, guid: 8eb6a9ca7cc08e04f96e654d296741ae,
+        type: 3}
+      propertyPath: powerUpPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 5844350718227040164, guid: d425ca62f675f02469fbc0e194584199,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -23890,15 +23938,15 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1054771259}
+  - {fileID: 1676357861}
+  - {fileID: 2084521769}
+  - {fileID: 1176911969}
+  - {fileID: 1012420116}
   - {fileID: 1136627378}
   - {fileID: 1363468750}
   - {fileID: 928729948}
-  - {fileID: 1676357861}
   - {fileID: 398087992}
-  - {fileID: 2084521769}
   - {fileID: 624835415}
-  - {fileID: 1176911969}
   - {fileID: 1705105915}
   - {fileID: 1751465993}
   - {fileID: 1763849367}
@@ -23908,4 +23956,4 @@ SceneRoots:
   - {fileID: 1339566946}
   - {fileID: 2012044071}
   - {fileID: 1523489398}
-  - {fileID: 1012420116}
+  - {fileID: 1054771259}
