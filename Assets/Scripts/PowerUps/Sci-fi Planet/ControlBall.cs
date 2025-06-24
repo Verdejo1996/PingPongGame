@@ -10,25 +10,26 @@ public class ControlBall : Base_PowerUp
     public float controlForce = 3f;
     public override void Activate(Player_Controller player)
     {
-        player.StartCoroutine(ControlBallShot(duration, controlForce));
+        Ball ball = player.ball;
+        player.StartCoroutine(ControlBallShot(duration, controlForce, ball));
     }
 
-    private IEnumerator ControlBallShot(float duration, float controlForce)
+    private IEnumerator ControlBallShot(float duration, float controlForce, Ball ball)
     {
-        Ball ball = FindObjectOfType<Ball>();
+        //Ball ball = FindObjectOfType<Ball>();
         if (ball == null) yield break;
 
-        float elapsed = 0f;
+        float elapsed = -1f;
         Rigidbody rb = ball.GetComponent<Rigidbody>();
 
         while (elapsed < duration)
         {
             Vector3 force = Vector3.zero;
 
-            if (Input.GetKey(KeyCode.LeftArrow)) force += -ball.transform.right;
-            if (Input.GetKey(KeyCode.RightArrow)) force += ball.transform.right;
-            if (Input.GetKey(KeyCode.UpArrow)) force += ball.transform.forward;
-            if (Input.GetKey(KeyCode.DownArrow)) force += -ball.transform.forward;
+            if (Input.GetKey(KeyCode.LeftArrow)) force += Vector3.left;
+            if (Input.GetKey(KeyCode.RightArrow)) force += Vector3.right;
+            if (Input.GetKey(KeyCode.UpArrow)) force += Vector3.forward;
+            if (Input.GetKey(KeyCode.DownArrow)) force += -Vector3.back;
 
             if (force != Vector3.zero)
             {
