@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 public class Ball : MonoBehaviour
@@ -7,6 +8,7 @@ public class Ball : MonoBehaviour
     [Header("Gameplay")]
     private Rigidbody rb;
     public Game_Controller controller;
+    //public ParticleSystem effectControlBall;
     [SerializeField] private GameObject lavaAreaPrefab;
 
     [Header("Banderas")]
@@ -189,5 +191,18 @@ public class Ball : MonoBehaviour
         lastHitterAfterTable = "";
         validServe = false;
         tableAfterNet = false;
+    }
+
+    public void ActiveEffectControl()
+    {
+        var ps = GetComponentInChildren<ParticleSystem>();
+        if (ps != null)
+            ps.Play();
+    }
+    public void DeactivateEffectControl()
+    {
+        var ps = GetComponentInChildren<ParticleSystem>();
+        if (ps != null)
+            ps.Stop();
     }
 }

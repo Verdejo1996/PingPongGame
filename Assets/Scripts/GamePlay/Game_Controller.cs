@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class Game_Controller : MonoBehaviour
 {
+    public static Game_Controller Instance {get; private set;}
+
     [Header("Gameplay")]
     public string lastHitter;
     public string currentServer;
@@ -37,6 +39,18 @@ public class Game_Controller : MonoBehaviour
     public Color normalColor = Color.white;
     public Color pressedColor = Color.red;
 
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(Instance);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {

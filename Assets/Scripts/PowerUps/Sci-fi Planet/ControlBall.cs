@@ -6,8 +6,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "PowerUps/ControlBall Shot")]
 public class ControlBall : Base_PowerUp
 {
-    public float duration = 1.5f;
-    public float controlForce = 3f;
+    public float duration = 2f;
+    public float controlForce = 5f;
     public override void Activate(Player_Controller player)
     {
         Ball ball = player.ball;
@@ -22,15 +22,18 @@ public class ControlBall : Base_PowerUp
         float elapsed = -1f;
         Rigidbody rb = ball.GetComponent<Rigidbody>();
 
+        ball.ActiveEffectControl();
+
         while (elapsed < duration)
         {
             Vector3 force = Vector3.zero;
-
-            if (Input.GetKey(KeyCode.LeftArrow)) force += Vector3.left;
-            if (Input.GetKey(KeyCode.RightArrow)) force += Vector3.right;
-            if (Input.GetKey(KeyCode.UpArrow)) force += Vector3.forward;
-            if (Input.GetKey(KeyCode.DownArrow)) force += -Vector3.back;
-
+            if (Game_Controller.Instance.lastHitter == "Player")
+            {
+                if (Input.GetKey(KeyCode.LeftArrow)) force += Vector3.left;
+                if (Input.GetKey(KeyCode.RightArrow)) force += Vector3.right;
+                if (Input.GetKey(KeyCode.UpArrow)) force += Vector3.forward;
+                if (Input.GetKey(KeyCode.DownArrow)) force += -Vector3.back;
+            }
             if (force != Vector3.zero)
             {
                 rb.AddForce(force.normalized * controlForce, ForceMode.Acceleration);
@@ -39,5 +42,6 @@ public class ControlBall : Base_PowerUp
             elapsed += Time.deltaTime;
             yield return null;
         }
+        ball.DeactivateEffectControl();
     }
 }

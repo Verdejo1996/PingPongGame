@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 475a274d9f5c016448f7f85eb115d87a, type: 3}
-  m_Name: Control Ball
+  m_Script: {fileID: 11500000, guid: bc755ae130789224f8fd66a465799430, type: 3}
+  m_Name: Time Fragment
   m_EditorClassIdentifier: 
-  powerUpName: Control
+  powerUpName: Time Fragment
   icon: {fileID: 0}
-  duration: 2
-  controlForce: 5
+  slowDuration: 1
+  slowTimeScale: 0.3
