@@ -13,6 +13,10 @@ public class Player_Controller : MonoBehaviour
     public HUD_Controller hud_Controller;
     public PlayerHit_Controller player_hit_Controller;
 
+    [Header("Escalas")]
+    public Vector3 player_Scale;
+    public Vector3 original_Scale;
+
     //public GameObject player;
     [Header("Power Up Activo")]
     public bool precisionActive = false;
@@ -22,13 +26,27 @@ public class Player_Controller : MonoBehaviour
     public bool hasSuperHitPowerUp = false;
     public bool hasShieldPowerUp = false;
     public bool hasFreezePowerUp = false;
+    public bool isBigPaddle = false;
     public GameObject prefabShield;
     public float duration = 5f;
 
+    private void Start()
+    {
+        original_Scale = transform.localScale;
+        player_Scale = transform.localScale;
+    }
     // Update is called once per frame
     void Update()
     {
         CheckForActivation();
+        if (isBigPaddle)
+        {
+            transform.localScale = player_Scale;
+        }
+        else
+        {
+            transform.localScale = original_Scale;
+        }
     }
 
     public void ColectPowerUp(Base_PowerUp type)

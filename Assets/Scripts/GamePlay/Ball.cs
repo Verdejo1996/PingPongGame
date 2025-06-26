@@ -51,9 +51,10 @@ public class Ball : MonoBehaviour
 
     public IEnumerator CurveShot(float force)
     {
+        Vector3 curve = new(0.17f, 0, 0);
         if(isCurveShotActive)
         {
-            rb.AddForce(Vector3.right * force, ForceMode.Impulse);
+            rb.AddForce(curve * force, ForceMode.Impulse);
             yield return new WaitForSeconds(duration);
             isCurveShotActive = false;
         }
