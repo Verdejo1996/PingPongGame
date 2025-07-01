@@ -14,6 +14,7 @@ public class SlipperyZone : MonoBehaviour
     private Collider zoneCollider;
     private MeshRenderer mesh;
     public PlayerHit_Controller playerHitController;
+    public GameObject visualWarning;
 
     void Start()
     {
@@ -47,6 +48,8 @@ public class SlipperyZone : MonoBehaviour
         mesh.enabled = true;
         if (iceParticles != null)
             iceParticles.Play();
+        if (visualWarning != null) 
+            visualWarning.SetActive(true);
     }
 
     void DeactivateZone()
@@ -57,6 +60,8 @@ public class SlipperyZone : MonoBehaviour
         {
             iceParticles.Stop();
         }
+        if (visualWarning != null) 
+            visualWarning.SetActive(false);
 
         playerHitController.moveSpeed -= slipperyVelocity;
     }

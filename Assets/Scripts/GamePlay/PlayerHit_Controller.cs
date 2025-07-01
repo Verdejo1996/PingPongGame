@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -480,5 +481,19 @@ public class PlayerHit_Controller : MonoBehaviour
     {
         yield return new WaitForSeconds(feedbackDuration);
         feedbackText.gameObject.SetActive(false);
+    }
+
+    internal void ApplySlowEffect(float v)
+    {
+        float activeTime = 0f;
+        float slowFactor = v;
+
+        while (activeTime < slowFactor)
+        {
+            moveSpeed -= slowFactor;
+            activeTime += Time.deltaTime;
+        }
+
+        moveSpeed += slowFactor;
     }
 }
