@@ -12,6 +12,7 @@ TagManager:
   - Net
   - tableBot
   - tablePlayer
+  - Portal
   layers:
   - Default
   - TransparentFX
