@@ -16,10 +16,15 @@ public class PowerUp_Controller : MonoBehaviour
     public PowerUp_Manager powerUpManager;
 
     private bool canSpawn = true;
+    private Dictionary<Transform, bool> occupiedPoints = new Dictionary<Transform, bool>();
 
     // Start is called before the first frame update
     void Start()
     {
+        foreach (var point in spawnPoints)
+        {
+            occupiedPoints.Add(point, false); // todos desocupados al inicio
+        }
         PowerUp_Manager.Instance.SetController(this);
         StartCoroutine(SpawnRoutine());
         //InvokeRepeating(nameof(SpawnRoutine), 5f, spawnInterval);
@@ -31,7 +36,7 @@ public class PowerUp_Controller : MonoBehaviour
 
         while (true)
         {
-            if (canSpawn && powerUpManager.CanSpawnPowerUp(playerController))
+            if (canSpawn && powerUpManager.CanSpawnPowerUp(playerController) && Game_Controller.Instance.playing)
             {
                 SpawnPowerUp();
             }
@@ -39,20 +44,53 @@ public class PowerUp_Controller : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //transform.Rotate(0f, 60f * Time.deltaTime, 0f);
-    }
+    /*    void SpawnPowerUp()
+        {
+            int index = Random.Range(0, spawnPoints.Length);
+            int type = Random.Range(0, powerUpPrefabs.Length);
+
+            GameObject powerUp = Instantiate(powerUpPrefabs[type], spawnPoints[index].position, Quaternion.identity);
+
+            PowerUp_Manager.Instance.RegisterPowerUp(powerUp);
+        }*/
 
     void SpawnPowerUp()
     {
-        int index = Random.Range(0, spawnPoints.Length);
+        List<Transform> freePoints = new List<Transform>();
+
+        foreach (var kvp in occupiedPoints)
+        {
+            if (!kvp.Value) // si no está ocupado
+                freePoints.Add(kvp.Key);
+        }
+
+        if (freePoints.Count == 0)
+        {
+            Debug.Log("No hay puntos libres para spawnear PowerUp.");
+            return;
+        }
+
+        Transform selectedPoint = freePoints[Random.Range(0, freePoints.Count)];
         int type = Random.Range(0, powerUpPrefabs.Length);
 
-        GameObject powerUp = Instantiate(powerUpPrefabs[type], spawnPoints[index].position, Quaternion.identity);
+        GameObject powerUp = Instantiate(powerUpPrefabs[type], selectedPoint.position, Quaternion.identity);
+        occupiedPoints[selectedPoint] = true; // marcar punto como ocupado
 
         PowerUp_Manager.Instance.RegisterPowerUp(powerUp);
+
+        // Guardar en el script del PowerUp qué punto lo generó
+        var pickup = powerUp.GetComponent<PickUp_PowerUp>();
+        if (pickup != null)
+        {
+            pickup.spawnPoint = selectedPoint; // importante para luego liberar
+        }
+    }
+    public void FreeSpawnPoint(Transform point)
+    {
+        if (occupiedPoints.ContainsKey(point))
+        {
+            occupiedPoints[point] = false;
+        }
     }
 
     public void PauseSpawning()

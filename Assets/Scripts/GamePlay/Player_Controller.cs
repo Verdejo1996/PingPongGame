@@ -63,21 +63,9 @@ public class Player_Controller : MonoBehaviour
 
     void CheckForActivation()
     {
-        /*        for(int i = 0;  i < ListPowerUps.Count; i++)
-                {
-                    if(Input.GetKeyDown((KeyCode)((int)KeyCode.Alpha1 + i)))
-                    {
-                        Debug.Log($"Presionaste {KeyCode.Alpha1 + i}, activando powerUp {i}");
-                        ActivatePowerUp(i);
-                        break;
-                    }
-                }*/
-        //Debug.Log(this.name);
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            Debug.Log($"Presionaste {KeyCode.Alpha1}, activando powerUp");
             ActivatePowerUp(0);
-
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
             ActivatePowerUp(1);
@@ -87,15 +75,15 @@ public class Player_Controller : MonoBehaviour
 
     void ActivatePowerUp(int index)
     {
+        if (index < 0 || index >= ListPowerUps.Count)
+            return;
         Debug.Log(this.name);
         Debug.Log($"Intentando activar: {ListPowerUps[index].name}");
         ListPowerUps[index].Activate(this); // Le pasás el contexto
         ListPowerUps.RemoveAt(index);
         powerUp_Manager.NotifyPlayerUsedPowerUp(this);
         hud_Controller.UpdateHUD(ListPowerUps);
-/*        if (index < ListPowerUps.Count)
-        {
-        }*/
+
         Debug.Log($"PowerUps: {ListPowerUps.Count}");
     }
 

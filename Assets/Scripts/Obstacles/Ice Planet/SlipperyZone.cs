@@ -54,6 +54,7 @@ public class SlipperyZone : MonoBehaviour
 
     void DeactivateZone()
     {
+        playerHitController.moveSpeed -= slipperyVelocity;
         zoneCollider.enabled = false;
         mesh.enabled = false;
         if (iceParticles != null)
@@ -63,7 +64,6 @@ public class SlipperyZone : MonoBehaviour
         if (visualWarning != null) 
             visualWarning.SetActive(false);
 
-        playerHitController.moveSpeed -= slipperyVelocity;
     }
 
     private void OnTriggerEnter(Collider other)

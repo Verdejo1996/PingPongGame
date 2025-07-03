@@ -59,9 +59,13 @@ public class PlayerHit_Controller : MonoBehaviour
 
     private float anguloActualX = 0f;
 
+    private bool isSlowed = false;
+    private float originalSpeed;
+
     private void Start()
     {
         UpdateIdealZoneIndicator();
+        originalSpeed = moveSpeed;
         isCharging = false;
         serveInProgress = false;
         isServing = false;
@@ -485,15 +489,20 @@ public class PlayerHit_Controller : MonoBehaviour
 
     internal void ApplySlowEffect(float v)
     {
-        float activeTime = 0f;
-        float slowFactor = v;
-
-        while (activeTime < slowFactor)
+        if (isSlowed)
         {
-            moveSpeed -= slowFactor;
-            activeTime += Time.deltaTime;
+            return;
         }
+        isSlowed = true;
+        moveSpeed *= 0.4f; // 60% slower
 
-        moveSpeed += slowFactor;
+        StartCoroutine(SlowEffectRoutine(v));
+    }
+
+    IEnumerator SlowEffectRoutine(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        isSlowed = false;
+        moveSpeed = originalSpeed;
     }
 }

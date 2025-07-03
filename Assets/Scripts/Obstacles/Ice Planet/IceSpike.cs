@@ -1,34 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class IceSpike : MonoBehaviour
 {
     public float timeOnTable = 2f;
     public GameObject hitEffect;
-    private bool stuck = false;
+    //private bool stuck = false;
+
+    private IceSpikeSpawner spawner;
+    private int spawnIndex;
+
+    public void SetSpawner(IceSpikeSpawner s, int index)
+    {
+        spawner = s;
+        spawnIndex = index;
+    }
+
+    private void OnDestroy()
+    {
+        spawner?.FreeSpawnPoint(spawnIndex);
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (stuck) return;
-
-        if (collision.collider.CompareTag("Table"))
+        //if (stuck) return;
+        if (collision.gameObject.CompareTag("tablePlayer"))
         {
-            stuck = true;
+            //stuck = true;
             GetComponent<Rigidbody>().isKinematic = true;
-            transform.position = collision.contacts[0].point;
-            transform.parent = collision.transform;
-            if (hitEffect != null) 
-                Instantiate(hitEffect, transform.position, Quaternion.identity);
+            //transform.position = collision.contacts[0].point;
+            //transform.parent = collision.transform;
+            GameObject particles = Instantiate(hitEffect, transform.position, Quaternion.identity);
+            ParticleSystem ps = particles.GetComponent<ParticleSystem>();
+            if(ps != null)
+            {
+                float totalDuration = ps.main.duration + ps.main.startLifetime.constantMax;
+                Destroy(particles, totalDuration);
+            }
             StartCoroutine(DestroyAfterDelay());
         }
-        else if (collision.collider.CompareTag("Player"))
-        {
-            PlayerHit_Controller player = collision.collider.GetComponent<PlayerHit_Controller>();
-            if (player != null) player.ApplySlowEffect(2f); // ejemplo
-            Destroy(gameObject);
-        }
-        else if (collision.collider.CompareTag("Ball"))
+        else if (collision.gameObject.CompareTag("Ball"))
         {
             Rigidbody ballRb = collision.collider.GetComponent<Rigidbody>();
             if (ballRb != null)
@@ -40,7 +53,29 @@ public class IceSpike : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject); // Si cae en el suelo o fuera de la mesa
+            //stuck = true;
+            GetComponent<Rigidbody>().isKinematic = true;
+            //transform.position = collision.contacts[0].point;
+            //transform.parent = collision.transform;
+            GameObject particles = Instantiate(hitEffect, transform.position, Quaternion.identity);
+            ParticleSystem ps = particles.GetComponent<ParticleSystem>();
+            if (ps != null)
+            {
+                float totalDuration = ps.main.duration + ps.main.startLifetime.constantMax;
+                Destroy(particles, totalDuration);
+            }
+            StartCoroutine(DestroyAfterDelay());
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            if (other.TryGetComponent<PlayerHit_Controller>(out var player))
+                player.ApplySlowEffect(2f);
+
+            Destroy(gameObject);
         }
     }
 

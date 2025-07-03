@@ -8,6 +8,7 @@ public class PickUp_PowerUp : MonoBehaviour
     //public PowerUpType type;
 
     public Base_PowerUp powerUp;
+    public Transform spawnPoint;
 
     public GameObject pickUpEffect;
 
@@ -18,7 +19,17 @@ public class PickUp_PowerUp : MonoBehaviour
             if (other.TryGetComponent<Player_Controller>(out var player))
             {
                 player.ColectPowerUp(powerUp);
-                PowerUp_Manager.Instance.UnregisterPowerUp(this.gameObject);
+            }
+            if (PowerUp_Manager.Instance != null)
+            {
+                PowerUp_Manager.Instance.UnregisterPowerUp(gameObject);
+
+                // Liberar punto de spawn
+                PowerUp_Controller controller = FindObjectOfType<PowerUp_Controller>();
+                if (controller != null && spawnPoint != null)
+                {
+                    controller.FreeSpawnPoint(spawnPoint);
+                }
             }
 
             if (pickUpEffect != null)
