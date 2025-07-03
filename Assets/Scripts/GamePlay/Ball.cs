@@ -19,6 +19,7 @@ public class Ball : MonoBehaviour
     [SerializeField] bool validServe = false;
     public bool tableAfterNet = false;
     public bool isCurveShotActive = false;
+    public bool fireExplosionActive = false;
 
     [Header("Trail Renderer")]
     [SerializeField] private TrailRenderer trailBall;
@@ -26,6 +27,12 @@ public class Ball : MonoBehaviour
     [SerializeField] private Color colorStrong = Color.red;
     [SerializeField] private Camera_Shake cameraShake;
     public bool isLavaActive;
+    private Color fireExplosionColor;
+    private bool fireExplosionEnabled = false;
+    private Color originalColor;
+    private Color explosionColor;
+    public ParticleSystem explosionParticles;
+
 
     private float duration = 3f;
 
@@ -34,6 +41,18 @@ public class Ball : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         ResetState();
+    }
+
+    public void EnableFireExplosion(Color color)
+    {
+        fireExplosionEnabled = true;
+        explosionColor = color;
+        var trail = GetComponent<TrailRenderer>();
+        if (trail != null)
+        {
+            originalColor = trail.material.color;
+            trail.material.color = explosionColor;
+        }
     }
 
     public void ChangeColorTrail(float force)
@@ -120,20 +139,35 @@ public class Ball : MonoBehaviour
         {
             hasTouchedTable = true;
         }
-/*        if(other.CompareTag("Out"))
+        if (fireExplosionEnabled && other.CompareTag("Bot"))
         {
-            controller.playing = false;
-
-            Debug.Log(hasTouchedTable);
-            Debug.Log(hitNetLast);
-            Debug.Log(validServe);
-            Debug.Log("Golpe por " + lastHitterAfterTable);
-            if (!controller.endGame)
+            if (other.TryGetComponent<IA_Controller>(out var ia))
             {
-                ScoreValidation();  
-                ResetState();
+                ia.ApplyDisorientation(2f); // por ejemplo
+                fireExplosionEnabled = false;
+
+                // Restaurar visual
+                if (TryGetComponent<TrailRenderer>(out var trail))
+                    trail.material.color = originalColor;
+
+                if (explosionParticles != null)
+                    explosionParticles.Play();
             }
-        }*/
+        }
+        /*        if(other.CompareTag("Out"))
+                {
+                    controller.playing = false;
+
+                    Debug.Log(hasTouchedTable);
+                    Debug.Log(hitNetLast);
+                    Debug.Log(validServe);
+                    Debug.Log("Golpe por " + lastHitterAfterTable);
+                    if (!controller.endGame)
+                    {
+                        ScoreValidation();  
+                        ResetState();
+                    }
+                }*/
     }
 
     //Metodo para validar las distintas opciones que hay para sumar puntos.

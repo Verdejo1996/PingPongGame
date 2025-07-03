@@ -911,6 +911,55 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 85489286}
   m_Mesh: {fileID: 4300000, guid: 3a8e1caeca5040147a1bf0356632d82d, type: 3}
+--- !u!1 &88370164
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 88370166}
+  - component: {fileID: 88370165}
+  m_Layer: 0
+  m_Name: VolcanoShake
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &88370165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88370164}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744432aa01e76fd40b70eaa12a8b7b8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interval: 10
+  shakeDuration: 1
+  shakeIntensity: 0.3
+  mainCamera: {fileID: 1676357860}
+  player: {fileID: 1751465994}
+--- !u!4 &88370166
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88370164}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.2654727, y: -6.108221, z: 12.426975}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &93254723
 GameObject:
   m_ObjectHideFlags: 0
@@ -1533,7 +1582,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 141459016}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9f3a6212822f2548a30cab980434051, type: 3}
   m_Name: 
@@ -11932,6 +11981,12 @@ PrefabInstance:
       propertyPath: hasTouchedTable
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2647781572340080506, guid: 0ac7f0a8ece2a564bb515dcff06954b6,
+        type: 3}
+      propertyPath: explosionParticles
+      value: 
+      objectReference: {fileID: 7577881087077224499, guid: 8cbd628731af9a24f96993b67f72d004,
+        type: 3}
     - target: {fileID: 9203847066887631826, guid: 0ac7f0a8ece2a564bb515dcff06954b6,
         type: 3}
       propertyPath: m_Name
@@ -22912,7 +22967,7 @@ PrefabInstance:
         type: 3}
       propertyPath: powerUpPrefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 5844350718227040164, guid: d425ca62f675f02469fbc0e194584199,
+      objectReference: {fileID: 105419576211429723, guid: 5b2b16c64d2228347a6a05da2c509667,
         type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -24267,3 +24322,4 @@ SceneRoots:
   - {fileID: 1054771259}
   - {fileID: 141459018}
   - {fileID: 1121738367}
+  - {fileID: 88370166}

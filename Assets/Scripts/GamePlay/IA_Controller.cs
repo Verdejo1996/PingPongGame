@@ -32,6 +32,10 @@ public class IA_Controller : MonoBehaviour
     private Vector3 velocity = Vector3.zero; // Velocidad interna usada por SmoothDamp
     public float smoothTime = 0.2f; // Tiempo en el que debería alcanzar la posición objetivo
 
+    private bool disoriented = false;
+    private Coroutine disorientCoroutine;
+    private Vector3 originalPosition;
+
     void Start()
     {
         shot_controller = GetComponent<Shot_Controller>();
@@ -152,5 +156,39 @@ public class IA_Controller : MonoBehaviour
             ball.tableAfterNet = false;
             ball.RegisterHit("Bot");
         }
+    }
+
+    internal void ApplyDisorientation(float v)
+    {
+        if (disoriented) return;
+
+        disoriented = true;
+        originalPosition = transform.position;
+        disorientCoroutine = StartCoroutine(Disorient(v));
+    }
+
+    private IEnumerator Disorient(float duration)
+    {
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            // Shake leve en X y Y
+            float shakeAmount = 0.1f;
+            Vector3 randomOffset = new Vector3(
+                Random.Range(-shakeAmount, shakeAmount),
+                0f,
+                Random.Range(-shakeAmount, shakeAmount)
+            );
+
+            transform.position = originalPosition + randomOffset;
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        // Restaurar posición y velocidad
+        transform.position = originalPosition;
+        disoriented = false;
     }
 }

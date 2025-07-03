@@ -5,6 +5,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class PlayerHit_Controller : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class PlayerHit_Controller : MonoBehaviour
 
     [Header("Movimiento del jugador")]
     public float moveSpeed = 5f;
+    public bool isMoving = false;
 
     [Header("Golpe")]
     public Ball ballGame;
@@ -61,6 +63,8 @@ public class PlayerHit_Controller : MonoBehaviour
 
     private bool isSlowed = false;
     private float originalSpeed;
+    private bool fireExplosionActive = false;
+    private Color fireExplosionColor;
 
     private void Start()
     {
@@ -112,11 +116,16 @@ public class PlayerHit_Controller : MonoBehaviour
 
             if (move != Vector3.zero)
             {
+                isMoving = true;
                 Vector3 newPosition = transform.position + moveSpeed * Time.deltaTime * move;
                 newPosition.x = Mathf.Clamp(newPosition.x, -6f, 6f);
                 newPosition.z = Mathf.Clamp(newPosition.z, -8f, -1f);
                 newPosition.y = Mathf.Clamp(newPosition.y, -1f, 5f);
                 transform.position = newPosition;
+            }
+            else
+            {
+                isMoving = false;
             }
 
             float delta = velocidadRotacion * Time.deltaTime;
@@ -301,6 +310,12 @@ public class PlayerHit_Controller : MonoBehaviour
         ballGame.hasTouchedTable = false;
         ballGame.tableAfterNet = false;
         ballGame.RegisterHit("Player");
+
+        if (fireExplosionActive)
+        {
+            ballGame.EnableFireExplosion(fireExplosionColor);
+            fireExplosionActive = false;
+        }
     }
 
     Vector3 GetDirection()
@@ -504,5 +519,30 @@ public class PlayerHit_Controller : MonoBehaviour
         yield return new WaitForSeconds(duration);
         isSlowed = false;
         moveSpeed = originalSpeed;
+    }
+
+    public void ApplyShakeForce()
+    {
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            Vector3 push = new Vector3(Random.Range(-1f, 1f), 0, 0) * 3f;
+            rb.AddForce(push, ForceMode.Impulse);
+        }
+    }
+    public void StopMovement()
+    {
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
+    }
+
+    public void ActivateFireExplosion(Color poweredColor)
+    {
+        fireExplosionActive = true;
+        fireExplosionColor = poweredColor;
     }
 }
