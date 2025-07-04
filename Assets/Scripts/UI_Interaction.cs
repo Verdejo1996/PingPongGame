@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -12,6 +13,7 @@ public class UI_Interaction : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public TextMeshProUGUI nombreText;
     public TextMeshProUGUI descripcionText;
+    public GameObject panelProx;
 
     private bool mouseEncima = false;
     private SceneFader sceneFader;
@@ -22,13 +24,24 @@ public class UI_Interaction : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     }
     void Update()
     {
-        if (mouseEncima && Input.GetKeyDown(KeyCode.E))
+        if (mouseEncima && Input.GetKeyDown(KeyCode.E) && datos.isAvailable)
         {
             if (sceneFader != null)
                 sceneFader.FadeToScene(datos.escenaDestino);
             else
                 UnityEngine.SceneManagement.SceneManager.LoadScene(datos.escenaDestino);
         }
+        else if(mouseEncima && Input.GetKeyDown(KeyCode.E) && !datos.isAvailable)
+        {
+            StartCoroutine(ShowMessageRoutine());
+        }
+    }
+
+    private IEnumerator ShowMessageRoutine()
+    {
+        panelProx.SetActive(true);
+        yield return new WaitForSeconds(2f); // Muestra por 2 segundos
+        panelProx.SetActive(false);
     }
 
     public void OnPointerEnter(PointerEventData eventData)

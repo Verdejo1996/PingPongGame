@@ -89,8 +89,8 @@ public class PlayerHit_Controller : MonoBehaviour
             if (ballHeld && controller.currentServer == "Player")
             {
                 ballTransform.position = ballHoldPosition.position;
+                ServeBall();
             }
-            ServeBall();
         }
 
         if (!isHitting && !isServing && controller.playing)

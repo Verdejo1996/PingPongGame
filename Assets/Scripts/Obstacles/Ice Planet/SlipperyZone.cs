@@ -15,9 +15,12 @@ public class SlipperyZone : MonoBehaviour
     private MeshRenderer mesh;
     public PlayerHit_Controller playerHitController;
     public GameObject visualWarning;
+    private bool isActive = false;
+    private float originalSpeed;
 
     void Start()
     {
+        originalSpeed = playerHitController.moveSpeed;
         zoneCollider = GetComponent<Collider>();
         zoneCollider.enabled = false;
 
@@ -54,7 +57,7 @@ public class SlipperyZone : MonoBehaviour
 
     void DeactivateZone()
     {
-        playerHitController.moveSpeed -= slipperyVelocity;
+        playerHitController.moveSpeed = originalSpeed;
         zoneCollider.enabled = false;
         mesh.enabled = false;
         if (iceParticles != null)
@@ -63,7 +66,7 @@ public class SlipperyZone : MonoBehaviour
         }
         if (visualWarning != null) 
             visualWarning.SetActive(false);
-
+        isActive = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -73,6 +76,11 @@ public class SlipperyZone : MonoBehaviour
             var rb = other.GetComponent<PlayerHit_Controller>(); // adaptá esto al script de movimiento
             if (rb != null)
             {
+                if (isActive)
+                {
+                    return;
+                }
+                isActive = true;
                 rb.moveSpeed += slipperyVelocity;
             }
         }

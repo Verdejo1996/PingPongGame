@@ -15,3 +15,4 @@ MonoBehaviour:
   nombre: Rock
   descripcion: Presiona 'E' para entrar.
   escenaDestino: Planet Rock
+  isAvailable: 0

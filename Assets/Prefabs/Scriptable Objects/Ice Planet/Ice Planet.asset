@@ -15,3 +15,4 @@ MonoBehaviour:
   nombre: Ice Planet
   descripcion: Presiona 'E' para entrar.
   escenaDestino: Ice Planet
+  isAvailable: 1

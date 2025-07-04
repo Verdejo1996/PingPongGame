@@ -19,6 +19,7 @@ public class Game_Controller : MonoBehaviour
     public Ball ball;
     public Transform ballStartPosition;
     public GameObject pauseUI;
+    public GameObject endGamePanel;
 
     [Header("Player/IA")]
     public IA_Controller iaGameObject;
@@ -172,6 +173,29 @@ public class Game_Controller : MonoBehaviour
         endGame = true;
         //Debug.Log("Juego terminado: " + (playerScore > botScore ? "¡Ganaste!" : "Perdiste!"));
         gameText.text = playerScore > botScore ? "¡Ganaste!" : "Perdiste!";
+        Time.timeScale = 0f;
+        if(endGamePanel != null)
+        {
+            endGamePanel.SetActive(true);
+        }
+    }
+
+    public void RetryLevel()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void GoToPlanetMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Planetary Map");
+    }
+
+    public void GoToMainMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Menu");
     }
 
     public void UpdateLastHitter(string hitter)

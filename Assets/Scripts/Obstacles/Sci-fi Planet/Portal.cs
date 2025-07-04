@@ -9,29 +9,41 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("Ball") || exitPortal == null) return;
+        if (other.CompareTag("Ball"))
+        {
+            Ball ball = other.GetComponent<Ball>();
+            Rigidbody rb = other.GetComponent<Rigidbody>();
+            if (ball == null || rb == null) return;
 
-        Ball ball = other.GetComponent<Ball>();
-        Rigidbody rb = other.GetComponent<Rigidbody>();
-        if (ball == null || rb == null) return;
+            // Teleport
+            if (teleportEffect != null) Instantiate(teleportEffect, transform.position, Quaternion.identity);
 
-        // Teleport
-        if (teleportEffect != null) Instantiate(teleportEffect, transform.position, Quaternion.identity);
+            other.transform.position = exitPortal.position;
 
-        other.transform.position = exitPortal.position;
+            // Decidir dirección según quién golpeó
+            Vector3 direction;
+            if (Game_Controller.Instance.lastHitter == "Player")
+                direction = Vector3.forward; // hacia IA (Z negativa)
+            else if (Game_Controller.Instance.lastHitter == "Bot")
+                direction = Vector3.back; // hacia Player (Z positiva)
+            else
+                direction = exitPortal.forward; // por defecto
 
-        // Decidir dirección según quién golpeó
-        Vector3 direction;
-        if (Game_Controller.Instance.lastHitter == "Player")
-            direction = Vector3.forward; // hacia IA (Z negativa)
-        else if (Game_Controller.Instance.lastHitter == "Bot")
-            direction = Vector3.back; // hacia Player (Z positiva)
-        else
-            direction = exitPortal.forward; // por defecto
+            rb.velocity = direction.normalized * (rb.velocity.magnitude * 0.8f);
 
-        rb.velocity = direction.normalized * (rb.velocity.magnitude * 0.8f);
+            //if (teleportEffect != null) Instantiate(teleportEffect, exitPortal.position, Quaternion.identity);
+            StartCoroutine(DisablePortalColliderTemporarily(exitPortal.GetComponent<Collider>(), 0.3f));
+        }
+    }
 
-        if (teleportEffect != null) Instantiate(teleportEffect, exitPortal.position, Quaternion.identity);
-
+    IEnumerator DisablePortalColliderTemporarily(Collider portalCollider, float delay)
+    {
+        if (portalCollider != null)
+        {
+            portalCollider.enabled = false;
+            yield return new WaitForSeconds(delay);
+            if (portalCollider != null)
+                portalCollider.enabled = true;
+        }
     }
 }

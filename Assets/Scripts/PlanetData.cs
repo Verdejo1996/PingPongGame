@@ -8,4 +8,5 @@ public class PlanetData : ScriptableObject
     public string nombre;
     [TextArea] public string descripcion;
     public string escenaDestino;
+    public bool isAvailable;
 }

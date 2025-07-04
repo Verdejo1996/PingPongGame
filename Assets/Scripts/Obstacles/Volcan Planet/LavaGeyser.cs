@@ -52,14 +52,5 @@ public class LavaGeyser : MonoBehaviour
             if (other.TryGetComponent<PlayerHit_Controller>(out var player))
                 player.ApplySlowEffect(2f);
         }
-        else if (other.CompareTag("Ball"))
-        {
-            Rigidbody rb = other.GetComponent<Rigidbody>();
-            if (rb != null)
-            {
-                Vector3 dir = new Vector3(Random.Range(-1f, 1f), 1f, Random.Range(-1f, 1f)).normalized;
-                rb.velocity = dir * rb.velocity.magnitude * 1.2f;
-            }
-        }
     }
 }

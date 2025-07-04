@@ -51,7 +51,9 @@ public class PortalSpawner : MonoBehaviour
 
         // Vincular entre ellos
         Portal portalScript = entryPortal.GetComponent<Portal>();
+        Portal portalScriptB = exitPortal.GetComponent<Portal>();
         if (portalScript != null) portalScript.exitPortal = exitPortal.transform;
+        if (portalScriptB != null) portalScriptB.exitPortal = entryPortal.transform;
     }
 
     void DestroyPortals()

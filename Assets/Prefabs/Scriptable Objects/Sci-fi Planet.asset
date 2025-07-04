@@ -15,3 +15,4 @@ MonoBehaviour:
   nombre: Sci-fi Planet
   descripcion: Presiona 'E' para entrar.
   escenaDestino: Sci-fi Planet
+  isAvailable: 1

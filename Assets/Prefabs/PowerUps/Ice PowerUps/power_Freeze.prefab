@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3477210575233758165}
   - component: {fileID: 7471337920869032196}
-  - component: {fileID: 3383521212170482701}
+  - component: {fileID: 2389889509722862179}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -41,7 +41,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4643139695376964684}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &3383521212170482701
+--- !u!23 &2389889509722862179
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -153,5 +153,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUp: {fileID: 11400000, guid: ae5a53824ba48e14aab7d235fa4847f3, type: 2}
+  spawnPoint: {fileID: 0}
   pickUpEffect: {fileID: 7861246791180186722, guid: 335a54380eb3fa34dbda80c1c34affe2,
     type: 3}

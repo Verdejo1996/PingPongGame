@@ -15,3 +15,4 @@ MonoBehaviour:
   nombre: Volcan
   descripcion: Presiona 'E' para entrar.
   escenaDestino: Volcan Planet
+  isAvailable: 1
