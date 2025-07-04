@@ -12,16 +12,17 @@ public class LaserObstacle : MonoBehaviour
 
     private Vector3 direction;
 
-    void Start()
+    public void Initialize(Transform start, Transform end)
     {
+        startPoint = start;
+        endPoint = end;
         direction = (endPoint.position - startPoint.position).normalized;
         transform.position = startPoint.position;
 
-        // Línea inicial
         if (lineRenderer != null)
         {
             lineRenderer.SetPosition(0, transform.position);
-            lineRenderer.SetPosition(1, transform.position + direction * 10f); // Largo del láser visual
+            lineRenderer.SetPosition(1, transform.position + direction * 10f);
         }
 
         Destroy(gameObject, lifetime);

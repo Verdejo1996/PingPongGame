@@ -5,7 +5,7 @@ using UnityEngine;
 public class LaserSpawner : MonoBehaviour
 {
     public GameObject laserPrefab;
-    public Transform[] laserSpawnPoints; // Puntos en ambos lados del campo
+    public Transform[] laserSpawnPoints;
     public float interval = 6f;
 
     void Start()
@@ -19,10 +19,13 @@ public class LaserSpawner : MonoBehaviour
         {
             yield return new WaitForSeconds(interval);
 
-            int index = Random.Range(0, laserSpawnPoints.Length);
-            Transform spawn = laserSpawnPoints[index];
+            int pairIndex = Random.Range(0, laserSpawnPoints.Length / 2) * 2;
+            Transform start = laserSpawnPoints[pairIndex];
+            Transform end = laserSpawnPoints[pairIndex + 1];
 
-            Instantiate(laserPrefab, spawn.position, spawn.rotation);
+            GameObject laserGO = Instantiate(laserPrefab);
+            LaserObstacle laser = laserGO.GetComponent<LaserObstacle>();
+            laser.Initialize(start, end);
         }
     }
 }

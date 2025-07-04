@@ -3991,7 +3991,7 @@ MonoBehaviour:
   laserSpawnPoints:
   - {fileID: 546320172305896538}
   - {fileID: 7907871787664064246}
-  interval: 6
+  interval: 10
 --- !u!4 &593288335
 Transform:
   m_ObjectHideFlags: 0
@@ -19198,7 +19198,7 @@ PrefabInstance:
     - target: {fileID: 6875521107848855112, guid: 8de1dfe706afca149a23268923839449,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -35
+      value: -43
       objectReference: {fileID: 0}
     - target: {fileID: 6875521107848855112, guid: 8de1dfe706afca149a23268923839449,
         type: 3}
