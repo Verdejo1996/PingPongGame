@@ -35,9 +35,12 @@ public class IA_Controller : MonoBehaviour
     private bool disoriented = false;
     private Coroutine disorientCoroutine;
     private Vector3 originalPosition;
+    private bool isActive = false;
+    private float originalSpeed;
 
     void Start()
     {
+        originalSpeed = speed;
         shot_controller = GetComponent<Shot_Controller>();
         initialPos = transform.position;
         targetPosition = initialPos;
@@ -190,5 +193,24 @@ public class IA_Controller : MonoBehaviour
         // Restaurar posición y velocidad
         transform.position = originalPosition;
         disoriented = false;
+    }
+
+    internal void ApplySlow(float v)
+    {
+        if (isActive)
+        {
+            return;
+        }
+        isActive = true;
+        speed *= 0.5f;
+
+        StartCoroutine(SlowLavaAreaEffect(v));
+    }
+
+    private IEnumerator SlowLavaAreaEffect(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        isActive = false;
+        speed = originalSpeed;
     }
 }

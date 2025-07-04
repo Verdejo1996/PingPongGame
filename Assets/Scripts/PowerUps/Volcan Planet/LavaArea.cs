@@ -7,7 +7,6 @@ public class LavaArea : MonoBehaviour
 {
     public float slowAmount = 0.5f;
     public float duration = 2f;
-    private bool isActive = false;
 
     private void Start()
     {
@@ -18,27 +17,10 @@ public class LavaArea : MonoBehaviour
     {
         if (other.CompareTag("Bot"))
         {
-            IA_Controller ia = other.GetComponent<IA_Controller>();
-            if (ia != null)
+            if (other.TryGetComponent<IA_Controller>(out var ia))
             {
-                if (isActive)
-                {
-                    return;
-                }
-                isActive = true;
-                ia.StartCoroutine(ApplySlow(ia));
+                ia.ApplySlow(2f);
             }
         }
-    }
-
-    private IEnumerator ApplySlow(IA_Controller ia)
-    {
-
-        float originalSpeed = ia.speed;
-        ia.speed *= slowAmount;
-
-        yield return new WaitForSeconds(duration);
-        isActive = false;
-        ia.speed = originalSpeed;
     }
 }

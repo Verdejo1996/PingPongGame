@@ -50,7 +50,13 @@ public class LavaGeyser : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             if (other.TryGetComponent<PlayerHit_Controller>(out var player))
+            {
+                if (player.isSlowed)
+                {
+                    return;
+                }
                 player.ApplySlowEffect(2f);
+            }
         }
     }
 }

@@ -61,7 +61,7 @@ public class PlayerHit_Controller : MonoBehaviour
 
     private float anguloActualX = 0f;
 
-    private bool isSlowed = false;
+    public bool isSlowed = false;
     private float originalSpeed;
     private bool fireExplosionActive = false;
     private Color fireExplosionColor;
