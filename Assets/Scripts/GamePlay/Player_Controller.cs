@@ -6,7 +6,7 @@ using UnityEngine;
 public class Player_Controller : MonoBehaviour
 {
     [Header("Instancias")]
-    public List<Base_PowerUp> ListPowerUps = new();
+    //public List<Base_PowerUp> ListPowerUps = new();
     public PowerUp_Manager powerUp_Manager;
     public IA_Controller iA_Controller;
     public Ball ball;
@@ -38,7 +38,7 @@ public class Player_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckForActivation();
+        //CheckForActivation();
         if (isBigPaddle)
         {
             transform.localScale = player_Scale;
@@ -51,17 +51,12 @@ public class Player_Controller : MonoBehaviour
 
     public void ColectPowerUp(Base_PowerUp type)
     {
-        Debug.Log(this.name);
-        if(ListPowerUps.Count >= 3)
-        {
-            return;
-        }
-        ListPowerUps.Add(type);
-        Debug.Log($"PowerUps: {ListPowerUps.Count}");
-        hud_Controller.UpdateHUD(ListPowerUps);
+        type.Activate(this);
+        hud_Controller.UpdateHUD(type.powerUpName, type.duration);
+        powerUp_Manager.NotifyPlayerUsedPowerUp(this);
     }
 
-    void CheckForActivation()
+/*    void CheckForActivation()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -71,23 +66,24 @@ public class Player_Controller : MonoBehaviour
             ActivatePowerUp(1);
         else if (Input.GetKeyDown(KeyCode.Alpha3))
             ActivatePowerUp(2);
-    }
+    }*/
 
-    void ActivatePowerUp(int index)
+/*    void ActivatePowerUp(int index)
     {
         if (index < 0 || index >= ListPowerUps.Count)
             return;
         Debug.Log(this.name);
         Debug.Log($"Intentando activar: {ListPowerUps[index].name}");
+
         ListPowerUps[index].Activate(this); // Le pasás el contexto
         ListPowerUps.RemoveAt(index);
         powerUp_Manager.NotifyPlayerUsedPowerUp(this);
         hud_Controller.UpdateHUD(ListPowerUps);
 
         Debug.Log($"PowerUps: {ListPowerUps.Count}");
-    }
+    }*/
 
-    void CheckPowerUpActivation()
+/*    void CheckPowerUpActivation()
     {
         if (hasPrecisionPowerUp && Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -103,7 +99,7 @@ public class Player_Controller : MonoBehaviour
         {
             ConsumeShield();
         }
-    }
+    }*/
     void PrecisionPower()
     {
         hasPrecisionPowerUp = false;

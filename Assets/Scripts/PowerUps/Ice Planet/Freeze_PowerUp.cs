@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "PowerUps/Freeze PowerUp")]
 public class Freeze_PowerUp : Base_PowerUp
 {
-    public float duration = 3f;
+    //public float duration = 3f;
     public float slowFactor = 0.5f;
 
     public override void Activate(Player_Controller player)

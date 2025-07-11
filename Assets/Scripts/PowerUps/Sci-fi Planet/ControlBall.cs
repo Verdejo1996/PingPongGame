@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "PowerUps/ControlBall Shot")]
 public class ControlBall : Base_PowerUp
 {
-    public float duration = 2f;
+    //public float duration = 2f;
     public float controlForce = 5f;
     public override void Activate(Player_Controller player)
     {

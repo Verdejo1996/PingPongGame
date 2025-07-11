@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "PowerUps/Slippery PowerUp")]
 public class SlipperyEffect : Base_PowerUp
 {
-    public float duration = 3f;
+    //public float duration = 3f;
     public override void Activate(Player_Controller player)
     {
         IA_Controller opponent = player.iA_Controller;

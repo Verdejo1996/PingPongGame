@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "PowerUps/Speed Hack")]
 public class Speed_Hack : Base_PowerUp
 {
-    float duration = 5f;
+    //float duration = 5f;
     
     float speedFactor = 3f;
     public override void Activate(Player_Controller player)

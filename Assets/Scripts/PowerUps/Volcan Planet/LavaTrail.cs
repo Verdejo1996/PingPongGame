@@ -8,7 +8,7 @@ using UnityEngine;
 public class LavaTrail : Base_PowerUp
 {
     public Material lavaMaterial; // Para cambiar temporalmente el trail
-    public float duration = 5f;
+    //public float duration = 5f;
 
     public override void Activate(Player_Controller player)
     {

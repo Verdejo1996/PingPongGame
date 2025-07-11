@@ -7,7 +7,7 @@ using UnityEngine;
 public class BigPaddle : Base_PowerUp
 {
     public Vector3 enlargedScale = new(3f, 3f, 3f);
-    public float duration = 5f;
+    //public float duration = 5f;
     public float addRange = 1f;
     public override void Activate(Player_Controller player)
     {

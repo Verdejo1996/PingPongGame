@@ -7,7 +7,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "PowerUps/Reflect PowerUp")]
 public class Reflect : Base_PowerUp
 {
-    public float duration = 5f;
+    //public float duration = 5f;
     public float addRange = 1f;
     public GameObject reflectPrefab;
     

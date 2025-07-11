@@ -1,16 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class HUD_Controller : MonoBehaviour
 {
-/*    public Image precisionIcon;
-    public Image superHitIcon;
-    public Image shieldIcon;*/
+    /*    public Image precisionIcon;
+        public Image superHitIcon;
+        public Image shieldIcon;*/
 
-    public List<Image> powerUpsIcons;
+    //public List<Image> powerUpsIcons;
+    public TextMeshProUGUI powerUpName;
+    public Image cooldownBar;
 
+    private void Start()
+    {
+        powerUpName.gameObject.SetActive(false);
+        cooldownBar.gameObject.SetActive(false);
+    }
 
     /*    public void UpdateIcons(bool precisionAvailable, bool superHitAvailable, bool shieldAvailable)
         {
@@ -19,20 +27,27 @@ public class HUD_Controller : MonoBehaviour
             if (shieldIcon != null) shieldIcon.enabled = shieldAvailable;
         }*/
 
-    public void UpdateHUD(List<Base_PowerUp> currentPowerUps)
+    public void UpdateHUD(string name, float duration)
     {
-        Debug.Log($"Icons: {powerUpsIcons.Count}, PowerUps: {currentPowerUps.Count}");
-        for (int i = 0; i < powerUpsIcons.Count; i++)
+        powerUpName.text = name;
+        powerUpName.gameObject.SetActive(true);
+        cooldownBar.fillAmount = 1f;
+        cooldownBar.gameObject.SetActive(true);
+
+        StartCoroutine(Cooldown(duration));
+    }
+
+    IEnumerator Cooldown(float duration)
+    {
+        float timer = 0f;
+        while (timer < duration)
         {
-            if(i < currentPowerUps.Count)
-            {
-                powerUpsIcons[i].sprite = currentPowerUps[i].icon;
-                powerUpsIcons[i].enabled = true;
-            }
-            else
-            {
-                powerUpsIcons[i].enabled = false;
-            }
+            timer += Time.deltaTime;
+            cooldownBar.fillAmount = 1 - (timer / duration);
+            yield return null;
         }
+
+        powerUpName.gameObject.SetActive(false);
+        cooldownBar.gameObject.SetActive(false);
     }
 }

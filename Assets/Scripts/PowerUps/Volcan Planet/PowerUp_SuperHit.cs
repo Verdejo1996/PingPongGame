@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "PowerUps/SuperHit PowerUp")]
 public class PowerUp_SuperHit : Base_PowerUp
 {
-    float duration = 5f;
+    //float duration = 5f;
     public override void Activate(Player_Controller player)
     {
         player.StartCoroutine(ApplySuperHit(player));

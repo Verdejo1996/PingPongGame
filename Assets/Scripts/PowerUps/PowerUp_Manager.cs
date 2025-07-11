@@ -44,7 +44,7 @@ public class PowerUp_Manager : MonoBehaviour
 
     public bool CanSpawnPowerUp(Player_Controller player)
     {
-        return activeScenePowerUps.Count < 3 && player.ListPowerUps.Count < 3;
+        return activeScenePowerUps.Count < 3;
     }
 
     public void NotifyPlayerUsedPowerUp(Player_Controller player)

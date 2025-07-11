@@ -6,7 +6,7 @@ using UnityEngine;
 public class PowerUp_Shield : Base_PowerUp
 {
     public GameObject shieldPrefab;
-    public float duration = 5f;
+    //public float duration = 5f;
     public override void Activate(Player_Controller player)
     {
 

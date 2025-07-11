@@ -263,8 +263,12 @@ public class PlayerHit_Controller : MonoBehaviour
 
     void TryHitBall(string type)
     {
-        float distance = Vector3.Distance(racketTransform.position, ballTransform.position);
-        if (distance <= hitRange)
+        Vector3 toBall = ballTransform.position - racketTransform.position;
+        float distance = toBall.magnitude;
+
+        bool isInFront = Vector3.Dot(racketTransform.forward, toBall.normalized) > 0.3f;
+
+        if (distance <= hitRange && isInFront)
         {
             StartCoroutine(HitAnimation(type));
 
@@ -464,6 +468,23 @@ public class PlayerHit_Controller : MonoBehaviour
         {
             Gizmos.color = Color.cyan;
             Gizmos.DrawWireSphere(racketTransform.position, hitRange);
+
+            // Dirección hacia adelante (racketTransform.forward)
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(racketTransform.position, racketTransform.position + racketTransform.forward * hitRange);
+
+            // Visualización del cono de golpe
+            float angle = 60f; // Grados del cono (30° a cada lado)
+            int segments = 10;
+            Vector3 forward = racketTransform.forward;
+
+            for (int i = 0; i <= segments; i++)
+            {
+                float currentAngle = -angle / 2f + angle * i / segments;
+                Quaternion rotation = Quaternion.AngleAxis(currentAngle, Vector3.up);
+                Vector3 direction = rotation * forward;
+                Gizmos.DrawLine(racketTransform.position, racketTransform.position + direction * hitRange);
+            }
         }
     }
 
