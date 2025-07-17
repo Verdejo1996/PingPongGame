@@ -24,14 +24,14 @@ public class UI_Interaction : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     }
     void Update()
     {
-        if (mouseEncima && Input.GetKeyDown(KeyCode.E) && datos.isAvailable)
+        if (mouseEncima && Input.GetMouseButtonDown(0) && datos.isAvailable)
         {
             if (sceneFader != null)
                 sceneFader.FadeToScene(datos.escenaDestino);
             else
                 UnityEngine.SceneManagement.SceneManager.LoadScene(datos.escenaDestino);
         }
-        else if(mouseEncima && Input.GetKeyDown(KeyCode.E) && !datos.isAvailable)
+        else if(mouseEncima && Input.GetMouseButtonDown(0) && !datos.isAvailable)
         {
             StartCoroutine(ShowMessageRoutine());
         }
@@ -53,7 +53,11 @@ public class UI_Interaction : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         }
 
         transform.localScale = Vector3.one * 1.2f;
+
+        // Activar el panel
         panelInfo.SetActive(true);
+        panelInfo.transform.position = transform.position + new Vector3(-120f,0,0);
+
         mouseEncima = true;
     }
 

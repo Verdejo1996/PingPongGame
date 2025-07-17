@@ -30,8 +30,8 @@ public class Game_Controller : MonoBehaviour
     public bool endGame;
 
     [Header("Textos")]
-    public TextMeshPro playerTextScore;
-    public TextMeshPro botTextScore;
+    public TextMeshProUGUI playerTextScore;
+    public TextMeshProUGUI botTextScore;
     public TextMeshPro gameText;
 
     //Agregado para mostrar como se juega

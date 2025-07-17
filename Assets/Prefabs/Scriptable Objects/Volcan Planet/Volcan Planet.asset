@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a37bc37147a680a46a6249c689582afb, type: 3}
   m_Name: Volcan Planet
   m_EditorClassIdentifier: 
-  nombre: Volcan
-  descripcion: Presiona 'E' para entrar.
+  nombre: Vulcan
+  descripcion: Haga click para entrar.
   escenaDestino: Volcan Planet
   isAvailable: 1

@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Crazy Planet
   m_EditorClassIdentifier: 
   nombre: Crazy
-  descripcion: Presiona 'E' para entrar.
+  descripcion: Haga click para entrar.
   escenaDestino: Crazy Planet
+  isAvailable: 0

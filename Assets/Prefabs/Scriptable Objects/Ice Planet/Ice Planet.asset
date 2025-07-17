@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Ice Planet
   m_EditorClassIdentifier: 
   nombre: Ice Planet
-  descripcion: Presiona 'E' para entrar.
+  descripcion: Haga click para entrar.
   escenaDestino: Ice Planet
   isAvailable: 1

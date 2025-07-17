@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Rock
   m_EditorClassIdentifier: 
   nombre: Rock
-  descripcion: Presiona 'E' para entrar.
+  descripcion: Haga click para entrar.
   escenaDestino: Planet Rock
   isAvailable: 0

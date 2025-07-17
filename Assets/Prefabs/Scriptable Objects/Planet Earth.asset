@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Planet Earth
   m_EditorClassIdentifier: 
   nombre: Earth
-  descripcion: Presiona 'E' para entrar.
+  descripcion: Haga click para entrar.
   escenaDestino: Planet Earth
   isAvailable: 1

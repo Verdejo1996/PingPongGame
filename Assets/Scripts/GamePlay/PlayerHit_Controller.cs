@@ -35,8 +35,8 @@ public class PlayerHit_Controller : MonoBehaviour
     [SerializeField] float chargeSpeed = 1.0f; // velocidad de carga visual
     [SerializeField] float minServeForce = 7f;
     [SerializeField] float maxServeForce = 12f;
-    [SerializeField] float idealChargeMin = 0.6f;
-    [SerializeField] float idealChargeMax = 0.8f;
+    [SerializeField] float idealChargeMin = 0.8f;
+    [SerializeField] float idealChargeMax = 1f;
     [SerializeField] Color normalColor = new(0, 1, 0, 0.4f); // verde suave
     [SerializeField] Color glowColor = new(1, 1, 0, 0.7f);   // amarillo brillante
     [SerializeField] private TMP_Text feedbackText;
@@ -77,8 +77,8 @@ public class PlayerHit_Controller : MonoBehaviour
         //shot_Controller = GetComponent<Shot_Controller>();
         initialRacketLocalPos = racketTransform.localPosition;
 
-        anguloActualX = transform.localEulerAngles.x;
-        if (anguloActualX > 180) anguloActualX -= 360; // Para trabajar de -180 a 180
+/*        anguloActualX = transform.localEulerAngles.z;
+        if (anguloActualX > 90) anguloActualX -= 180; // Para trabajar de -180 a 180*/
     }
     void Update()
     {
@@ -130,16 +130,18 @@ public class PlayerHit_Controller : MonoBehaviour
 
             float delta = velocidadRotacion * Time.deltaTime;
 
-            if (Input.GetKey(KeyCode.LeftArrow) && anguloActualX < 180)
+            if (Input.GetKey(KeyCode.LeftArrow) && anguloActualX < 90)
             {
-                float incremento = Mathf.Min(delta, 180 - anguloActualX);
-                transform.Rotate(Vector3.up, incremento, Space.Self);
+                // Incrementar la rotación hacia la izquierda (0 a 90 grados)
+                float incremento = Mathf.Min(delta, 90 - anguloActualX);
+                transform.Rotate(0f, 0f, incremento, Space.Self);
                 anguloActualX += incremento;
             }
-            else if (Input.GetKey(KeyCode.RightArrow) && anguloActualX > 0)
+            else if (Input.GetKey(KeyCode.RightArrow) && anguloActualX > -90)
             {
-                float decremento = Mathf.Min(delta, anguloActualX);
-                transform.Rotate(Vector3.down, decremento, Space.Self);
+                // Decrementar la rotación hacia la derecha (-90 a 0 grados)
+                float decremento = Mathf.Min(delta, anguloActualX + 90f);
+                transform.Rotate(0f, 0f, -decremento, Space.Self);
                 anguloActualX -= decremento;
             }
         }
@@ -170,7 +172,8 @@ public class PlayerHit_Controller : MonoBehaviour
                 bool isInIdealRange = currentValue >= idealChargeMin && currentValue <= idealChargeMax;
 
                 // Cambiamos el color según si está en el rango
-                idealZoneImage.color = isInIdealRange ? glowColor : normalColor;
+                Image fillImage = serveChargeBar.fillRect.GetComponent<Image>();
+                fillImage.color = isInIdealRange ? glowColor : normalColor;
 
                 if(isInIdealRange)
                 {
@@ -266,7 +269,9 @@ public class PlayerHit_Controller : MonoBehaviour
         Vector3 toBall = ballTransform.position - racketTransform.position;
         float distance = toBall.magnitude;
 
-        bool isInFront = Vector3.Dot(racketTransform.forward, toBall.normalized) > 0.3f;
+        float forwardAngle = Vector3.Angle(racketTransform.forward, toBall.normalized);
+        Debug.Log(forwardAngle);
+        bool isInFront = forwardAngle <= 180f;
 
         if (distance <= hitRange && isInFront)
         {
@@ -471,10 +476,10 @@ public class PlayerHit_Controller : MonoBehaviour
 
             // Dirección hacia adelante (racketTransform.forward)
             Gizmos.color = Color.green;
-            Gizmos.DrawLine(racketTransform.position, racketTransform.position + racketTransform.forward * hitRange);
+            Gizmos.DrawLine(racketTransform.position, racketTransform.position + racketTransform.up * hitRange);
 
             // Visualización del cono de golpe
-            float angle = 60f; // Grados del cono (30° a cada lado)
+            float angle = 70f; // Grados del cono (30° a cada lado)
             int segments = 10;
             Vector3 forward = racketTransform.forward;
 
