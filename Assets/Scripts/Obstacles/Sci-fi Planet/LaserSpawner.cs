@@ -8,6 +8,8 @@ public class LaserSpawner : MonoBehaviour
     public Transform[] laserSpawnPoints;
     public float interval = 6f;
 
+    public ParticleSystem laserParticles;
+
     void Start()
     {
         StartCoroutine(SpawnLasers());
@@ -25,6 +27,7 @@ public class LaserSpawner : MonoBehaviour
 
             GameObject laserGO = Instantiate(laserPrefab);
             LaserObstacle laser = laserGO.GetComponent<LaserObstacle>();
+            laser.laserParticlesPrefab = laserParticles;
             laser.Initialize(start, end);
         }
     }

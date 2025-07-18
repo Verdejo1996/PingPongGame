@@ -42,6 +42,10 @@ public class PlayerHit_Controller : MonoBehaviour
     [SerializeField] private TMP_Text feedbackText;
     [SerializeField] private float feedbackDuration = 1.5f;
     [SerializeField] private Color perfectColor = Color.red;
+    [SerializeField] float maxHeight = 0.5f;  // La altura máxima que alcanzará la pelota
+    [SerializeField] float frequency = 2f;    // La frecuencia con la que sube y baja (más alto es más rápido)
+    [SerializeField] float amplitude = 0.1f;  // La amplitud del movimiento (cuánto se desplaza en Y)
+    private float originalY;        // La posición Y original de la pelota
 
 
     [Header("Paleta")]
@@ -76,7 +80,7 @@ public class PlayerHit_Controller : MonoBehaviour
         isHitting = false;
         //shot_Controller = GetComponent<Shot_Controller>();
         initialRacketLocalPos = racketTransform.localPosition;
-
+        originalY = serveStartPosition.position.y;
 /*        anguloActualX = transform.localEulerAngles.z;
         if (anguloActualX > 90) anguloActualX -= 180; // Para trabajar de -180 a 180*/
     }
@@ -165,6 +169,10 @@ public class PlayerHit_Controller : MonoBehaviour
             chargeValue += Time.deltaTime * chargeSpeed;
             chargeValue = Mathf.Clamp01(chargeValue);
             serveChargeBar.value = chargeValue;
+
+            float yOffset = Mathf.Clamp(Mathf.Sin(chargeValue * Mathf.PI * frequency) * amplitude, -maxHeight, maxHeight);
+            ballTransform.position = new Vector3(ballTransform.position.x, originalY + yOffset, ballTransform.position.z);
+
             if (isCharging)
             {
                 float currentValue = serveChargeBar.value;
@@ -203,12 +211,12 @@ public class PlayerHit_Controller : MonoBehaviour
         {
             if (player.superHitActive)
             {
-                hitForce = 15f;
+                hitForce = 14f;
                 player.SuperHit();
             }
             else
             {
-                hitForce = 12f;
+                hitForce = 11.5f;
             }
         }
         
@@ -223,7 +231,7 @@ public class PlayerHit_Controller : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.X))
         {
-            hitForce = 9f;
+            hitForce = 9.5f;
         }
     }
 

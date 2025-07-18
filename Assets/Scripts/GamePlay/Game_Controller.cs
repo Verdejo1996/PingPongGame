@@ -32,7 +32,7 @@ public class Game_Controller : MonoBehaviour
     [Header("Textos")]
     public TextMeshProUGUI playerTextScore;
     public TextMeshProUGUI botTextScore;
-    public TextMeshPro gameText;
+    public TextMeshProUGUI gameText;
 
     //Agregado para mostrar como se juega
     private Dictionary<KeyCode, int> keyMap;
@@ -172,7 +172,7 @@ public class Game_Controller : MonoBehaviour
     {
         endGame = true;
         //Debug.Log("Juego terminado: " + (playerScore > botScore ? "¡Ganaste!" : "Perdiste!"));
-        gameText.text = playerScore > botScore ? "¡Ganaste!" : "Perdiste!";
+        gameText.text = playerScore > botScore ? "¡Ganaste!" : "¡Perdiste!";
         Time.timeScale = 0f;
         if(endGamePanel != null)
         {

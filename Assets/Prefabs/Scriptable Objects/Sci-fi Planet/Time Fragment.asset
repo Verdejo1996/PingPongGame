@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Time Fragment
   m_EditorClassIdentifier: 
   powerUpName: Time Fragment
+  duration: 2
   icon: {fileID: 0}
-  slowDuration: 1
+  slowDuration: 1.5
   slowTimeScale: 0.3

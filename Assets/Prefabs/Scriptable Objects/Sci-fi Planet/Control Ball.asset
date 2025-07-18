@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Control Ball
   m_EditorClassIdentifier: 
   powerUpName: Control
+  duration: 3
   icon: {fileID: 0}
-  duration: 2
   controlForce: 5
