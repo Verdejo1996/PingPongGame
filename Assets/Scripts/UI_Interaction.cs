@@ -56,7 +56,7 @@ public class UI_Interaction : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
         // Activar el panel
         panelInfo.SetActive(true);
-        panelInfo.transform.position = transform.position + new Vector3(-120f,0,0);
+        panelInfo.transform.position = transform.position + new Vector3(-260f,0,0);
 
         mouseEncima = true;
     }
