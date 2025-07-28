@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.1, z: 1}
+  m_LocalScale: {x: 1.5, y: 0.1, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2406849769424539422}
@@ -133,7 +133,7 @@ MonoBehaviour:
   warningZone: {fileID: 3964406368054762195}
   lavaParticles: {fileID: 6750571351847880058}
   triggerZone: {fileID: 1217566354140381068}
-  warningDuration: 3
+  warningDuration: 3.5
   eruptionDuration: 3
   cooldownBeforeDestroy: 3
 --- !u!135 &1217566354140381068
@@ -169,6 +169,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FireParticle
+      objectReference: {fileID: 0}
+    - target: {fileID: 7577881087077224498, guid: 8cbd628731af9a24f96993b67f72d004,
+        type: 3}
+      propertyPath: m_MaxParticleSize
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7577881087077224499, guid: 8cbd628731af9a24f96993b67f72d004,
+        type: 3}
+      propertyPath: ShapeModule.angle
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7577881087077224499, guid: 8cbd628731af9a24f96993b67f72d004,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7577881087077224500, guid: 8cbd628731af9a24f96993b67f72d004,
         type: 3}

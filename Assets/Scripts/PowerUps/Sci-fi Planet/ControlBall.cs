@@ -22,11 +22,12 @@ public class ControlBall : Base_PowerUp
         float elapsed = -1f;
         Rigidbody rb = ball.GetComponent<Rigidbody>();
 
-        ball.ActiveEffectControl();
 
         while (elapsed < duration)
         {
+            ball.ActiveEffectControl();
             Vector3 force = Vector3.zero;
+
             if (Game_Controller.Instance.lastHitter == "Player")
             {
                 if (Input.GetKey(KeyCode.LeftArrow)) force += Vector3.left;
@@ -34,6 +35,7 @@ public class ControlBall : Base_PowerUp
                 if (Input.GetKey(KeyCode.UpArrow)) force += Vector3.forward;
                 if (Input.GetKey(KeyCode.DownArrow)) force += -Vector3.back;
             }
+
             if (force != Vector3.zero)
             {
                 rb.AddForce(force.normalized * controlForce, ForceMode.Acceleration);
