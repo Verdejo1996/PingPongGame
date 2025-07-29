@@ -8,6 +8,8 @@ public class Ball : MonoBehaviour
     [Header("Gameplay")]
     private Rigidbody rb;
     public Game_Controller controller;
+    public ObjectPool poolPlayer;
+    public ObjectPool poolBot;
     //public ParticleSystem effectControlBall;
     [SerializeField] private GameObject lavaAreaPrefab;
 
@@ -100,8 +102,25 @@ public class Ball : MonoBehaviour
             {
                 ScoreValidation();
                 ResetState();
+                poolPlayer.ResetTable();
+                poolBot.ResetTable();
             }
         }
+        #region
+        //RockPlanet
+        if (collision.gameObject.CompareTag("RockCourtPlayer") || collision.gameObject.CompareTag("RockCourtBot"))
+        {
+            hasTouchedTable = true;
+        }
+        if (collision.gameObject.CompareTag("RockCourtPlayer") && controller.currentServer == "Player")
+        {
+            validServe = true;
+        }
+        if (collision.gameObject.CompareTag("RockCourtBot") && controller.currentServer == "Bot")
+        {
+            validServe = true;
+        }
+        #endregion
         if (collision.gameObject.CompareTag("tableBot") && controller.currentServer == "Player")
         {
             validServe = true;

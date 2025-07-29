@@ -13,6 +13,8 @@ TagManager:
   - tableBot
   - tablePlayer
   - Portal
+  - RockCourtPlayer
+  - RockCourtBot
   layers:
   - Default
   - TransparentFX
