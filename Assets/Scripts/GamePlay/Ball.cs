@@ -89,6 +89,21 @@ public class Ball : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        #region
+        //RockPlanet
+        if (collision.gameObject.CompareTag("RockCourtPlayer") || collision.gameObject.CompareTag("RockCourtBot"))
+        {
+            hasTouchedTable = true;
+        }
+        if (collision.gameObject.CompareTag("RockCourtBot") && controller.currentServer == "Player")
+        {
+            validServe = true;
+        }
+        if (collision.gameObject.CompareTag("RockCourtPlayer") && controller.currentServer == "Bot")
+        {
+            validServe = true;
+        }
+        #endregion
         if (collision.gameObject.CompareTag("Wall"))
         {
             controller.playing = false;
@@ -106,21 +121,6 @@ public class Ball : MonoBehaviour
                 //poolBot.ResetTable();
             }
         }
-        #region
-        //RockPlanet
-        if (collision.gameObject.CompareTag("RockCourtPlayer") || collision.gameObject.CompareTag("RockCourtBot"))
-        {
-            hasTouchedTable = true;
-        }
-        if (collision.gameObject.CompareTag("RockCourtBot") && controller.currentServer == "Player")
-        {
-            validServe = true;
-        }
-        if (collision.gameObject.CompareTag("RockCourtPlayer") && controller.currentServer == "Bot")
-        {
-            validServe = true;
-        }
-        #endregion
         if (collision.gameObject.CompareTag("tableBot") && controller.currentServer == "Player")
         {
             validServe = true;
