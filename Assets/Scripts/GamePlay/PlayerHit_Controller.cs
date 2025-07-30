@@ -278,7 +278,7 @@ public class PlayerHit_Controller : MonoBehaviour
         float distance = toBall.magnitude;
 
         float forwardAngle = Vector3.Angle(racketTransform.forward, toBall.normalized);
-        Debug.Log(forwardAngle);
+        //Debug.Log(forwardAngle);
         bool isInFront = forwardAngle <= 180f;
 
         if (distance <= hitRange && isInFront)

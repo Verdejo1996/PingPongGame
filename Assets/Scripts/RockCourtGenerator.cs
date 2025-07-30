@@ -23,7 +23,7 @@ public class RockCourtGenerator : MonoBehaviour
             for (int j = 0; j < columns; j++)
             {
                 Vector3 position = new Vector3(i, 0, j) + tableOffset;
-                GameObject cube = cubePrefab.GetCube();  // Obtener cubo del Object Pool
+                GameObject cube = cubePrefab.GetCube(position);  // Obtener cubo del Object Pool
                 cube.transform.position = position;     // Establecer la posición
                 cube.transform.SetParent(transform);    // Organizar los cubos bajo el TableManager
             }

@@ -102,8 +102,8 @@ public class Ball : MonoBehaviour
             {
                 ScoreValidation();
                 ResetState();
-                poolPlayer.ResetTable();
-                poolBot.ResetTable();
+                //poolPlayer.ResetTable();
+                //poolBot.ResetTable();
             }
         }
         #region
@@ -112,11 +112,11 @@ public class Ball : MonoBehaviour
         {
             hasTouchedTable = true;
         }
-        if (collision.gameObject.CompareTag("RockCourtPlayer") && controller.currentServer == "Player")
+        if (collision.gameObject.CompareTag("RockCourtBot") && controller.currentServer == "Player")
         {
             validServe = true;
         }
-        if (collision.gameObject.CompareTag("RockCourtBot") && controller.currentServer == "Bot")
+        if (collision.gameObject.CompareTag("RockCourtPlayer") && controller.currentServer == "Bot")
         {
             validServe = true;
         }
@@ -136,11 +136,11 @@ public class Ball : MonoBehaviour
         }
         if(hitNetLast)
         {
-            if (collision.gameObject.CompareTag("tableBot") && controller.lastHitter == "Player")
+            if (collision.gameObject.CompareTag("tableBot") || collision.gameObject.CompareTag("RockCourtBot") && controller.lastHitter == "Player")
             {
                 tableAfterNet = true;
             }
-            else if(collision.gameObject.CompareTag("tablePlayer") && controller.lastHitter == "Bot")
+            else if(collision.gameObject.CompareTag("tablePlayer") || collision.gameObject.CompareTag("RockCourtPlayer") && controller.lastHitter == "Bot")
             {
                 tableAfterNet = true;
             }
