@@ -4187,7 +4187,7 @@ PrefabInstance:
     - target: {fileID: 314773297574364867, guid: 8eb6a9ca7cc08e04f96e654d296741ae,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 669276887473408090, guid: 8eb6a9ca7cc08e04f96e654d296741ae,
         type: 3}
@@ -4267,13 +4267,13 @@ PrefabInstance:
     - target: {fileID: 6689808395693631693, guid: 8eb6a9ca7cc08e04f96e654d296741ae,
         type: 3}
       propertyPath: powerUpPrefabs.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6689808395693631693, guid: 8eb6a9ca7cc08e04f96e654d296741ae,
         type: 3}
       propertyPath: powerUpPrefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 7495854542567655959, guid: 98d7d4796bad6a84bbf335641d5b0413,
+      objectReference: {fileID: 7495854542567655959, guid: f1b9bb2685cbf9949b90682ffe38d25e,
         type: 3}
     - target: {fileID: 6689808395693631693, guid: 8eb6a9ca7cc08e04f96e654d296741ae,
         type: 3}
