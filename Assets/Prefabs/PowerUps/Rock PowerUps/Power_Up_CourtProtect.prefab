@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -752817527130874373}
   - component: {fileID: 8564419232927817102}
   m_Layer: 0
-  m_Name: Power_Up_Slippery
+  m_Name: Power_Up_CourtProtect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b9f13fd5d2cb884886cc827dbaa3822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUp: {fileID: 11400000, guid: 722fa7296b47fc443b3c89bd820d3118, type: 2}
+  powerUp: {fileID: 11400000, guid: 3917db4cf22da2e49b92234edda616a1, type: 2}
   spawnPoint: {fileID: 0}
   pickUpEffect: {fileID: 7861246791180186722, guid: 335a54380eb3fa34dbda80c1c34affe2,
     type: 3}

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b31f35f4b9456794a8e1fc97047e5e57, type: 3}
   m_Name: Stone Projectile
   m_EditorClassIdentifier: 
-  powerUpName: 
-  duration: 5
+  powerUpName: Projectile
+  duration: 3
   icon: {fileID: 0}
   rockPrefab: {fileID: 3089953258560223833, guid: 5837d705108fc5b48a6d46d33c831e61,
     type: 3}
-  speed: 12
+  speed: 16
   lifetime: 2
-  slowDuration: 2
+  slowDuration: 3

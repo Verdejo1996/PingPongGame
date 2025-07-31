@@ -153,7 +153,15 @@ public class IA_Controller : MonoBehaviour
             Shot currentShot = PickShot();
 
             Vector3 dir = PickTarget() - transform.position;
-            other.GetComponent<Rigidbody>().velocity = dir.normalized * currentShot.hitForce + new Vector3(0, currentShot.upForce, 0);
+            if (!ballGameObject.isHeavy)
+            {
+                other.GetComponent<Rigidbody>().velocity = dir.normalized * currentShot.hitForce + new Vector3(0, currentShot.upForce, 0);
+            }
+            else
+            {
+                other.GetComponent<Rigidbody>().velocity = dir.normalized * currentShot.hitForce + new Vector3(0, currentShot.upForce, 0) * 0.7f; ;
+            }
+
             Ball ball = other.gameObject.GetComponent<Ball>();
             ball.hasTouchedTable = false;
             ball.tableAfterNet = false;

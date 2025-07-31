@@ -22,6 +22,7 @@ public class Ball : MonoBehaviour
     public bool tableAfterNet = false;
     public bool isCurveShotActive = false;
     public bool fireExplosionActive = false;
+    public bool isHeavy = false;
 
     [Header("Trail Renderer")]
     [SerializeField] private TrailRenderer trailBall;

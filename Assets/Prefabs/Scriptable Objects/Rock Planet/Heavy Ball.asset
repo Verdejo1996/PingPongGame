@@ -9,10 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a37bc37147a680a46a6249c689582afb, type: 3}
-  m_Name: Rock
+  m_Script: {fileID: 11500000, guid: dc54c98ae38934a48850c48168b8279a, type: 3}
+  m_Name: Heavy Ball
   m_EditorClassIdentifier: 
-  nombre: Rock Planet
-  descripcion: Haga click para entrar.
-  escenaDestino: Rock Planet
-  isAvailable: 1
+  powerUpName: Heavy Ball
+  duration: 3
+  icon: {fileID: 0}
+  heavyMass: 5
+  heavyBallMaterial: {fileID: 2100000, guid: 3ea670c0fd431b74dad659b4ce8fa129, type: 2}
+  rockTrail: {fileID: 0}

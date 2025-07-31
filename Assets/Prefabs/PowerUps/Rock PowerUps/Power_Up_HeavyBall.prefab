@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5274195075558867345}
   - component: {fileID: 4833618026376595854}
   m_Layer: 0
-  m_Name: Power_Up_Reflect
+  m_Name: Power_Up_HeavyBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b9f13fd5d2cb884886cc827dbaa3822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUp: {fileID: 11400000, guid: 2045316d4cd578347b3d61d6075e0fa8, type: 2}
+  powerUp: {fileID: 11400000, guid: 75ea1f9ddcf3985459f0940be50f58af, type: 2}
   spawnPoint: {fileID: 0}
   pickUpEffect: {fileID: 7861246791180186722, guid: 335a54380eb3fa34dbda80c1c34affe2,
     type: 3}

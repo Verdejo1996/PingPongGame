@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Sci-fi Planet/Sci-fi Planet.unity
     guid: 60152cf38c89dd249be471d75c8faa66
+  - enabled: 1
+    path: Assets/Scenes/Rock Planet/Rock Planet.unity
+    guid: 6a4e9ba4562a9be48b093a7e5e421f8c
   m_configObjects: {}

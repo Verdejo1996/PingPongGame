@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a37bc37147a680a46a6249c689582afb, type: 3}
-  m_Name: Rock
+  m_Script: {fileID: 11500000, guid: 329e0a9a15b5ef04b80a8fbc68d72bf3, type: 3}
+  m_Name: Court Protect
   m_EditorClassIdentifier: 
-  nombre: Rock Planet
-  descripcion: Haga click para entrar.
-  escenaDestino: Rock Planet
-  isAvailable: 1
+  powerUpName: Court Protect
+  duration: 5
+  icon: {fileID: 0}
+  proteccionPrefab: {fileID: 1076510506876090929, guid: fe976184e9c764743a98053abd62ca82,
+    type: 3}
