@@ -15,4 +15,6 @@ MonoBehaviour:
   nombre: Vulcan
   descripcion: Haga click para entrar.
   escenaDestino: Volcan Planet
+  rewardPaddleId: Lava Paddle
   isAvailable: 1
+  isTutorialPlanet: 0

@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17631333, g: 0.22067177, b: 0.30299303, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5610,7 +5609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dc29007659988e4d86313a2ef200f2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iceSpikePrefab: {fileID: 3490603607983543437, guid: 6b6f38c960da9124781ce380fda8a760,
+  iceSpikePrefab: {fileID: 1802797073780490208, guid: 5dd2a61e503ed02459c6b19332341bd9,
     type: 3}
   spawnPoints:
   - {fileID: 1233700175}

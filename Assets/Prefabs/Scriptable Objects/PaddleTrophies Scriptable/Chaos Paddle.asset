@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8596d65bfec5ae49ac15e2a21d4e174, type: 3}
+  m_Name: Chaos Paddle
+  m_EditorClassIdentifier: 
+  id: Chaos
+  displayName: Chaos Paddle
+  prefab: {fileID: 2154030997488750444, guid: 92d11ef9988231545a10160a4c4fc777, type: 3}
+  icon: {fileID: 21300000, guid: d2da0dceecf5dc544b2a858372d94fa2, type: 3}
+  unlockedByPlanetId: Crazy Planet

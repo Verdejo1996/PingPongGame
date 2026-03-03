@@ -15,4 +15,6 @@ MonoBehaviour:
   nombre: Ice Planet
   descripcion: Haga click para entrar.
   escenaDestino: Ice Planet
+  rewardPaddleId: Ice Paddle
   isAvailable: 1
+  isTutorialPlanet: 0

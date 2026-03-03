@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -173,6 +174,10 @@ public class Game_Controller : MonoBehaviour
         endGame = true;
         //Debug.Log("Juego terminado: " + (playerScore > botScore ? "¡Ganaste!" : "Perdiste!"));
         gameText.text = playerScore > botScore ? "¡Ganaste!" : "¡Perdiste!";
+        if(playerScore > botScore)
+        {
+            UnlockManager.Instance.Unlock(SessionPlanet.Instance.SelectedPlanet.rewardPaddleId);
+        }
         Time.timeScale = 0f;
         if(endGamePanel != null)
         {

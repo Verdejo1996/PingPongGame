@@ -18,3 +18,4 @@ MonoBehaviour:
     Haga click para entrar.'
   escenaDestino: Planet Earth
   isAvailable: 1
+  isTutorialPlanet: 1

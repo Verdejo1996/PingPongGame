@@ -15,4 +15,6 @@ MonoBehaviour:
   nombre: Sci-fi Planet
   descripcion: Haga click para entrar.
   escenaDestino: Sci-fi Planet
+  rewardPaddleId: Sci-fi Paddle
   isAvailable: 1
+  isTutorialPlanet: 0

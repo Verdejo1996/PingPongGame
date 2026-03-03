@@ -15,4 +15,6 @@ MonoBehaviour:
   nombre: Crazy
   descripcion: Haga click para entrar.
   escenaDestino: Crazy Planet
+  rewardPaddleId: Crazy Paddle
   isAvailable: 0
+  isTutorialPlanet: 0

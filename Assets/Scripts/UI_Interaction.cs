@@ -1,7 +1,6 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -15,6 +14,10 @@ public class UI_Interaction : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public TextMeshProUGUI descripcionText;
     public GameObject panelProx;
 
+    [Header("Paddle Select UI")]
+    public GameObject paddleSelectPanel;
+    public PaddleSelectUI paddleSelectUI;
+
     private bool mouseEncima = false;
     private SceneFader sceneFader;
 
@@ -22,25 +25,44 @@ public class UI_Interaction : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
         sceneFader = FindObjectOfType<SceneFader>();
     }
+
     void Update()
     {
         if (mouseEncima && Input.GetMouseButtonDown(0) && datos.isAvailable)
         {
-            if (sceneFader != null)
-                sceneFader.FadeToScene(datos.escenaDestino);
-            else
-                UnityEngine.SceneManagement.SceneManager.LoadScene(datos.escenaDestino);
+            //  Guardar planeta elegido en sesión
+            SessionPlanet.Instance.SetPlanet(datos);
+
+            //  Tierra tutorial: no se elige paleta
+            if (datos.isTutorialPlanet)
+            {
+                LoadPlanetScene();
+                return;
+            }
+
+            // Abrir panel de selección de paleta
+            paddleSelectPanel.SetActive(true);
+            paddleSelectUI.OpenForPlanet(datos, onPlay: LoadPlanetScene);
         }
-        else if(mouseEncima && Input.GetMouseButtonDown(0) && !datos.isAvailable)
+        else if (mouseEncima && Input.GetMouseButtonDown(0) && !datos.isAvailable)
         {
             StartCoroutine(ShowMessageRoutine());
         }
     }
 
+    private void LoadPlanetScene()
+    {
+        // carga usando el fader si existe
+        if (sceneFader != null)
+            sceneFader.FadeToScene(datos.escenaDestino);
+        else
+            SceneManager.LoadScene(datos.escenaDestino);
+    }
+
     private IEnumerator ShowMessageRoutine()
     {
         panelProx.SetActive(true);
-        yield return new WaitForSeconds(2f); // Muestra por 2 segundos
+        yield return new WaitForSeconds(2f);
         panelProx.SetActive(false);
     }
 
@@ -53,10 +75,8 @@ public class UI_Interaction : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         }
 
         transform.localScale = Vector3.one * 1.2f;
-
-        // Activar el panel
         panelInfo.SetActive(true);
-        panelInfo.transform.position = transform.position + new Vector3(-260f,0,0);
+        panelInfo.transform.position = transform.position + new Vector3(-260f, 0, 0);
 
         mouseEncima = true;
     }
@@ -68,3 +88,4 @@ public class UI_Interaction : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         mouseEncima = false;
     }
 }
+
