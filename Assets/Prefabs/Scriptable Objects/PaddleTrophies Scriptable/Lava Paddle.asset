@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: Lava
   displayName: Lava Paddle
-  prefab: {fileID: 2154030997488750444, guid: e07133d1f5d953344a938cde1da939e4, type: 3}
   icon: {fileID: 21300000, guid: 4591ce694dc86dd4b8d15d10debaa1f9, type: 3}
-  unlockedByPlanetId: Volcan Planet
+  visualPrefab: {fileID: 3351484064233491061, guid: 1b549848f0445ae459a83c918bd1abf3,
+    type: 3}
+  unlockedByDefault: 0

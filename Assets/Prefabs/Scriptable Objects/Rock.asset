@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Rock
   m_EditorClassIdentifier: 
   nombre: Rock Planet
+  nombreWwise: RockPlanet
   descripcion: Haga click para entrar.
   escenaDestino: Rock Planet
-  rewardPaddleId: Rock Paddle
+  rewardPaddle: {fileID: 11400000, guid: 96edcba759d3eed44b9668f00766df39, type: 2}
   isAvailable: 1
   isTutorialPlanet: 0

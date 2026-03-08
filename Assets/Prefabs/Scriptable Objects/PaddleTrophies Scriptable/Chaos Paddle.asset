@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: Chaos
   displayName: Chaos Paddle
-  prefab: {fileID: 2154030997488750444, guid: 92d11ef9988231545a10160a4c4fc777, type: 3}
   icon: {fileID: 21300000, guid: d2da0dceecf5dc544b2a858372d94fa2, type: 3}
-  unlockedByPlanetId: Crazy Planet
+  visualPrefab: {fileID: 8766494200286058631, guid: 34c92417ad2871547b41cfc71f9eeb5b,
+    type: 3}
+  unlockedByDefault: 0

@@ -10,6 +10,11 @@ public class MainMenu : MonoBehaviour
     public GameObject btn_Play;
     public GameObject btn_Rules;
     public GameObject btn_Salir;
+
+    private void Start()
+    {
+        AudioManager.Instance.PlayMenuMusic();
+    }
     public void Play()
     {
         SceneManager.LoadScene("Planetary Map"); // Cambia por el nombre de tu escena

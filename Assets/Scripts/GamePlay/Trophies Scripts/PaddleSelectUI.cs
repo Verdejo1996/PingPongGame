@@ -21,16 +21,18 @@ public class PaddleSelectUI : MonoBehaviour
         foreach (var paddle in allPaddles)
         {
             var btn = Instantiate(paddleButtonPrefab, gridParent);
-            bool unlocked = UnlockManager.Instance.IsUnlocked(paddle.id);
+            bool unlocked = UnlockManager.Instance.IsUnlocked(paddle);
 
             btn.Setup(
                 paddle,
                 unlocked,
-                isSelected: UnlockManager.Instance.SelectedPaddleId == paddle.id,
+                isSelected: UnlockManager.Instance.SelectedPaddle == paddle,
                 onClick: () =>
                 {
                     if (!unlocked) return;
-                    UnlockManager.Instance.Select(paddle.id);
+
+                    UnlockManager.Instance.Select(paddle);
+
                     // refrescar selección visual
                     OpenForPlanet(planet, onPlay);
                     OnPlayPressed();

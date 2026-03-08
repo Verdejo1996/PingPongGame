@@ -47,6 +47,8 @@ public class SlipperyZone : MonoBehaviour
 
     void ActivateZone()
     {
+        AudioManager.Instance.PlaySlipperyZone();
+
         zoneCollider.enabled = true;
         mesh.enabled = true;
         if (iceParticles != null)

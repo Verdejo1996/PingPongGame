@@ -5,7 +5,7 @@ using UnityEngine;
 public class VolcanoShake : MonoBehaviour
 {
     public float interval = 10f;
-    public float shakeDuration = 1f;
+    public float shakeDuration = 2f;
     public float shakeIntensity = 0.3f;
     public Camera mainCamera;
     public PlayerHit_Controller player;
@@ -46,6 +46,8 @@ public class VolcanoShake : MonoBehaviour
 
         while (elapsed < shakeDuration)
         {
+            AudioManager.Instance.PlayEarthQuake();
+
             Vector3 offset = Random.insideUnitSphere * shakeIntensity;
             offset.z = 0; // no mover en Z si usás cámara lateral
 

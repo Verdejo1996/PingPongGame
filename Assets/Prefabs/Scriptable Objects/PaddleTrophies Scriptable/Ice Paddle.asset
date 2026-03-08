@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: Ice
   displayName: Ice Paddle
-  prefab: {fileID: 2154030997488750444, guid: 881a1d8d287e4514685ae4713f384bc7, type: 3}
   icon: {fileID: 21300000, guid: ff644f83e490fa945b275c61b16868e2, type: 3}
-  unlockedByPlanetId: Ice Planet
+  visualPrefab: {fileID: 2894516311315578566, guid: a8069677f00cb744d9330bf70655f386,
+    type: 3}
+  unlockedByDefault: 0

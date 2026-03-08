@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5204818048651292342}
   - component: {fileID: 2449169942306494392}
   - component: {fileID: 9122324252432910008}
+  - component: {fileID: -7591415357536467658}
   m_Layer: 0
   m_Name: Ice Paddle
   m_TagString: Untagged
@@ -51,7 +52,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -127,12 +128,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
   player: {fileID: 0}
-  moveSpeed: 5
+  moveSpeed: 5.5
   isMoving: 0
   ballGame: {fileID: 0}
   ballTransform: {fileID: 0}
   ballRb: {fileID: 0}
-  racketTransform: {fileID: 5207563840372387924}
+  racketTransform: {fileID: 0}
   hitRange: 2
   hitForce: 0
   upForce: 5
@@ -143,20 +144,49 @@ MonoBehaviour:
   idealZoneImage: {fileID: 0}
   chargeSpeed: 1
   minServeForce: 7
-  maxServeForce: 12
-  idealChargeMin: 0.6
-  idealChargeMax: 0.8
+  maxServeForce: 10.5
+  idealChargeMin: 0.9
+  idealChargeMax: 1
   normalColor: {r: 0, g: 1, b: 0, a: 0.4}
   glowColor: {r: 1, g: 0, b: 0.06661177, a: 0.7}
   feedbackText: {fileID: 0}
   feedbackDuration: 1.5
   perfectColor: {r: 1, g: 0, b: 0, a: 1}
-  maxHeight: 0.5
-  frequency: 2
-  amplitude: 0.1
+  maxHeight: 3
+  frequency: 1
+  amplitude: 3
   racketSpeed: 20
   racketReturnSpeed: 10
   isSlowed: 0
+--- !u!114 &-7591415357536467658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2154030997488750444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 922ac85e0efc4514fb1659b7ad8663bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUp_Manager: {fileID: 0}
+  iA_Controller: {fileID: 0}
+  ball: {fileID: 0}
+  hud_Controller: {fileID: 0}
+  player_hit_Controller: {fileID: 0}
+  player_Scale: {x: 0, y: 0, z: 0}
+  original_Scale: {x: 0, y: 0, z: 0}
+  precisionActive: 0
+  superHitActive: 0
+  shieldActive: 0
+  hasPrecisionPowerUp: 0
+  hasSuperHitPowerUp: 0
+  hasShieldPowerUp: 0
+  hasFreezePowerUp: 0
+  isBigPaddle: 0
+  prefabShield: {fileID: 0}
+  duration: 5
 --- !u!1001 &5750607190963378111
 PrefabInstance:
   m_ObjectHideFlags: 0

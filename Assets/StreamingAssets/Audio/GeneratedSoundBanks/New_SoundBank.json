@@ -1,0 +1,55 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "172",
+  "SoundBanks": [
+   {
+    "Id": "4072029455",
+    "Type": "User",
+    "GUID": "{49FBC16F-B3A2-448D-99E3-A4871437B5B8}",
+    "Language": "SFX",
+    "Hash": "{4510BD76-C634-561C-0994-371A32F8777E}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\New_SoundBank",
+    "ShortName": "New_SoundBank",
+    "Path": "New_SoundBank.bnk",
+    "Media": [
+     {
+      "Id": "249312283",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MainMenu.wav",
+      "CachePath": "62/{626D8B20-D049-7C4E-BB07-4AE491AC3CC9}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "3738780720",
+      "Name": "Play_MainMenu",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_MainMenu",
+      "GUID": "{A3BE5E5E-68FF-43B9-88E1-D70C8C2F74D9}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "249312283"
+       }
+      ]
+     },
+     {
+      "Id": "890527358",
+      "Name": "Stop_MainMenu",
+      "ObjectPath": "\\Events\\Default Work Unit\\Stop_MainMenu",
+      "GUID": "{85E5E169-A49C-4AF6-ACC9-CA01FE64AABA}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{C37DDCC8-FF33-9C63-2271-301AB4B8E0A5}"
+ }
+}

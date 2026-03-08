@@ -13,6 +13,8 @@ public class IA_Controller : MonoBehaviour
     public Ball ballGameObject;
     public float speed;
     public float slipperyFactor = 3f;
+    public float minZ = 6f;   // hasta donde puede acercarse a la red
+    public float maxZ = 8f;   // hasta donde puede retroceder
 
 
     [Header("Vectores")]
@@ -71,6 +73,7 @@ public class IA_Controller : MonoBehaviour
             }
 
             targetPosition.x = ball.position.x;
+            targetPosition.z = Mathf.Clamp(ball.position.z + 0.4f, minZ, maxZ);
 
             if (isSlippery)
             {
@@ -80,7 +83,8 @@ public class IA_Controller : MonoBehaviour
             }
             else
             {
-                transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+                Vector3 target = new (targetPosition.x, transform.position.y, targetPosition.z);
+                transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
             }
         }
         else
@@ -130,6 +134,8 @@ public class IA_Controller : MonoBehaviour
             ballGameObject.GetComponent<Rigidbody>().useGravity = true;
             ballGameObject.GetComponent<Rigidbody>().velocity = dir.normalized * currentServe.hitForce + new Vector3(0, currentServe.upForce, 0);
             ballGameObject.RegisterHit("Bot");
+
+            AudioManager.Instance.PlayHitBall();
         }
     }
 
@@ -166,6 +172,8 @@ public class IA_Controller : MonoBehaviour
             ball.hasTouchedTable = false;
             ball.tableAfterNet = false;
             ball.RegisterHit("Bot");
+
+            AudioManager.Instance.PlayHitBall();
         }
     }
 

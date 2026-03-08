@@ -16,6 +16,7 @@ public class LaserObstacle : MonoBehaviour
 
     public void Initialize(Transform start, Transform end)
     {
+        AudioManager.Instance.PlayLaserBeam();
         // Configuración básica del LineRenderer
         lineRenderer.startWidth = 0.3f;  // El grosor del láser al principio
         lineRenderer.endWidth = 0.3f;    // El grosor del láser al final
@@ -54,6 +55,7 @@ public class LaserObstacle : MonoBehaviour
     {
         if(laserParticles != null)
         {
+            AudioManager.Instance.StopLaserBeam();
             laserParticles.Stop();
             Destroy(laserParticles.gameObject);
         }

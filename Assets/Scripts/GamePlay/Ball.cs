@@ -137,11 +137,13 @@ public class Ball : MonoBehaviour
         }
         if(hitNetLast)
         {
-            if (collision.gameObject.CompareTag("tableBot") || collision.gameObject.CompareTag("RockCourtBot") && controller.lastHitter == "Player")
+            if ((collision.gameObject.CompareTag("tableBot") || collision.gameObject.CompareTag("RockCourtBot"))
+                && controller.lastHitter == "Player")
             {
                 tableAfterNet = true;
             }
-            else if(collision.gameObject.CompareTag("tablePlayer") || collision.gameObject.CompareTag("RockCourtPlayer") && controller.lastHitter == "Bot")
+            else if((collision.gameObject.CompareTag("tablePlayer") || collision.gameObject.CompareTag("RockCourtPlayer"))
+                && controller.lastHitter == "Bot")
             {
                 tableAfterNet = true;
             }
@@ -158,6 +160,7 @@ public class Ball : MonoBehaviour
         if (other.CompareTag("Table"))
         {
             hasTouchedTable = true;
+            AudioManager.Instance.PlayHitBallOnTable();
         }
         if (fireExplosionEnabled && other.CompareTag("Bot"))
         {
@@ -213,13 +216,13 @@ public class Ball : MonoBehaviour
             }
             else
             {
-                if (lastHitterAfterTable != "" && !tableAfterNet)
-                {
-                    controller.AddPointToOpponent();
-                }
-                else if(lastHitterAfterTable != "" && tableAfterNet)
+                if (tableAfterNet)
                 {
                     controller.AddPointToLastHitter();
+                }
+                else
+                {
+                    controller.AddPointToOpponent();
                 }
             }
         }

@@ -11,6 +11,8 @@ public class Portal : MonoBehaviour
     {
         if (other.CompareTag("Ball"))
         {
+            AudioManager.Instance.PlayPortalJump();
+
             Ball ball = other.GetComponent<Ball>();
             Rigidbody rb = other.GetComponent<Rigidbody>();
             if (ball == null || rb == null) return;

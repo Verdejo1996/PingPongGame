@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a37bc37147a680a46a6249c689582afb, type: 3}
   m_Name: Volcan Planet
   m_EditorClassIdentifier: 
-  nombre: Vulcan
+  nombre: Vulcan Planet
+  nombreWwise: LavaPlanet
   descripcion: Haga click para entrar.
   escenaDestino: Volcan Planet
-  rewardPaddleId: Lava Paddle
+  rewardPaddle: {fileID: 11400000, guid: 85f46f186acf0ef42aba8cfc6b2759a4, type: 2}
   isAvailable: 1
   isTutorialPlanet: 0

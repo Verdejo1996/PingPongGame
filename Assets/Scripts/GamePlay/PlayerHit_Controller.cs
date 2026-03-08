@@ -198,6 +198,7 @@ public class PlayerHit_Controller : MonoBehaviour
             isCharging = false;
             isServing = false;
             controller.playing = true;
+            AudioManager.Instance.PlayHitBall();
         }
     }
 
@@ -284,7 +285,7 @@ public class PlayerHit_Controller : MonoBehaviour
         if (distance <= hitRange && isInFront)
         {
             StartCoroutine(HitAnimation(type));
-
+            AudioManager.Instance.PlayHitBall();
         }
         else
         {

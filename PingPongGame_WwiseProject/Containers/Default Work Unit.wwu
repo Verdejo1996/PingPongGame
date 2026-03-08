@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{E16AF8E3-B9CD-4719-8A99-9AEB021C1E4F}" SchemaVersion="133">
+	<Containers>
+		<WorkUnit Name="Default Work Unit" ID="{E16AF8E3-B9CD-4719-8A99-9AEB021C1E4F}" PersistMode="Standalone">
+			<ChildrenList>
+				<Sound Name="MainMenu" ID="{3ABCC689-FEE0-419D-99F8-C4C715FD6896}" ShortID="84981348">
+					<PropertyList>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{1B144632-F46B-4B9A-B662-1187A2A039CB}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5260D5C9-3277-47ED-8B6E-4518B85E6691}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="MainMenu" ID="{240871E3-8C62-4049-B67A-5F5E756D733D}">
+							<PropertyList>
+								<Property Name="FadeInDuration" Type="Real64" Value="16.0726351069208"/>
+								<Property Name="FadeOutDuration" Type="Real64" Value="27.4343254411234"/>
+								<Property Name="LoopBegin" Type="Real64" Value="4.98805917111335"/>
+								<Property Name="LoopEnd" Type="Real64" Value="231.390528600736"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>MainMenu.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="249312283"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="MainMenu" ID="{240871E3-8C62-4049-B67A-5F5E756D733D}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="IceSpike fall" ID="{ECEABBC3-FF55-4526-BDBF-3B8AF8A4BBDF}" ShortID="84643348">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{1B144632-F46B-4B9A-B662-1187A2A039CB}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5260D5C9-3277-47ED-8B6E-4518B85E6691}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="IceSpike fall" ID="{1E04B218-FD26-4C06-97F8-6F35F8392066}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimBegin" Type="Real64" Value="3.41741156578064"/>
+								<Property Name="TrimEnd" Type="Real64" Value="5.74946452208206"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>IceSpike fall.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="188387387"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="IceSpike fall" ID="{1E04B218-FD26-4C06-97F8-6F35F8392066}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="ping-pong-sample" ID="{D202715C-B828-4B73-AD8D-CD4D308290AA}" ShortID="265359211">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>20</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{1B144632-F46B-4B9A-B662-1187A2A039CB}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5260D5C9-3277-47ED-8B6E-4518B85E6691}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="ping-pong-sample" ID="{65D0CEA1-3E4C-471E-8541-B05FF0DC976D}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimBegin" Type="Real64" Value="50.8660869292568"/>
+								<Property Name="TrimEnd" Type="Real64" Value="51.3860128603906"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>ping-pong-sample.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="484501718"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="ping-pong-sample" ID="{65D0CEA1-3E4C-471E-8541-B05FF0DC976D}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="PowerUp" ID="{DEC2E6F2-6820-4CB2-84BB-CF2D614B02C9}" ShortID="519541680">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{1B144632-F46B-4B9A-B662-1187A2A039CB}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5260D5C9-3277-47ED-8B6E-4518B85E6691}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="PowerUp" ID="{32474300-4259-4A7E-9928-5B3F211C5515}">
+							<Language>SFX</Language>
+							<AudioFile>PowerUp.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="708394557"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="PowerUp" ID="{32474300-4259-4A7E-9928-5B3F211C5515}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Slippery generation" ID="{DF3F3A22-D7E5-4D49-AF0E-55B70E27E17E}" ShortID="46170940">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{1B144632-F46B-4B9A-B662-1187A2A039CB}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5260D5C9-3277-47ED-8B6E-4518B85E6691}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Slippery generation" ID="{E43FF530-D99C-4369-A04C-F1DC965A2149}">
+							<PropertyList>
+								<Property Name="FadeOutDuration" Type="Real64" Value="2.33690987124464"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="6.18025751072962"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Slippery generation.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="405855097"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Slippery generation" ID="{E43FF530-D99C-4369-A04C-F1DC965A2149}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="ping-pong-Ball" ID="{0D5A87DB-BC00-4743-A77C-8804C18C479A}" ShortID="595390663">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>20</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{1B144632-F46B-4B9A-B662-1187A2A039CB}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5260D5C9-3277-47ED-8B6E-4518B85E6691}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="ping-pong-sample" ID="{906B51DF-0056-4657-938C-803EAF73C6A1}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimBegin" Type="Real64" Value="47.3999140550315"/>
+								<Property Name="TrimEnd" Type="Real64" Value="47.8551525668287"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>ping-pong-sample.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="249053621"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="ping-pong-sample" ID="{906B51DF-0056-4657-938C-803EAF73C6A1}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="IcePlanet windStrong" ID="{2EB16AF9-D175-473B-AFDA-8BC02992B139}" ShortID="430364379">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{1B144632-F46B-4B9A-B662-1187A2A039CB}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5260D5C9-3277-47ED-8B6E-4518B85E6691}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="IcePlanet wind" ID="{CE859DCA-B1CF-4A3D-A8B6-BACCD2927C75}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimBegin" Type="Real64" Value="59.1346459000458"/>
+								<Property Name="TrimEnd" Type="Real64" Value="66.13465"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>IcePlanet wind.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="1012670866"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="IcePlanet wind" ID="{CE859DCA-B1CF-4A3D-A8B6-BACCD2927C75}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<SwitchContainer Name="PlanetAmbience" ID="{8FB082DA-CDC1-46B1-A992-BC8282294302}" ShortID="690278873">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{1B144632-F46B-4B9A-B662-1187A2A039CB}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5260D5C9-3277-47ED-8B6E-4518B85E6691}"/>
+						</Reference>
+						<Reference Name="SwitchGroupOrStateGroup">
+							<ObjectRef Name="Planet" ID="{56717530-B744-44AC-B6FA-3E55FFFC2422}" WorkUnitID="{5E9BDCC1-8E30-489E-86EE-8165D37CB498}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="IcePlanet wind" ID="{EA6B053A-E0BC-4511-BA27-A50D9D31B5E5}" ShortID="1054249929">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-8</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{1B144632-F46B-4B9A-B662-1187A2A039CB}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5260D5C9-3277-47ED-8B6E-4518B85E6691}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="IcePlanet wind" ID="{1FE13D69-618A-478D-902A-221605AFBA3B}">
+									<PropertyList>
+										<Property Name="LoopEnd" Type="Real64" Value="206.355274918128"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="87.1620041130883"/>
+										<Property Name="TrimEnd" Type="Real64" Value="207.279253760316"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>IcePlanet wind.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="352474434"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="IcePlanet wind" ID="{1FE13D69-618A-478D-902A-221605AFBA3B}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="lava-loop" ID="{2AE98976-A875-4755-B612-4DDB07D3BB1F}" ShortID="978111203">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{1B144632-F46B-4B9A-B662-1187A2A039CB}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5260D5C9-3277-47ED-8B6E-4518B85E6691}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="lava-loop" ID="{8BCA84E2-D685-464E-BEA2-AE7ABFCEF14D}">
+									<Language>SFX</Language>
+									<AudioFile>lava-loop.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="766233903"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="lava-loop" ID="{8BCA84E2-D685-464E-BEA2-AE7ABFCEF14D}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Sci-fi ambient" ID="{CD6EC7DE-32B6-4E03-BA42-D697B67ED8BB}" ShortID="903843220">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-8</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{1B144632-F46B-4B9A-B662-1187A2A039CB}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5260D5C9-3277-47ED-8B6E-4518B85E6691}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Sci-fi ambient" ID="{A988948F-D245-4330-8AFC-579BD95F30AB}">
+									<PropertyList>
+										<Property Name="FadeOutDuration" Type="Real64" Value="4.41976709324913"/>
+										<Property Name="LoopEnd" Type="Real64" Value="173.212773522795"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+										<Property Name="TrimBegin" Type="Real64" Value="9.68139458521241"/>
+										<Property Name="TrimEnd" Type="Real64" Value="176.159284918295"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>Sci-fi ambient.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="750100498"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Sci-fi ambient" ID="{A988948F-D245-4330-8AFC-579BD95F30AB}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Stone Ambient" ID="{A4E955EB-28DC-494B-9D27-EB1B2F151620}" ShortID="841466331">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{1B144632-F46B-4B9A-B662-1187A2A039CB}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5260D5C9-3277-47ED-8B6E-4518B85E6691}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Stone Ambient" ID="{91130048-309C-4185-8DE7-F741F78C0FB4}">
+									<Language>SFX</Language>
+									<AudioFile>Stone Ambient.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="1064929131"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Stone Ambient" ID="{91130048-309C-4185-8DE7-F741F78C0FB4}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+					<GroupingInfo>
+						<GroupingBehaviorList>
+							<GroupingBehavior>
+								<ItemRef Name="IcePlanet wind" ID="{EA6B053A-E0BC-4511-BA27-A50D9D31B5E5}"/>
+							</GroupingBehavior>
+							<GroupingBehavior>
+								<ItemRef Name="lava-loop" ID="{2AE98976-A875-4755-B612-4DDB07D3BB1F}"/>
+							</GroupingBehavior>
+							<GroupingBehavior>
+								<ItemRef Name="Sci-fi ambient" ID="{CD6EC7DE-32B6-4E03-BA42-D697B67ED8BB}"/>
+							</GroupingBehavior>
+							<GroupingBehavior>
+								<ItemRef Name="Stone Ambient" ID="{A4E955EB-28DC-494B-9D27-EB1B2F151620}"/>
+							</GroupingBehavior>
+						</GroupingBehaviorList>
+						<GroupingList>
+							<Grouping>
+								<SwitchRef Name="LavaPlanet" ID="{4DF2C836-0EE2-4270-9B33-8A116241AB03}"/>
+								<ItemList>
+									<ItemRef Name="lava-loop" ID="{2AE98976-A875-4755-B612-4DDB07D3BB1F}"/>
+								</ItemList>
+							</Grouping>
+							<Grouping>
+								<SwitchRef Name="IcePlanet" ID="{31C82845-6BF7-4F31-A456-65031CA19D69}"/>
+								<ItemList>
+									<ItemRef Name="IcePlanet wind" ID="{EA6B053A-E0BC-4511-BA27-A50D9D31B5E5}"/>
+								</ItemList>
+							</Grouping>
+							<Grouping>
+								<SwitchRef Name="RockPlanet" ID="{40ED4980-5F02-4DB1-A1FE-CCFD6CEEB892}"/>
+								<ItemList>
+									<ItemRef Name="Stone Ambient" ID="{A4E955EB-28DC-494B-9D27-EB1B2F151620}"/>
+								</ItemList>
+							</Grouping>
+							<Grouping>
+								<SwitchRef Name="ScifiPlanet" ID="{7DEAF0C8-26C6-4AE8-9F9A-89D441C5137B}"/>
+								<ItemList>
+									<ItemRef Name="Sci-fi ambient" ID="{CD6EC7DE-32B6-4E03-BA42-D697B67ED8BB}"/>
+								</ItemList>
+							</Grouping>
+						</GroupingList>
+					</GroupingInfo>
+				</SwitchContainer>
+				<Sound Name="big-laser-beam" ID="{466FF4C5-914B-4828-9D3B-888F737BA6A5}" ShortID="885919658">
+					<PropertyList>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{1B144632-F46B-4B9A-B662-1187A2A039CB}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5260D5C9-3277-47ED-8B6E-4518B85E6691}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="big-laser-beam" ID="{053EAEF8-1F8C-48C0-BE1F-F2507A729082}">
+							<PropertyList>
+								<Property Name="CrossfadeDuration" Type="Real64" Value="388.569"/>
+								<Property Name="FadeInShape" Type="int16" Value="8"/>
+								<Property Name="FadeOutShape" Type="int16" Value="2"/>
+								<Property Name="LoopBegin" Type="Real64" Value="3.588865842942"/>
+								<Property Name="LoopEnd" Type="Real64" Value="5.95698343730134"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimBegin" Type="Real64" Value="2.80171682906253"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>big-laser-beam.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="829230428"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="big-laser-beam" ID="{053EAEF8-1F8C-48C0-BE1F-F2507A729082}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Rock Court break" ID="{17E6FAC8-9AC4-452D-A4FE-FE6EDAD35EFE}" ShortID="463538395">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{1B144632-F46B-4B9A-B662-1187A2A039CB}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5260D5C9-3277-47ED-8B6E-4518B85E6691}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Rock Court break" ID="{6E1F23F9-8591-4382-A268-0A1401E76440}">
+							<PropertyList>
+								<Property Name="FadeInDuration" Type="Real64" Value="0.71234779933422"/>
+								<Property Name="FadeOutDuration" Type="Real64" Value="0.71234779933422"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimBegin" Type="Real64" Value="1.39764433766639"/>
+								<Property Name="TrimEnd" Type="Real64" Value="2.10999213700061"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Rock Court break.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="125850030"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Rock Court break" ID="{6E1F23F9-8591-4382-A268-0A1401E76440}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Portal_active Loop" ID="{F14DE3A1-071B-4A83-88A3-4E63355D4FB4}" ShortID="335009457">
+					<PropertyList>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>6</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{1B144632-F46B-4B9A-B662-1187A2A039CB}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5260D5C9-3277-47ED-8B6E-4518B85E6691}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Portal_active Loop" ID="{EF503621-D815-4907-A0CE-91AB28278FFC}">
+							<Language>SFX</Language>
+							<AudioFile>Portal_active Loop.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="918805246"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Portal_active Loop" ID="{EF503621-D815-4907-A0CE-91AB28278FFC}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Portal-phase-jump" ID="{A56988F0-2E8B-4E71-A1B6-282155F79F3E}" ShortID="856299166">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>2</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{1B144632-F46B-4B9A-B662-1187A2A039CB}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5260D5C9-3277-47ED-8B6E-4518B85E6691}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Portal-phase-jump" ID="{49CF0498-FA00-4492-BA18-70F48CFED759}">
+							<PropertyList>
+								<Property Name="FadeOutDuration" Type="Real64" Value="0.268591341030956"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimBegin" Type="Real64" Value="0.371385557968728"/>
+								<Property Name="TrimEnd" Type="Real64" Value="1.01467836956848"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Portal-phase-jump.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="6368003"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Portal-phase-jump" ID="{49CF0498-FA00-4492-BA18-70F48CFED759}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="earthquakeSound" ID="{913409E6-B643-4076-B89B-BDE48E532CFB}" ShortID="232385399">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{1B144632-F46B-4B9A-B662-1187A2A039CB}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5260D5C9-3277-47ED-8B6E-4518B85E6691}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="earthquakeSound" ID="{B4174E64-C105-4BE3-86B5-612AE3F39D2D}">
+							<PropertyList>
+								<Property Name="FadeOutDuration" Type="Real64" Value="4"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="4"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>earthquakeSound.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="400099397"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="earthquakeSound" ID="{B4174E64-C105-4BE3-86B5-612AE3F39D2D}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Mud-volcanos-geiser" ID="{9A93F0FA-E6D9-4E41-89A5-BAAB8FA03D5E}" ShortID="64971794">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{1B144632-F46B-4B9A-B662-1187A2A039CB}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5260D5C9-3277-47ED-8B6E-4518B85E6691}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Mud-volcanos-geiser" ID="{59E70E73-445D-4D4F-AAA4-B9864A61C5F7}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimBegin" Type="Real64" Value="48.5138746758047"/>
+								<Property Name="TrimEnd" Type="Real64" Value="51.5"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Mud-volcanos-geiser.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="355204527"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Mud-volcanos-geiser" ID="{59E70E73-445D-4D4F-AAA4-B9864A61C5F7}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+			</ChildrenList>
+		</WorkUnit>
+	</Containers>
+</WwiseDocument>

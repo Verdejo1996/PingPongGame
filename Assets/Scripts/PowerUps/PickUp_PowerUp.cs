@@ -15,7 +15,8 @@ public class PickUp_PowerUp : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
-        {          
+        {
+            AudioManager.Instance.PlayPowerUp();
             if (other.TryGetComponent<Player_Controller>(out var player))
             {
                 player.ColectPowerUp(powerUp);

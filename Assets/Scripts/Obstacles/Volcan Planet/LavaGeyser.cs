@@ -31,6 +31,8 @@ public class LavaGeyser : MonoBehaviour
         warningZone.SetActive(false);
 
         // 2. Activar erupción
+        AudioManager.Instance.PlayGeiser();
+
         lavaParticles.Play();
         triggerZone.enabled = true;
         yield return new WaitForSeconds(eruptionDuration);

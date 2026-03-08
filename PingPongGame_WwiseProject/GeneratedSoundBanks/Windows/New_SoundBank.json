@@ -1,0 +1,520 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "172",
+  "SoundBanks": [
+   {
+    "Id": "4072029455",
+    "Type": "User",
+    "GUID": "{49FBC16F-B3A2-448D-99E3-A4871437B5B8}",
+    "Language": "SFX",
+    "Hash": "{589E5FD0-A025-8601-F7C9-F8EB81B103C3}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\New_SoundBank",
+    "ShortName": "New_SoundBank",
+    "Path": "New_SoundBank.bnk",
+    "Media": [
+     {
+      "Id": "6368003",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Portal-phase-jump.wav",
+      "CachePath": "E1/{E19F434D-CEEA-86EF-CD8E-B664084628F3}.wem"
+     },
+     {
+      "Id": "125850030",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Rock Court break.wav",
+      "CachePath": "1A/{1A022746-B62E-3991-5AF7-FA792600155E}.wem"
+     },
+     {
+      "Id": "188387387",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "IceSpike fall.wav",
+      "CachePath": "B6/{B65D1648-04A6-2BD4-D1EE-2ACE1944A7D2}.wem"
+     },
+     {
+      "Id": "249053621",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ping-pong-sample.wav",
+      "CachePath": "AA/{AA6987BC-E5D8-BBDF-2170-BBF4852B2405}.wem"
+     },
+     {
+      "Id": "249312283",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MainMenu.wav",
+      "CachePath": "62/{626D8B20-D049-7C4E-BB07-4AE491AC3CC9}.wem"
+     },
+     {
+      "Id": "352474434",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "IcePlanet wind.wav",
+      "CachePath": "F4/{F46B0B66-B5E2-7E3F-1406-EC7F192607E9}.wem"
+     },
+     {
+      "Id": "355204527",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Mud-volcanos-geiser.wav",
+      "CachePath": "68/{68DA66E5-61E3-8114-90F3-C98EF4B733DB}.wem"
+     },
+     {
+      "Id": "400099397",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "earthquakeSound.wav",
+      "CachePath": "79/{797F56C1-D477-B3AF-A286-992977A0B1E4}.wem"
+     },
+     {
+      "Id": "405855097",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Slippery generation.wav",
+      "CachePath": "25/{25296E8A-61AF-A91C-AE6E-4C6930C918ED}.wem"
+     },
+     {
+      "Id": "484501718",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ping-pong-sample.wav",
+      "CachePath": "26/{26D3A021-D297-DEED-7B86-FDDC941952E2}.wem"
+     },
+     {
+      "Id": "708394557",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "PowerUp.wav",
+      "CachePath": "0B/{0BE607A6-4D59-1DDC-75FF-F1EDF68ADF1A}.wem"
+     },
+     {
+      "Id": "750100498",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Sci-fi ambient.wav",
+      "CachePath": "09/{09A9B56D-B633-02A2-E7F1-558628F120C2}.wem"
+     },
+     {
+      "Id": "766233903",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "lava-loop.wav",
+      "CachePath": "0C/{0C0C9F6B-1BC7-2677-4306-23BF21228D4E}.wem"
+     },
+     {
+      "Id": "829230428",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "big-laser-beam.wav",
+      "CachePath": "15/{150A6FD5-C01E-B4EB-B8B7-0A33B2AC4354}.wem"
+     },
+     {
+      "Id": "918805246",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Portal_active Loop.wav",
+      "CachePath": "3B/{3B7655F5-F7C5-B489-CFA8-8A754CD81825}.wem"
+     },
+     {
+      "Id": "1012670866",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "IcePlanet wind.wav",
+      "CachePath": "9B/{9BC28C6F-B024-F14D-D5BD-23569879BCAA}.wem"
+     },
+     {
+      "Id": "1064929131",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Stone Ambient.wav",
+      "CachePath": "66/{6663A293-C4F2-FA22-4404-DCB3E2E97B42}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "3858448649",
+      "Name": "Play_Earthquake",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Earthquake",
+      "GUID": "{C2B1BD1C-8203-45E6-9C13-6ABABBAEE79A}",
+      "DurationType": "OneShot",
+      "DurationMin": "4",
+      "DurationMax": "4",
+      "MediaRefs": [
+       {
+        "Id": "400099397"
+       }
+      ]
+     },
+     {
+      "Id": "2863038395",
+      "Name": "Play_Geiser",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Geiser",
+      "GUID": "{7CE33256-8A80-4733-83CC-8FD4E39ED1F8}",
+      "DurationType": "OneShot",
+      "DurationMin": "2.9861252",
+      "DurationMax": "2.9861252",
+      "MediaRefs": [
+       {
+        "Id": "355204527"
+       }
+      ]
+     },
+     {
+      "Id": "2661193006",
+      "Name": "Play_HitBall",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_HitBall",
+      "GUID": "{21220A62-A2DD-4F8E-8D8E-8C6A21FAB1B6}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.51992595",
+      "DurationMax": "0.51992595",
+      "MediaRefs": [
+       {
+        "Id": "484501718"
+       }
+      ]
+     },
+     {
+      "Id": "705649494",
+      "Name": "Play_IcePlanet_wind",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_IcePlanet_wind",
+      "GUID": "{8BA70C91-DEA3-4EEC-AB7E-F993BA0DBF90}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "352474434"
+       }
+      ]
+     },
+     {
+      "Id": "3470629207",
+      "Name": "Play_IcePlanet_windStrong",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_IcePlanet_windStrong",
+      "GUID": "{99120E95-D131-48E3-ABC7-143A30F900C9}",
+      "DurationType": "OneShot",
+      "DurationMin": "7.0000043",
+      "DurationMax": "7.0000043",
+      "MediaRefs": [
+       {
+        "Id": "1012670866"
+       }
+      ]
+     },
+     {
+      "Id": "1812178191",
+      "Name": "Play_IceSpike",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_IceSpike",
+      "GUID": "{FC5A23D3-4531-43A3-8242-026D8BEB66F6}",
+      "DurationType": "OneShot",
+      "DurationMin": "2.332053",
+      "DurationMax": "2.332053",
+      "MediaRefs": [
+       {
+        "Id": "188387387"
+       }
+      ]
+     },
+     {
+      "Id": "3487680950",
+      "Name": "Play_LaserBeam",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_LaserBeam",
+      "GUID": "{F9CEAA0A-BAB2-4A0B-B518-8695139D3184}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "829230428"
+       }
+      ]
+     },
+     {
+      "Id": "3738780720",
+      "Name": "Play_MainMenu",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_MainMenu",
+      "GUID": "{A3BE5E5E-68FF-43B9-88E1-D70C8C2F74D9}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "249312283"
+       }
+      ]
+     },
+     {
+      "Id": "121001441",
+      "Name": "Play_ping_pong_Ball",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_ping_pong_Ball",
+      "GUID": "{B6D33CAA-59D7-487F-905D-1E34071AF606}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.45523852",
+      "DurationMax": "0.45523852",
+      "MediaRefs": [
+       {
+        "Id": "249053621"
+       }
+      ]
+     },
+     {
+      "Id": "2211508764",
+      "Name": "Play_PlanetAmbience",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_PlanetAmbience",
+      "GUID": "{0D2B170B-B927-4809-9020-BD579F5E8E39}",
+      "DurationType": "Infinite",
+      "SwitchContainers": [
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "1602519891",
+         "Id": "3397848309",
+         "GUID": "{4DF2C836-0EE2-4270-9B33-8A116241AB03}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "766233903"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "1602519891",
+         "Id": "3892807504",
+         "GUID": "{31C82845-6BF7-4F31-A456-65031CA19D69}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "352474434"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "1602519891",
+         "Id": "2936708068",
+         "GUID": "{40ED4980-5F02-4DB1-A1FE-CCFD6CEEB892}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "1064929131"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "1602519891",
+         "Id": "3137043945",
+         "GUID": "{7DEAF0C8-26C6-4AE8-9F9A-89D441C5137B}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "750100498"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "Id": "1872978256",
+      "Name": "Play_PortalJump",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_PortalJump",
+      "GUID": "{51083BDD-34BE-475B-9233-1181435FDB27}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.6432928",
+      "DurationMax": "0.6432928",
+      "MediaRefs": [
+       {
+        "Id": "6368003"
+       }
+      ]
+     },
+     {
+      "Id": "67343902",
+      "Name": "Play_PortalLoop",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_PortalLoop",
+      "GUID": "{34EC08CA-2DA1-4F36-AC63-FFE9001D73A7}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "918805246"
+       }
+      ]
+     },
+     {
+      "Id": "2876792902",
+      "Name": "Play_PowerUp",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_PowerUp",
+      "GUID": "{AF4732E1-47FC-45EB-867A-113DE496CFD3}",
+      "DurationType": "OneShot",
+      "DurationMin": "1.002585",
+      "DurationMax": "1.002585",
+      "MediaRefs": [
+       {
+        "Id": "708394557"
+       }
+      ]
+     },
+     {
+      "Id": "3892153089",
+      "Name": "Play_Rock_Court_break",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Rock_Court_break",
+      "GUID": "{B0858A73-F6F8-4C83-9964-C89D9B07356D}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.7123478",
+      "DurationMax": "0.7123478",
+      "MediaRefs": [
+       {
+        "Id": "125850030"
+       }
+      ]
+     },
+     {
+      "Id": "3304061020",
+      "Name": "Play_SlipperyZone",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_SlipperyZone",
+      "GUID": "{701D645A-18EF-40C2-8610-02A45033DE2E}",
+      "DurationType": "OneShot",
+      "DurationMin": "6.1802573",
+      "DurationMax": "6.1802573",
+      "MediaRefs": [
+       {
+        "Id": "405855097"
+       }
+      ]
+     },
+     {
+      "Id": "2388547264",
+      "Name": "Stop_IcePlanet_wind",
+      "ObjectPath": "\\Events\\Default Work Unit\\Stop_IcePlanet_wind",
+      "GUID": "{4E760B24-0E42-4DBC-90F7-F7A98EB7DF3C}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "1877939597",
+      "Name": "Stop_IcePlanet_windStrong",
+      "ObjectPath": "\\Events\\Default Work Unit\\Stop_IcePlanet_windStrong",
+      "GUID": "{69D29566-5E52-40C2-ACAF-47D017CCE317}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "2716857772",
+      "Name": "Stop_LaserBeam",
+      "ObjectPath": "\\Events\\Default Work Unit\\Stop_LaserBeam",
+      "GUID": "{77120FA2-7837-44B7-9AD3-027E81258162}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "MediaRefs": [
+       {
+        "Id": "829230428"
+       }
+      ]
+     },
+     {
+      "Id": "890527358",
+      "Name": "Stop_MainMenu",
+      "ObjectPath": "\\Events\\Default Work Unit\\Stop_MainMenu",
+      "GUID": "{85E5E169-A49C-4AF6-ACC9-CA01FE64AABA}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "400375978",
+      "Name": "Stop_PlanetAmbience",
+      "ObjectPath": "\\Events\\Default Work Unit\\Stop_PlanetAmbience",
+      "GUID": "{930DBB5C-2D02-400E-A9FF-D3A2A90131C8}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "3243550908",
+      "Name": "Stop_PortalLoop",
+      "ObjectPath": "\\Events\\Default Work Unit\\Stop_PortalLoop",
+      "GUID": "{D1B62EC9-FA28-4D13-9C02-41F5460FD203}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "MediaRefs": [
+       {
+        "Id": "918805246"
+       }
+      ]
+     }
+    ],
+    "SwitchGroups": [
+     {
+      "Id": "1602519891",
+      "Name": "Planet",
+      "ObjectPath": "\\Switches\\Default Work Unit\\Planet",
+      "GUID": "{56717530-B744-44AC-B6FA-3E55FFFC2422}",
+      "Switches": [
+       {
+        "Id": "2936708068",
+        "Name": "RockPlanet",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Planet\\RockPlanet",
+        "GUID": "{40ED4980-5F02-4DB1-A1FE-CCFD6CEEB892}"
+       },
+       {
+        "Id": "3137043945",
+        "Name": "ScifiPlanet",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Planet\\ScifiPlanet",
+        "GUID": "{7DEAF0C8-26C6-4AE8-9F9A-89D441C5137B}"
+       },
+       {
+        "Id": "3397848309",
+        "Name": "LavaPlanet",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Planet\\LavaPlanet",
+        "GUID": "{4DF2C836-0EE2-4270-9B33-8A116241AB03}"
+       },
+       {
+        "Id": "3747705955",
+        "Name": "Earth",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Planet\\Earth",
+        "GUID": "{1E1BB8B9-7206-4DEA-891F-A90D78FFD5BB}"
+       },
+       {
+        "Id": "3892807504",
+        "Name": "IcePlanet",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Planet\\IcePlanet",
+        "GUID": "{31C82845-6BF7-4F31-A456-65031CA19D69}"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{8749CF9A-E68F-C368-639C-AF0AF56EC0EE}"
+ }
+}

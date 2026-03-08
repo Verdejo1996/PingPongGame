@@ -34,6 +34,8 @@ public class Game_Controller : MonoBehaviour
     public TextMeshProUGUI playerTextScore;
     public TextMeshProUGUI botTextScore;
     public TextMeshProUGUI gameText;
+    public TextMeshProUGUI rewardPaddleText;
+    public Image rewardPaddleIcon;
 
     //Agregado para mostrar como se juega
     private Dictionary<KeyCode, int> keyMap;
@@ -56,6 +58,8 @@ public class Game_Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        AudioManager.Instance.PlayPlanetAmbience();
+
         playerScore = 0;
         botScore = 0;
         totalPointsInRound = 0;
@@ -80,7 +84,11 @@ public class Game_Controller : MonoBehaviour
     void Update()
     {
         //Agregado para mostrar como se juega
-        ArrowsColors();
+        if(SceneManager.GetActiveScene().name == "Planet Earth")
+        {
+            ArrowsColors();
+
+        }
 
         PauseGame();
         playerTextScore.text = playerScore.ToString();
@@ -174,31 +182,43 @@ public class Game_Controller : MonoBehaviour
         endGame = true;
         //Debug.Log("Juego terminado: " + (playerScore > botScore ? "¡Ganaste!" : "Perdiste!"));
         gameText.text = playerScore > botScore ? "¡Ganaste!" : "¡Perdiste!";
-        if(playerScore > botScore)
+        if(gameText.text == "¡Ganaste!")
         {
-            UnlockManager.Instance.Unlock(SessionPlanet.Instance.SelectedPlanet.rewardPaddleId);
+            UnlockManager.Instance.Unlock(SessionPlanet.Instance.SelectedPlanet.rewardPaddle);
+            if (!SessionPlanet.Instance.SelectedPlanet.isTutorialPlanet)
+            {
+                rewardPaddleText.text = "Se desbloqueó " + SessionPlanet.Instance.SelectedPlanet.rewardPaddle.displayName;
+                rewardPaddleIcon.sprite = SessionPlanet.Instance.SelectedPlanet.rewardPaddle.icon;
+            }
+            Debug.Log("Se desbloqueó " + SessionPlanet.Instance.SelectedPlanet.rewardPaddle);
         }
         Time.timeScale = 0f;
         if(endGamePanel != null)
         {
+            AkUnitySoundEngine.StopAll(AudioManager.Instance.gameObject); ;
             endGamePanel.SetActive(true);
         }
     }
 
     public void RetryLevel()
     {
+        AudioManager.Instance.PlayPlanetAmbience();
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void GoToPlanetMenu()
     {
+        AudioManager.Instance.StopPlanetAmbience();
+        AudioManager.Instance.PlayMenuMusic();
         Time.timeScale = 1f;
         SceneManager.LoadScene("Planetary Map");
     }
 
     public void GoToMainMenu()
     {
+        AudioManager.Instance.StopPlanetAmbience();
+        AudioManager.Instance.PlayMenuMusic();
         Time.timeScale = 1f;
         SceneManager.LoadScene("Menu");
     }
@@ -225,6 +245,7 @@ public class Game_Controller : MonoBehaviour
 
     public void ReturnToMainMenu()
     {
+        AudioManager.Instance.StopPlanetAmbience();
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
     }

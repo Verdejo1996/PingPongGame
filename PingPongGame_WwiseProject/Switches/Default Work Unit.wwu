@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{5E9BDCC1-8E30-489E-86EE-8165D37CB498}" SchemaVersion="133">
+	<Switches>
+		<WorkUnit Name="Default Work Unit" ID="{5E9BDCC1-8E30-489E-86EE-8165D37CB498}" PersistMode="Standalone">
+			<ChildrenList>
+				<SwitchGroup Name="Planet" ID="{56717530-B744-44AC-B6FA-3E55FFFC2422}">
+					<ChildrenList>
+						<Switch Name="Earth" ID="{1E1BB8B9-7206-4DEA-891F-A90D78FFD5BB}"/>
+						<Switch Name="IcePlanet" ID="{31C82845-6BF7-4F31-A456-65031CA19D69}"/>
+						<Switch Name="LavaPlanet" ID="{4DF2C836-0EE2-4270-9B33-8A116241AB03}"/>
+						<Switch Name="ScifiPlanet" ID="{7DEAF0C8-26C6-4AE8-9F9A-89D441C5137B}"/>
+						<Switch Name="RockPlanet" ID="{40ED4980-5F02-4DB1-A1FE-CCFD6CEEB892}"/>
+					</ChildrenList>
+				</SwitchGroup>
+			</ChildrenList>
+		</WorkUnit>
+	</Switches>
+</WwiseDocument>

@@ -1,0 +1,52 @@
+Event	ID	Name			Wwise Object Path	Notes
+	67343902	Play_PortalLoop			\Default Work Unit\Play_PortalLoop	
+	121001441	Play_ping_pong_Ball			\Default Work Unit\Play_ping_pong_Ball	
+	400375978	Stop_PlanetAmbience			\Default Work Unit\Stop_PlanetAmbience	
+	705649494	Play_IcePlanet_wind			\Default Work Unit\Play_IcePlanet_wind	
+	890527358	Stop_MainMenu			\Default Work Unit\Stop_MainMenu	
+	1812178191	Play_IceSpike			\Default Work Unit\Play_IceSpike	
+	1872978256	Play_PortalJump			\Default Work Unit\Play_PortalJump	
+	1877939597	Stop_IcePlanet_windStrong			\Default Work Unit\Stop_IcePlanet_windStrong	
+	2211508764	Play_PlanetAmbience			\Default Work Unit\Play_PlanetAmbience	
+	2388547264	Stop_IcePlanet_wind			\Default Work Unit\Stop_IcePlanet_wind	
+	2661193006	Play_HitBall			\Default Work Unit\Play_HitBall	
+	2716857772	Stop_LaserBeam			\Default Work Unit\Stop_LaserBeam	
+	2863038395	Play_Geiser			\Default Work Unit\Play_Geiser	
+	2876792902	Play_PowerUp			\Default Work Unit\Play_PowerUp	
+	3243550908	Stop_PortalLoop			\Default Work Unit\Stop_PortalLoop	
+	3304061020	Play_SlipperyZone			\Default Work Unit\Play_SlipperyZone	
+	3470629207	Play_IcePlanet_windStrong			\Default Work Unit\Play_IcePlanet_windStrong	
+	3487680950	Play_LaserBeam			\Default Work Unit\Play_LaserBeam	
+	3738780720	Play_MainMenu			\Default Work Unit\Play_MainMenu	
+	3858448649	Play_Earthquake			\Default Work Unit\Play_Earthquake	
+	3892153089	Play_Rock_Court_break			\Default Work Unit\Play_Rock_Court_break	
+
+Switch Group	ID	Name			Wwise Object Path	Notes
+	1602519891	Planet			\Default Work Unit\Planet	
+
+Switch	ID	Name	Switch Group			Notes
+	2936708068	RockPlanet	Planet			
+	3137043945	ScifiPlanet	Planet			
+	3397848309	LavaPlanet	Planet			
+	3747705955	Earth	Planet			
+	3892807504	IcePlanet	Planet			
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	6368003	Portal-phase-jump	.cache\E1\{E19F434D-CEEA-86EF-CD8E-B664084628F3}.wem		\Containers\Default Work Unit\Portal-phase-jump		61852
+	125850030	Rock Court break	.cache\1A\{1A022746-B62E-3991-5AF7-FA792600155E}.wem		\Containers\Default Work Unit\Rock Court break		125756
+	188387387	IceSpike fall	.cache\B6\{B65D1648-04A6-2BD4-D1EE-2ACE1944A7D2}.wem		\Containers\Default Work Unit\IceSpike fall		447896
+	249053621	ping-pong-Ball	.cache\AA\{AA6987BC-E5D8-BBDF-2170-BBF4852B2405}.wem		\Containers\Default Work Unit\ping-pong-Ball		40248
+	249312283	MainMenu	.cache\62\{626D8B20-D049-7C4E-BB07-4AE491AC3CC9}.wem		\Containers\Default Work Unit\MainMenu		46661872
+	352474434	IcePlanet wind	.cache\F4\{F46B0B66-B5E2-7E3F-1406-EC7F192607E9}.wem		\Containers\Default Work Unit\PlanetAmbience\IcePlanet wind		23062656
+	355204527	Mud-volcanos-geiser	.cache\68\{68DA66E5-61E3-8114-90F3-C98EF4B733DB}.wem		\Containers\Default Work Unit\Mud-volcanos-geiser		526848
+	400099397	earthquakeSound	.cache\79\{797F56C1-D477-B3AF-A286-992977A0B1E4}.wem		\Containers\Default Work Unit\earthquakeSound		705696
+	405855097	Slippery generation	.cache\25\{25296E8A-61AF-A91C-AE6E-4C6930C918ED}.wem		\Containers\Default Work Unit\Slippery generation		1090292
+	484501718	ping-pong-sample	.cache\26\{26D3A021-D297-DEED-7B86-FDDC941952E2}.wem		\Containers\Default Work Unit\ping-pong-sample		45954
+	708394557	PowerUp	.cache\0B\{0BE607A6-4D59-1DDC-75FF-F1EDF68ADF1A}.wem		\Containers\Default Work Unit\PowerUp		176952
+	750100498	Sci-fi ambient	.cache\09\{09A9B56D-B633-02A2-E7F1-558628F120C2}.wem		\Containers\Default Work Unit\PlanetAmbience\Sci-fi ambient		29366840
+	766233903	lava-loop	.cache\0C\{0C0C9F6B-1BC7-2677-4306-23BF21228D4E}.wem		\Containers\Default Work Unit\PlanetAmbience\lava-loop		3840096
+	829230428	big-laser-beam	.cache\15\{150A6FD5-C01E-B4EB-B8B7-0A33B2AC4354}.wem		\Containers\Default Work Unit\big-laser-beam		602624
+	918805246	Portal_active Loop	.cache\3B\{3B7655F5-F7C5-B489-CFA8-8A754CD81825}.wem		\Containers\Default Work Unit\Portal_active Loop		352896
+	1012670866	IcePlanet windStrong	.cache\9B\{9BC28C6F-B024-F14D-D5BD-23569879BCAA}.wem		\Containers\Default Work Unit\IcePlanet windStrong		1344092
+	1064929131	Stone Ambient	.cache\66\{6663A293-C4F2-FA22-4404-DCB3E2E97B42}.wem		\Containers\Default Work Unit\PlanetAmbience\Stone Ambient		2654304
+

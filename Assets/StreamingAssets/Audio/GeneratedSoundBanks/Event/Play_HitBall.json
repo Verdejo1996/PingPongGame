@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "172",
+  "SoundBanks": [
+   {
+    "Id": "2661193006",
+    "Type": "Event",
+    "GUID": "{21220A62-A2DD-4F8E-8D8E-8C6A21FAB1B6}",
+    "Language": "SFX",
+    "Hash": "{F7847E58-D64F-C41C-D0F8-0750258B46B6}",
+    "ObjectPath": "Play_HitBall",
+    "ShortName": "Play_HitBall",
+    "Path": "Event/Play_HitBall.bnk",
+    "Media": [
+     {
+      "Id": "484501718",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "ping-pong-sample.wav",
+      "Path": "Media/484501718.wem",
+      "CachePath": "26/{26D3A021-D297-DEED-7B86-FDDC941952E2}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "2661193006",
+      "Name": "Play_HitBall",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_HitBall",
+      "GUID": "{21220A62-A2DD-4F8E-8D8E-8C6A21FAB1B6}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.51992595",
+      "DurationMax": "0.51992595",
+      "MediaRefs": [
+       {
+        "Id": "484501718"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{332FAAB7-1673-3765-8C2B-01FBD0657FCB}"
+ }
+}

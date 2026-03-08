@@ -6,9 +6,10 @@ using UnityEngine;
 public class PlanetData : ScriptableObject
 {
     public string nombre;
+    public string nombreWwise;
     [TextArea] public string descripcion;
     public string escenaDestino;
-    public string rewardPaddleId;
+    public PaddleDefinition rewardPaddle;
     public bool isAvailable;
     public bool isTutorialPlanet;
 }

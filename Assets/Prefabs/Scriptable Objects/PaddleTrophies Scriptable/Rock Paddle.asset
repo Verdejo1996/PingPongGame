@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: Rock
   displayName: Rock Paddle
-  prefab: {fileID: 2154030997488750444, guid: 06e17195eedf4d44494bf1ae19a7df77, type: 3}
   icon: {fileID: 21300000, guid: 16873c52ddbb61e469fadb93f44c98eb, type: 3}
-  unlockedByPlanetId: Rock Planet
+  visualPrefab: {fileID: 5826660577966412766, guid: c41bf7df9bfb7d142bb6b181c94054c0,
+    type: 3}
+  unlockedByDefault: 0

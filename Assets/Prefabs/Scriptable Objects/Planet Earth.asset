@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Planet Earth
   m_EditorClassIdentifier: 
   nombre: Earth
+  nombreWwise: Earth
   descripcion: 'Nivel tutorial.
 
     Haga click para entrar.'
   escenaDestino: Planet Earth
+  rewardPaddle: {fileID: 11400000, guid: 548212e7310ccab439eae1db37123a57, type: 2}
   isAvailable: 1
   isTutorialPlanet: 1

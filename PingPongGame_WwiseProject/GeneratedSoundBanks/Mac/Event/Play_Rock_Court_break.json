@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "172",
+  "SoundBanks": [
+   {
+    "Id": "3892153089",
+    "Type": "Event",
+    "GUID": "{54B30E78-B096-4185-BC10-7476E79EA3AE}",
+    "Language": "SFX",
+    "Hash": "{313AA5F2-246E-928F-C5B8-89A04A389FCE}",
+    "ObjectPath": "Play_Rock_Court_break",
+    "ShortName": "Play_Rock_Court_break",
+    "Path": "Event/Play_Rock_Court_break.bnk",
+    "Media": [
+     {
+      "Id": "125850030",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Rock Court break.wav",
+      "Path": "Media/125850030.wem",
+      "CachePath": "3A/{3A84E05C-3D92-CFAB-CF37-B3F42C03C573}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "3892153089",
+      "Name": "Play_Rock_Court_break",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Rock_Court_break",
+      "GUID": "{54B30E78-B096-4185-BC10-7476E79EA3AE}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.7123478",
+      "DurationMax": "0.7123478",
+      "MediaRefs": [
+       {
+        "Id": "125850030"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{0523DCC9-BD5B-CC38-1BD6-E6C12D4DD02C}"
+ }
+}

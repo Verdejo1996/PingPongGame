@@ -32,13 +32,13 @@ public class UI_Interaction : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         {
             //  Guardar planeta elegido en sesión
             SessionPlanet.Instance.SetPlanet(datos);
-
+            Debug.Log("Planeta elegido = " +  datos.nombre);
             //  Tierra tutorial: no se elige paleta
-            if (datos.isTutorialPlanet)
+/*            if (datos.isTutorialPlanet)
             {
                 LoadPlanetScene();
                 return;
-            }
+            }*/
 
             // Abrir panel de selección de paleta
             paddleSelectPanel.SetActive(true);
@@ -50,8 +50,23 @@ public class UI_Interaction : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         }
     }
 
+    private string GetPlanetSwitchName()
+    {
+        // Ajustá esto a tu PlanetData real (id, nombre, enum, etc.)
+        // IMPORTANTE: debe coincidir con el nombre del Switch en Wwise.
+        if (datos.isTutorialPlanet) return "Earth";
+
+        // Ejemplos típicos:
+        // return datos.nombreSwitchWwise;
+        // return datos.planetType.ToString();
+
+        return datos.nombreWwise; // solo si datos.nombre es EXACTAMENTE "IcePlanet", "LavaPlanet", etc.
+    }
+
     private void LoadPlanetScene()
     {
+        AudioManager.Instance.StopMenuMusic();
+        AudioManager.Instance.SetPlanetSwitch(GetPlanetSwitchName());
         // carga usando el fader si existe
         if (sceneFader != null)
             sceneFader.FadeToScene(datos.escenaDestino);

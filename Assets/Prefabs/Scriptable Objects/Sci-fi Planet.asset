@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a37bc37147a680a46a6249c689582afb, type: 3}
   m_Name: Sci-fi Planet
   m_EditorClassIdentifier: 
-  nombre: Sci-fi Planet
+  nombre: Quantic Planet
+  nombreWwise: ScifiPlanet
   descripcion: Haga click para entrar.
   escenaDestino: Sci-fi Planet
-  rewardPaddleId: Sci-fi Paddle
+  rewardPaddle: {fileID: 11400000, guid: 14db6aec01254b94a98519dbe81217de, type: 2}
   isAvailable: 1
   isTutorialPlanet: 0

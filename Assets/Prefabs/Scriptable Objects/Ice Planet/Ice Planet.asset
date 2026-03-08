@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Ice Planet
   m_EditorClassIdentifier: 
   nombre: Ice Planet
+  nombreWwise: IcePlanet
   descripcion: Haga click para entrar.
   escenaDestino: Ice Planet
-  rewardPaddleId: Ice Paddle
+  rewardPaddle: {fileID: 11400000, guid: 3114f2d90251c574bb78c9bda955990e, type: 2}
   isAvailable: 1
   isTutorialPlanet: 0

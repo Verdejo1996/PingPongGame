@@ -1,0 +1,296 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "172",
+  "SoundBanks": [
+   {
+    "Id": "4072029455",
+    "Type": "User",
+    "GUID": "{49FBC16F-B3A2-448D-99E3-A4871437B5B8}",
+    "Language": "SFX",
+    "Hash": "{FC7BB9F3-009C-DDC5-0B65-491ACF0C10D8}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\New_SoundBank",
+    "ShortName": "New_SoundBank",
+    "Path": "New_SoundBank.bnk",
+    "Media": [
+     {
+      "Id": "249053621",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "ping-pong-sample.wav",
+      "CachePath": "82/{82D523E5-C0DE-6B0F-E67E-2954AF59B077}.wem"
+     },
+     {
+      "Id": "249312283",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "MainMenu.wav",
+      "CachePath": "62/{626D8B20-D049-7C4E-BB07-4AE491AC3CC9}.wem"
+     },
+     {
+      "Id": "352474434",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "IcePlanet wind.wav",
+      "CachePath": "5E/{5EC7E67E-3128-DAF4-F4EF-F35321B576BB}.wem"
+     },
+     {
+      "Id": "746235173",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Rock Court break.wav",
+      "CachePath": "11/{11CD4C14-1E1C-375B-215B-0D087308ADE0}.wem"
+     },
+     {
+      "Id": "750100498",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Sci-fi ambient.wav",
+      "CachePath": "B9/{B93C33D6-D224-98EE-FA22-2DA16FF4F11B}.wem"
+     },
+     {
+      "Id": "766233903",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "lava-loop.wav",
+      "CachePath": "0C/{0C0C9F6B-1BC7-2677-4306-23BF21228D4E}.wem"
+     },
+     {
+      "Id": "1012670866",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "IcePlanet wind.wav",
+      "CachePath": "1F/{1FCA8E95-0636-BECE-B199-D35151DA929E}.wem"
+     },
+     {
+      "Id": "1064929131",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Stone Ambient.wav",
+      "CachePath": "66/{6663A293-C4F2-FA22-4404-DCB3E2E97B42}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "2661193006",
+      "Name": "Play_HitBall",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_HitBall",
+      "GUID": "{21220A62-A2DD-4F8E-8D8E-8C6A21FAB1B6}",
+      "DurationType": "OneShot",
+      "DurationMin": "4.20195",
+      "DurationMax": "4.20195",
+      "MediaRefs": [
+       {
+        "Id": "746235173"
+       }
+      ]
+     },
+     {
+      "Id": "705649494",
+      "Name": "Play_IcePlanet_wind",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_IcePlanet_wind",
+      "GUID": "{8BA70C91-DEA3-4EEC-AB7E-F993BA0DBF90}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "352474434"
+       }
+      ]
+     },
+     {
+      "Id": "3470629207",
+      "Name": "Play_IcePlanet_windStrong",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_IcePlanet_windStrong",
+      "GUID": "{99120E95-D131-48E3-ABC7-143A30F900C9}",
+      "DurationType": "OneShot",
+      "DurationMin": "7.0000043",
+      "DurationMax": "7.0000043",
+      "MediaRefs": [
+       {
+        "Id": "1012670866"
+       }
+      ]
+     },
+     {
+      "Id": "3738780720",
+      "Name": "Play_MainMenu",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_MainMenu",
+      "GUID": "{A3BE5E5E-68FF-43B9-88E1-D70C8C2F74D9}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "249312283"
+       }
+      ]
+     },
+     {
+      "Id": "121001441",
+      "Name": "Play_ping_pong_Ball",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_ping_pong_Ball",
+      "GUID": "{B6D33CAA-59D7-487F-905D-1E34071AF606}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.45523852",
+      "DurationMax": "0.45523852",
+      "MediaRefs": [
+       {
+        "Id": "249053621"
+       }
+      ]
+     },
+     {
+      "Id": "2211508764",
+      "Name": "Play_PlanetAmbience",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_PlanetAmbience",
+      "GUID": "{0D2B170B-B927-4809-9020-BD579F5E8E39}",
+      "DurationType": "Infinite",
+      "SwitchContainers": [
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "1602519891",
+         "Id": "3397848309",
+         "GUID": "{4DF2C836-0EE2-4270-9B33-8A116241AB03}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "766233903"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "1602519891",
+         "Id": "3892807504",
+         "GUID": "{31C82845-6BF7-4F31-A456-65031CA19D69}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "352474434"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "1602519891",
+         "Id": "2936708068",
+         "GUID": "{40ED4980-5F02-4DB1-A1FE-CCFD6CEEB892}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "1064929131"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "1602519891",
+         "Id": "3137043945",
+         "GUID": "{7DEAF0C8-26C6-4AE8-9F9A-89D441C5137B}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "750100498"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "Id": "2388547264",
+      "Name": "Stop_IcePlanet_wind",
+      "ObjectPath": "\\Events\\Default Work Unit\\Stop_IcePlanet_wind",
+      "GUID": "{4E760B24-0E42-4DBC-90F7-F7A98EB7DF3C}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "1877939597",
+      "Name": "Stop_IcePlanet_windStrong",
+      "ObjectPath": "\\Events\\Default Work Unit\\Stop_IcePlanet_windStrong",
+      "GUID": "{69D29566-5E52-40C2-ACAF-47D017CCE317}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "890527358",
+      "Name": "Stop_MainMenu",
+      "ObjectPath": "\\Events\\Default Work Unit\\Stop_MainMenu",
+      "GUID": "{85E5E169-A49C-4AF6-ACC9-CA01FE64AABA}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
+     {
+      "Id": "400375978",
+      "Name": "Stop_PlanetAmbience",
+      "ObjectPath": "\\Events\\Default Work Unit\\Stop_PlanetAmbience",
+      "GUID": "{930DBB5C-2D02-400E-A9FF-D3A2A90131C8}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     }
+    ],
+    "SwitchGroups": [
+     {
+      "Id": "1602519891",
+      "Name": "Planet",
+      "ObjectPath": "\\Switches\\Default Work Unit\\Planet",
+      "GUID": "{56717530-B744-44AC-B6FA-3E55FFFC2422}",
+      "Switches": [
+       {
+        "Id": "2936708068",
+        "Name": "RockPlanet",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Planet\\RockPlanet",
+        "GUID": "{40ED4980-5F02-4DB1-A1FE-CCFD6CEEB892}"
+       },
+       {
+        "Id": "3137043945",
+        "Name": "ScifiPlanet",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Planet\\ScifiPlanet",
+        "GUID": "{7DEAF0C8-26C6-4AE8-9F9A-89D441C5137B}"
+       },
+       {
+        "Id": "3397848309",
+        "Name": "LavaPlanet",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Planet\\LavaPlanet",
+        "GUID": "{4DF2C836-0EE2-4270-9B33-8A116241AB03}"
+       },
+       {
+        "Id": "3747705955",
+        "Name": "Earth",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Planet\\Earth",
+        "GUID": "{1E1BB8B9-7206-4DEA-891F-A90D78FFD5BB}"
+       },
+       {
+        "Id": "3892807504",
+        "Name": "IcePlanet",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Planet\\IcePlanet",
+        "GUID": "{31C82845-6BF7-4F31-A456-65031CA19D69}"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{58FEFB9E-AECA-FC99-5041-ECC042CBE1BA}"
+ }
+}

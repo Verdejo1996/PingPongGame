@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{1FA25C5A-AFB5-4415-B665-6BA0F80C3936}" SchemaVersion="133">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{1FA25C5A-AFB5-4415-B665-6BA0F80C3936}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="Play_MainMenu" ID="{A3BE5E5E-68FF-43B9-88E1-D70C8C2F74D9}">
+					<ChildrenList>
+						<Action Name="" ID="{29E75274-5DC1-4DD9-826F-39F89E50FC67}" ShortID="170132667">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MainMenu" ID="{3ABCC689-FEE0-419D-99F8-C4C715FD6896}" WorkUnitID="{E16AF8E3-B9CD-4719-8A99-9AEB021C1E4F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_MainMenu" ID="{85E5E169-A49C-4AF6-ACC9-CA01FE64AABA}">
+					<ChildrenList>
+						<Action Name="" ID="{AD7737A6-1077-443E-AB90-5755029A39A9}" ShortID="541411714">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MainMenu" ID="{3ABCC689-FEE0-419D-99F8-C4C715FD6896}" WorkUnitID="{E16AF8E3-B9CD-4719-8A99-9AEB021C1E4F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_HitBall" ID="{21220A62-A2DD-4F8E-8D8E-8C6A21FAB1B6}">
+					<ChildrenList>
+						<Action Name="" ID="{8C202006-C77B-430D-B27C-0F1FE60D7398}" ShortID="646979752">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ping-pong-sample" ID="{D202715C-B828-4B73-AD8D-CD4D308290AA}" WorkUnitID="{E16AF8E3-B9CD-4719-8A99-9AEB021C1E4F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_ping_pong_Ball" ID="{B6D33CAA-59D7-487F-905D-1E34071AF606}">
+					<ChildrenList>
+						<Action Name="" ID="{8E3C01FF-7C36-4B7D-BFA5-6E99355005DA}" ShortID="375387037">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ping-pong-Ball" ID="{0D5A87DB-BC00-4743-A77C-8804C18C479A}" WorkUnitID="{E16AF8E3-B9CD-4719-8A99-9AEB021C1E4F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_IcePlanet_wind" ID="{8BA70C91-DEA3-4EEC-AB7E-F993BA0DBF90}">
+					<ChildrenList>
+						<Action Name="" ID="{324C0A4D-68C0-41CC-8995-50D143219948}" ShortID="883148202">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="IcePlanet wind" ID="{EA6B053A-E0BC-4511-BA27-A50D9D31B5E5}" WorkUnitID="{E16AF8E3-B9CD-4719-8A99-9AEB021C1E4F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_IcePlanet_wind" ID="{4E760B24-0E42-4DBC-90F7-F7A98EB7DF3C}">
+					<ChildrenList>
+						<Action Name="" ID="{CF2A832A-7BEB-4958-95DA-4709968D024C}" ShortID="675388124">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="IcePlanet wind" ID="{EA6B053A-E0BC-4511-BA27-A50D9D31B5E5}" WorkUnitID="{E16AF8E3-B9CD-4719-8A99-9AEB021C1E4F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_IcePlanet_windStrong" ID="{99120E95-D131-48E3-ABC7-143A30F900C9}">
+					<ChildrenList>
+						<Action Name="" ID="{56F0AB5E-9BDF-4F32-BCD6-9A77FB2C0CB9}" ShortID="662611324">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="IcePlanet windStrong" ID="{2EB16AF9-D175-473B-AFDA-8BC02992B139}" WorkUnitID="{E16AF8E3-B9CD-4719-8A99-9AEB021C1E4F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_IcePlanet_windStrong" ID="{69D29566-5E52-40C2-ACAF-47D017CCE317}">
+					<ChildrenList>
+						<Action Name="" ID="{C1D81218-CD99-4B99-8489-60A563A6A2F8}" ShortID="1057978353">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="IcePlanet windStrong" ID="{2EB16AF9-D175-473B-AFDA-8BC02992B139}" WorkUnitID="{E16AF8E3-B9CD-4719-8A99-9AEB021C1E4F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_PlanetAmbience" ID="{0D2B170B-B927-4809-9020-BD579F5E8E39}">
+					<ChildrenList>
+						<Action Name="" ID="{9C4A4546-E596-44BD-94D3-9440DEB2D599}" ShortID="392088537">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="PlanetAmbience" ID="{8FB082DA-CDC1-46B1-A992-BC8282294302}" WorkUnitID="{E16AF8E3-B9CD-4719-8A99-9AEB021C1E4F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_PlanetAmbience" ID="{930DBB5C-2D02-400E-A9FF-D3A2A90131C8}">
+					<ChildrenList>
+						<Action Name="" ID="{92B0B5D3-B0BB-4AC3-B34B-6FDB7397B876}" ShortID="546547857">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="PlanetAmbience" ID="{8FB082DA-CDC1-46B1-A992-BC8282294302}" WorkUnitID="{E16AF8E3-B9CD-4719-8A99-9AEB021C1E4F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Rock_Court_break" ID="{B0858A73-F6F8-4C83-9964-C89D9B07356D}">
+					<ChildrenList>
+						<Action Name="" ID="{436760B3-B3E3-4F35-9695-E42F94A3F72F}" ShortID="1058148777">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Rock Court break" ID="{17E6FAC8-9AC4-452D-A4FE-FE6EDAD35EFE}" WorkUnitID="{E16AF8E3-B9CD-4719-8A99-9AEB021C1E4F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_SlipperyZone" ID="{701D645A-18EF-40C2-8610-02A45033DE2E}">
+					<ChildrenList>
+						<Action Name="" ID="{768CEBCB-30E8-423F-9E77-70F568B56287}" ShortID="890706545">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Slippery generation" ID="{DF3F3A22-D7E5-4D49-AF0E-55B70E27E17E}" WorkUnitID="{E16AF8E3-B9CD-4719-8A99-9AEB021C1E4F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_IceSpike" ID="{FC5A23D3-4531-43A3-8242-026D8BEB66F6}">
+					<ChildrenList>
+						<Action Name="" ID="{3CACDF38-80D2-4B30-9569-4A57811B218C}" ShortID="1054312650">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="IceSpike fall" ID="{ECEABBC3-FF55-4526-BDBF-3B8AF8A4BBDF}" WorkUnitID="{E16AF8E3-B9CD-4719-8A99-9AEB021C1E4F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_PowerUp" ID="{AF4732E1-47FC-45EB-867A-113DE496CFD3}">
+					<ChildrenList>
+						<Action Name="" ID="{4CB31B33-57EF-4022-88C9-B666B11442BE}" ShortID="207834379">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="PowerUp" ID="{DEC2E6F2-6820-4CB2-84BB-CF2D614B02C9}" WorkUnitID="{E16AF8E3-B9CD-4719-8A99-9AEB021C1E4F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_PortalLoop" ID="{34EC08CA-2DA1-4F36-AC63-FFE9001D73A7}">
+					<ChildrenList>
+						<Action Name="" ID="{684D27C4-1387-4B8B-B702-5E1A0A40B42F}" ShortID="584870012">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Portal_active Loop" ID="{F14DE3A1-071B-4A83-88A3-4E63355D4FB4}" WorkUnitID="{E16AF8E3-B9CD-4719-8A99-9AEB021C1E4F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_PortalLoop" ID="{D1B62EC9-FA28-4D13-9C02-41F5460FD203}">
+					<ChildrenList>
+						<Action Name="" ID="{D2A83A1B-AE47-41C0-81ED-1BCCAD7B92C4}" ShortID="877238372">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Portal_active Loop" ID="{F14DE3A1-071B-4A83-88A3-4E63355D4FB4}" WorkUnitID="{E16AF8E3-B9CD-4719-8A99-9AEB021C1E4F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_PortalJump" ID="{51083BDD-34BE-475B-9233-1181435FDB27}">
+					<ChildrenList>
+						<Action Name="" ID="{0E467B88-35EB-410B-AC6A-F096F20D5E1A}" ShortID="806846313">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Portal-phase-jump" ID="{A56988F0-2E8B-4E71-A1B6-282155F79F3E}" WorkUnitID="{E16AF8E3-B9CD-4719-8A99-9AEB021C1E4F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_LaserBeam" ID="{F9CEAA0A-BAB2-4A0B-B518-8695139D3184}">
+					<ChildrenList>
+						<Action Name="" ID="{D38BCE02-BF85-4A8A-835A-04F96114CD48}" ShortID="834297569">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="big-laser-beam" ID="{466FF4C5-914B-4828-9D3B-888F737BA6A5}" WorkUnitID="{E16AF8E3-B9CD-4719-8A99-9AEB021C1E4F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_LaserBeam" ID="{77120FA2-7837-44B7-9AD3-027E81258162}">
+					<ChildrenList>
+						<Action Name="" ID="{22E389C1-BDBA-40D8-B688-259E016E8A24}" ShortID="723280142">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="big-laser-beam" ID="{466FF4C5-914B-4828-9D3B-888F737BA6A5}" WorkUnitID="{E16AF8E3-B9CD-4719-8A99-9AEB021C1E4F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Earthquake" ID="{C2B1BD1C-8203-45E6-9C13-6ABABBAEE79A}">
+					<ChildrenList>
+						<Action Name="" ID="{83CB98F6-8006-4BAB-8D80-6D1948C2682D}" ShortID="512473561">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="earthquakeSound" ID="{913409E6-B643-4076-B89B-BDE48E532CFB}" WorkUnitID="{E16AF8E3-B9CD-4719-8A99-9AEB021C1E4F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Geiser" ID="{7CE33256-8A80-4733-83CC-8FD4E39ED1F8}">
+					<ChildrenList>
+						<Action Name="" ID="{393E46B6-1A40-4DF4-8A64-EC82CCEC2B0A}" ShortID="228300329">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Mud-volcanos-geiser" ID="{9A93F0FA-E6D9-4E41-89A5-BAAB8FA03D5E}" WorkUnitID="{E16AF8E3-B9CD-4719-8A99-9AEB021C1E4F}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

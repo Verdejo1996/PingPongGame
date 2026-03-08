@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{732D4DA1-2964-4E4C-A980-B69F860EAFFC}" SchemaVersion="133">
+	<SoundBanks>
+		<WorkUnit Name="Default Work Unit" ID="{732D4DA1-2964-4E4C-A980-B69F860EAFFC}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="New_SoundBank" ID="{49FBC16F-B3A2-448D-99E3-A4871437B5B8}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Stop_PlanetAmbience" ID="{930DBB5C-2D02-400E-A9FF-D3A2A90131C8}" WorkUnitID="{1FA25C5A-AFB5-4415-B665-6BA0F80C3936}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_SlipperyZone" ID="{701D645A-18EF-40C2-8610-02A45033DE2E}" WorkUnitID="{1FA25C5A-AFB5-4415-B665-6BA0F80C3936}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Stop_IcePlanet_windStrong" ID="{69D29566-5E52-40C2-ACAF-47D017CCE317}" WorkUnitID="{1FA25C5A-AFB5-4415-B665-6BA0F80C3936}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_IceSpike" ID="{FC5A23D3-4531-43A3-8242-026D8BEB66F6}" WorkUnitID="{1FA25C5A-AFB5-4415-B665-6BA0F80C3936}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_MainMenu" ID="{A3BE5E5E-68FF-43B9-88E1-D70C8C2F74D9}" WorkUnitID="{1FA25C5A-AFB5-4415-B665-6BA0F80C3936}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Stop_LaserBeam" ID="{77120FA2-7837-44B7-9AD3-027E81258162}" WorkUnitID="{1FA25C5A-AFB5-4415-B665-6BA0F80C3936}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Earthquake" ID="{C2B1BD1C-8203-45E6-9C13-6ABABBAEE79A}" WorkUnitID="{1FA25C5A-AFB5-4415-B665-6BA0F80C3936}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_PowerUp" ID="{AF4732E1-47FC-45EB-867A-113DE496CFD3}" WorkUnitID="{1FA25C5A-AFB5-4415-B665-6BA0F80C3936}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Geiser" ID="{7CE33256-8A80-4733-83CC-8FD4E39ED1F8}" WorkUnitID="{1FA25C5A-AFB5-4415-B665-6BA0F80C3936}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="ping-pong-Ball" ID="{0D5A87DB-BC00-4743-A77C-8804C18C479A}" WorkUnitID="{E16AF8E3-B9CD-4719-8A99-9AEB021C1E4F}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_PlanetAmbience" ID="{0D2B170B-B927-4809-9020-BD579F5E8E39}" WorkUnitID="{1FA25C5A-AFB5-4415-B665-6BA0F80C3936}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="big-laser-beam" ID="{466FF4C5-914B-4828-9D3B-888F737BA6A5}" WorkUnitID="{E16AF8E3-B9CD-4719-8A99-9AEB021C1E4F}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_IcePlanet_windStrong" ID="{99120E95-D131-48E3-ABC7-143A30F900C9}" WorkUnitID="{1FA25C5A-AFB5-4415-B665-6BA0F80C3936}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Portal_active Loop" ID="{F14DE3A1-071B-4A83-88A3-4E63355D4FB4}" WorkUnitID="{E16AF8E3-B9CD-4719-8A99-9AEB021C1E4F}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Stop_MainMenu" ID="{85E5E169-A49C-4AF6-ACC9-CA01FE64AABA}" WorkUnitID="{1FA25C5A-AFB5-4415-B665-6BA0F80C3936}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Rock_Court_break" ID="{B0858A73-F6F8-4C83-9964-C89D9B07356D}" WorkUnitID="{1FA25C5A-AFB5-4415-B665-6BA0F80C3936}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Stop_IcePlanet_wind" ID="{4E760B24-0E42-4DBC-90F7-F7A98EB7DF3C}" WorkUnitID="{1FA25C5A-AFB5-4415-B665-6BA0F80C3936}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Portal-phase-jump" ID="{A56988F0-2E8B-4E71-A1B6-282155F79F3E}" WorkUnitID="{E16AF8E3-B9CD-4719-8A99-9AEB021C1E4F}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_IcePlanet_wind" ID="{8BA70C91-DEA3-4EEC-AB7E-F993BA0DBF90}" WorkUnitID="{1FA25C5A-AFB5-4415-B665-6BA0F80C3936}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_HitBall" ID="{21220A62-A2DD-4F8E-8D8E-8C6A21FAB1B6}" WorkUnitID="{1FA25C5A-AFB5-4415-B665-6BA0F80C3936}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundBanks>
+</WwiseDocument>

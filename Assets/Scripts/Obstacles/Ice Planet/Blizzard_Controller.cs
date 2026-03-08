@@ -21,6 +21,7 @@ public class Blizzard_Controller : MonoBehaviour
 
     void StartBlizzard()
     {
+        AudioManager.Instance.PlayIceBlizzard();
         StartCoroutine(BlizzardRoutine());
     }
 

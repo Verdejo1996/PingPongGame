@@ -28,6 +28,7 @@ public class IceSpike : MonoBehaviour
         //if (stuck) return;
         if (collision.gameObject.CompareTag("tablePlayer"))
         {
+            AudioManager.Instance.PlayiceSpike();
             //stuck = true;
             GetComponent<Rigidbody>().isKinematic = true;
             //transform.position = collision.contacts[0].point;
@@ -43,6 +44,7 @@ public class IceSpike : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Ball"))
         {
+            AudioManager.Instance.PlayiceSpike();
             Rigidbody ballRb = collision.collider.GetComponent<Rigidbody>();
             if (ballRb != null)
             {
@@ -53,6 +55,7 @@ public class IceSpike : MonoBehaviour
         }
         else
         {
+            AudioManager.Instance.PlayiceSpike();
             //stuck = true;
             GetComponent<Rigidbody>().isKinematic = true;
             //transform.position = collision.contacts[0].point;
@@ -72,6 +75,7 @@ public class IceSpike : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            AudioManager.Instance.PlayiceSpike();
             if (other.TryGetComponent<PlayerHit_Controller>(out var player))
                 player.ApplySlowEffect(2f);
 

@@ -43,5 +43,7 @@ public class CubeBreak : MonoBehaviour
         // Devuelve el cubo al Object Pool después de que haya caído
         ObjectPool pool = FindObjectOfType<ObjectPool>();
         pool.ReturnCube(gameObject);
+
+        AudioManager.Instance.BreakCourt();
     }
 }

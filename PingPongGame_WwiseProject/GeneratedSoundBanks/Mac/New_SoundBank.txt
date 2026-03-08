@@ -1,0 +1,32 @@
+Event	ID	Name			Wwise Object Path	Notes
+	121001441	Play_ping_pong_Ball			\Default Work Unit\Play_ping_pong_Ball	
+	400375978	Stop_PlanetAmbience			\Default Work Unit\Stop_PlanetAmbience	
+	705649494	Play_IcePlanet_wind			\Default Work Unit\Play_IcePlanet_wind	
+	890527358	Stop_MainMenu			\Default Work Unit\Stop_MainMenu	
+	1877939597	Stop_IcePlanet_windStrong			\Default Work Unit\Stop_IcePlanet_windStrong	
+	2211508764	Play_PlanetAmbience			\Default Work Unit\Play_PlanetAmbience	
+	2388547264	Stop_IcePlanet_wind			\Default Work Unit\Stop_IcePlanet_wind	
+	2661193006	Play_HitBall			\Default Work Unit\Play_HitBall	
+	3470629207	Play_IcePlanet_windStrong			\Default Work Unit\Play_IcePlanet_windStrong	
+	3738780720	Play_MainMenu			\Default Work Unit\Play_MainMenu	
+
+Switch Group	ID	Name			Wwise Object Path	Notes
+	1602519891	Planet			\Default Work Unit\Planet	
+
+Switch	ID	Name	Switch Group			Notes
+	2936708068	RockPlanet	Planet			
+	3137043945	ScifiPlanet	Planet			
+	3397848309	LavaPlanet	Planet			
+	3747705955	Earth	Planet			
+	3892807504	IcePlanet	Planet			
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	249053621	ping-pong-Ball	.cache\82\{82D523E5-C0DE-6B0F-E67E-2954AF59B077}.wem		\Containers\Default Work Unit\ping-pong-Ball		40248
+	249312283	MainMenu	.cache\62\{626D8B20-D049-7C4E-BB07-4AE491AC3CC9}.wem		\Containers\Default Work Unit\MainMenu		46661872
+	352474434	IcePlanet wind	.cache\5E\{5EC7E67E-3128-DAF4-F4EF-F35321B576BB}.wem		\Containers\Default Work Unit\PlanetAmbience\IcePlanet wind		23062656
+	746235173	ping-pong-sample	.cache\11\{11CD4C14-1E1C-375B-215B-0D087308ADE0}.wem		\Containers\Default Work Unit\ping-pong-sample		741320
+	750100498	Sci-fi ambient	.cache\B9\{B93C33D6-D224-98EE-FA22-2DA16FF4F11B}.wem		\Containers\Default Work Unit\PlanetAmbience\Sci-fi ambient		29366840
+	766233903	lava-loop	.cache\0C\{0C0C9F6B-1BC7-2677-4306-23BF21228D4E}.wem		\Containers\Default Work Unit\PlanetAmbience\lava-loop		3840096
+	1012670866	IcePlanet windStrong	.cache\1F\{1FCA8E95-0636-BECE-B199-D35151DA929E}.wem		\Containers\Default Work Unit\IcePlanet windStrong		1344092
+	1064929131	Stone Ambient	.cache\66\{6663A293-C4F2-FA22-4404-DCB3E2E97B42}.wem		\Containers\Default Work Unit\PlanetAmbience\Stone Ambient		2654304
+

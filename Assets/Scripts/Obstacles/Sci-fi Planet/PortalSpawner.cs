@@ -37,6 +37,8 @@ public class PortalSpawner : MonoBehaviour
 
     void SpawnPortals()
     {
+        AudioManager.Instance.PlayPortalLoop();
+
         if (spawnPoints.Length < 2) return;
 
         List<int> availableIndexes = new List<int>();
@@ -58,6 +60,7 @@ public class PortalSpawner : MonoBehaviour
 
     void DestroyPortals()
     {
+        AudioManager.Instance.StopPortalLoop();
         if (entryPortal != null) Destroy(entryPortal);
         if (exitPortal != null) Destroy(exitPortal);
     }
