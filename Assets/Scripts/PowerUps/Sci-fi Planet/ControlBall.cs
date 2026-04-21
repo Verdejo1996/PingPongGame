@@ -22,28 +22,29 @@ public class ControlBall : Base_PowerUp
         float elapsed = -1f;
         Rigidbody rb = ball.GetComponent<Rigidbody>();
 
-
-        while (elapsed < duration)
+        if (Game_Controller.Instance.lastHitter == "Player" && Game_Controller.Instance.playing)
         {
-            ball.ActiveEffectControl();
-            Vector3 force = Vector3.zero;
-
-            if (Game_Controller.Instance.lastHitter == "Player")
+            while (elapsed < duration)
             {
-                if (Input.GetKey(KeyCode.LeftArrow)) force += Vector3.left;
-                if (Input.GetKey(KeyCode.RightArrow)) force += Vector3.right;
-                if (Input.GetKey(KeyCode.UpArrow)) force += Vector3.forward;
-                if (Input.GetKey(KeyCode.DownArrow)) force += -Vector3.back;
-            }
+                ball.ActiveEffectControl();
+                Vector3 force = Vector3.zero;
 
-            if (force != Vector3.zero)
-            {
-                rb.AddForce(force.normalized * controlForce, ForceMode.Acceleration);
-            }
 
-            elapsed += Time.deltaTime;
-            yield return null;
+                    if (Input.GetKey(KeyCode.LeftArrow)) force += Vector3.left;
+                    if (Input.GetKey(KeyCode.RightArrow)) force += Vector3.right;
+                    if (Input.GetKey(KeyCode.UpArrow)) force += Vector3.forward;
+                    if (Input.GetKey(KeyCode.DownArrow)) force += -Vector3.back;
+                
+
+                if (force != Vector3.zero)
+                {
+                    rb.AddForce(force.normalized * controlForce, ForceMode.Acceleration);
+                }
+
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
+            ball.DeactivateEffectControl();
         }
-        ball.DeactivateEffectControl();
     }
 }

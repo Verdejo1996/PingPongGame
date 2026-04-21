@@ -147,6 +147,11 @@ public class Game_Controller : MonoBehaviour
         iaGameObject.Serve();
     }
 
+    public void ResetLastHitter()
+    {
+        lastHitter = "";
+    }
+
 
     void ChangeServer()
     {

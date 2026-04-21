@@ -102,6 +102,9 @@ MonoBehaviour:
   ballRb: {fileID: 0}
   ballGameObject: {fileID: 0}
   speed: 6
+  slipperyFactor: 3
+  minZ: 5.8
+  maxZ: 8
   aimTarget: {fileID: 0}
   targets:
   - {fileID: 0}
@@ -112,6 +115,8 @@ MonoBehaviour:
   - {fileID: 0}
   anticipationDelay: 0.2
   reactionTimer: 0
+  isSlippery: 0
+  smoothTime: 0.2
 --- !u!114 &2345419412843406555
 MonoBehaviour:
   m_ObjectHideFlags: 0

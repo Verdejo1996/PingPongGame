@@ -12,6 +12,9 @@ public class Ball : MonoBehaviour
     public ObjectPool poolBot;
     //public ParticleSystem effectControlBall;
     [SerializeField] private GameObject lavaAreaPrefab;
+    private int playerBounceCount = 0;
+    private int botBounceCount = 0;
+    private string lastTableSide = ""; // "Player" o "Bot"
 
     [Header("Banderas")]
     public bool bounceTable = false;
@@ -90,65 +93,116 @@ public class Ball : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        #region
-        //RockPlanet
-        if (collision.gameObject.CompareTag("RockCourtPlayer") || collision.gameObject.CompareTag("RockCourtBot"))
+        #region RockPlanet
+
+        if (collision.gameObject.CompareTag("RockCourtPlayer"))
         {
             hasTouchedTable = true;
+            lastTableSide = "Player";
+            playerBounceCount++;
+            botBounceCount = 0;
+
+            if (controller.currentServer == "Bot")
+                validServe = true;
+
+            if (playerBounceCount >= 3)
+            {
+                EndPointToLastHitter("Punto para el último golpeador: 3 piques en campo Player");
+                return;
+            }
         }
-        if (collision.gameObject.CompareTag("RockCourtBot") && controller.currentServer == "Player")
+
+        if (collision.gameObject.CompareTag("RockCourtBot"))
         {
-            validServe = true;
+            hasTouchedTable = true;
+            lastTableSide = "Bot";
+            botBounceCount++;
+            playerBounceCount = 0;
+
+            if (controller.currentServer == "Player")
+                validServe = true;
+
+            if (botBounceCount >= 3)
+            {
+                EndPointToLastHitter("Punto para el último golpeador: 3 piques en campo Bot");
+                return;
+            }
         }
-        if (collision.gameObject.CompareTag("RockCourtPlayer") && controller.currentServer == "Bot")
-        {
-            validServe = true;
-        }
+
         #endregion
+
+        if (collision.gameObject.CompareTag("tablePlayer"))
+        {
+            hasTouchedTable = true;
+            lastTableSide = "Player";
+            playerBounceCount++;
+            botBounceCount = 0;
+
+            if (controller.currentServer == "Bot")
+                validServe = true;
+
+            if (playerBounceCount >= 3)
+            {
+                EndPointToLastHitter("Punto para el último golpeador: 3 piques en tablePlayer");
+                return;
+            }
+        }
+
+        if (collision.gameObject.CompareTag("tableBot"))
+        {
+            hasTouchedTable = true;
+            lastTableSide = "Bot";
+            botBounceCount++;
+            playerBounceCount = 0;
+
+            if (controller.currentServer == "Player")
+                validServe = true;
+
+            if (botBounceCount >= 3)
+            {
+                EndPointToLastHitter("Punto para el último golpeador: 3 piques en tableBot");
+                return;
+            }
+        }
+
         if (collision.gameObject.CompareTag("Wall"))
         {
             controller.playing = false;
             GetComponent<Rigidbody>().velocity = Vector3.zero;
             GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+
             Debug.Log(hasTouchedTable);
             Debug.Log(hitNetLast);
             Debug.Log(validServe);
             Debug.Log("Golpe por " + lastHitterAfterTable);
+
             if (!controller.endGame)
             {
                 ScoreValidation();
                 ResetState();
-                //poolPlayer.ResetTable();
-                //poolBot.ResetTable();
             }
         }
-        if (collision.gameObject.CompareTag("tableBot") && controller.currentServer == "Player")
-        {
-            validServe = true;
-        }
-        if (collision.gameObject.CompareTag("tablePlayer") && controller.currentServer == "Bot")
-        {
-            validServe = true;
-        }
+
         if (collision.gameObject.CompareTag("Net"))
         {
             hitNetLast = true;
-
         }
-        if(hitNetLast)
+
+        if (hitNetLast)
         {
             if ((collision.gameObject.CompareTag("tableBot") || collision.gameObject.CompareTag("RockCourtBot"))
                 && controller.lastHitter == "Player")
             {
                 tableAfterNet = true;
             }
-            else if((collision.gameObject.CompareTag("tablePlayer") || collision.gameObject.CompareTag("RockCourtPlayer"))
+            else if ((collision.gameObject.CompareTag("tablePlayer") || collision.gameObject.CompareTag("RockCourtPlayer"))
                 && controller.lastHitter == "Bot")
             {
                 tableAfterNet = true;
             }
         }
-        if(isLavaActive && collision.gameObject.CompareTag("tableBot"))
+
+        if (isLavaActive && collision.gameObject.CompareTag("tableBot"))
         {
             ContactPoint contact = collision.contacts[0];
             Instantiate(lavaAreaPrefab, contact.point + new Vector3(0, 1, 4), Quaternion.identity);
@@ -228,17 +282,65 @@ public class Ball : MonoBehaviour
         }
     }
 
+    void EndPointToLastHitter(string reason)
+    {
+        controller.playing = false;
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+
+        Debug.Log(reason);
+
+        if (!controller.endGame)
+        {
+            controller.AddPointToLastHitter();
+            ResetState();
+        }
+    }
+
+    void EndPointToOpponent(string reason)
+    {
+        controller.playing = false;
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+
+        Debug.Log(reason);
+
+        if (!controller.endGame)
+        {
+            controller.AddPointToOpponent();
+            ResetState();
+        }
+    }
+
     //Registramos al ultimo en golpear la pelota.
     public void RegisterHit(string hitterTag)
     {
-        controller.UpdateLastHitter(hitterTag);
-
-        if (hasTouchedTable || !hasTouchedTable)
+        // Si todavía no hubo pique en mesa, no validar volea
+        if (lastTableSide == "")
         {
+            controller.UpdateLastHitter(hitterTag);
             lastHitterAfterTable = hitterTag;
+            hitNetLast = false;
+            return;
         }
 
-        hitNetLast = false; // Si un jugador la golpea después de la red, ya no cuenta como fallo
+        // VOLEA DEL PLAYER
+        if (hitterTag == "Player" && controller.lastHitter == "Bot" && lastTableSide != "Player")
+        {
+            EndPointToLastHitter("Punto para Bot: Player golpeó de volea");
+            return;
+        }
+
+        // VOLEA DEL BOT
+        if (hitterTag == "Bot" && controller.lastHitter == "Player" && lastTableSide != "Bot")
+        {
+            EndPointToLastHitter("Punto para Player: Bot golpeó de volea");
+            return;
+        }
+
+        controller.UpdateLastHitter(hitterTag);
+        lastHitterAfterTable = hitterTag;
+        hitNetLast = false;
     }
 
     //Reseteamos el estado de la pelota.
@@ -249,6 +351,12 @@ public class Ball : MonoBehaviour
         lastHitterAfterTable = "";
         validServe = false;
         tableAfterNet = false;
+
+        playerBounceCount = 0;
+        botBounceCount = 0;
+        lastTableSide = "";
+
+        controller.ResetLastHitter();
     }
 
     public void ActiveEffectControl()
