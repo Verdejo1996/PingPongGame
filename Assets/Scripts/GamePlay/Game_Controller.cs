@@ -129,6 +129,7 @@ public class Game_Controller : MonoBehaviour
     {
         if (currentServer == "Player" && !playing)
         {
+            playerHitController.ResetServe();
             ball.SetServePosition(playerHitController.transform.position); // Ajusta la posición para el jugador
             ball.GetComponent<Rigidbody>().useGravity = false;
         }

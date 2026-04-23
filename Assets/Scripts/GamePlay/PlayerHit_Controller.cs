@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -48,8 +47,11 @@ public class PlayerHit_Controller : MonoBehaviour
     [SerializeField] float frequency = 2f;    // La frecuencia con la que sube y baja (más alto es más rápido)
     [SerializeField] float amplitude = 0.1f;  // La amplitud del movimiento (cuánto se desplaza en Y)
     private float originalY;        // La posición Y original de la pelota
-    private float nextServeAllowedTime = 0f;
-    [SerializeField] private float serveInputCooldown = 0.15f;
+    private bool serveReleaseRequested = false;
+    private string pendingServeType = "";
+    private float serveOscillationTime = 0f;
+    [SerializeField] private float serveReleaseThreshold = 0.08f;
+
 
 
     [Header("Paleta")]
@@ -58,7 +60,6 @@ public class PlayerHit_Controller : MonoBehaviour
     private Vector3 initialRacketLocalPos;
     private bool isHitting;
     private bool isServing;
-    //private bool ballBouncedOnPlayerSide = false;
     private bool serveInProgress;
     private bool ballHeld = true;
     private bool isCharging;
@@ -74,6 +75,8 @@ public class PlayerHit_Controller : MonoBehaviour
     private bool fireExplosionActive = false;
     private Color fireExplosionColor;
 
+    private Coroutine feedbackCoroutine;
+
     private void Start()
     {
         UpdateIdealZoneIndicator();
@@ -82,25 +85,20 @@ public class PlayerHit_Controller : MonoBehaviour
         serveInProgress = false;
         isServing = false;
         isHitting = false;
-        //shot_Controller = GetComponent<Shot_Controller>();
         initialRacketLocalPos = racketTransform.localPosition;
         originalY = serveStartPosition.position.y;
-/*        anguloActualX = transform.localEulerAngles.z;
-        if (anguloActualX > 90) anguloActualX -= 180; // Para trabajar de -180 a 180*/
     }
     void Update()
     {
-        Movement();
+        if (CanMove())
+        {
+            Movement();
+        }
 
         if (!serveInProgress && !controller.playing)
         {
             if (ballHeld && controller.currentServer == "Player")
             {
-                if (!isCharging)
-                {
-                    ballTransform.position = ballHoldPosition.position;
-                }
-
                 ServeBall();
             }
         }
@@ -113,7 +111,7 @@ public class PlayerHit_Controller : MonoBehaviour
 
     bool CanMove()
     {
-        return !isCharging && !serveInProgress;
+        return !isCharging && !serveInProgress && !isServing && !serveReleaseRequested; ;
     }
 
     void Movement()
@@ -161,18 +159,28 @@ public class PlayerHit_Controller : MonoBehaviour
 
     void ServeBall()
     {
-        // Iniciar carga solo si todavía no estamos cargando
-        if (!isCharging && (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.X)))
+        // Mantener la pelota en la posición base solo si todavía no empezó la carga
+        if (!isCharging && !serveReleaseRequested)
+        {
+            ballTransform.position = ballHoldPosition.position;
+        }
+
+        // 1) Iniciar carga
+        if (!isCharging && !serveReleaseRequested && (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.X)))
         {
             currentServeKey = Input.GetKeyDown(KeyCode.Z) ? KeyCode.Z : KeyCode.X;
+
             isCharging = true;
-            isServing = true; // importante: estamos en proceso de saque
+            isServing = true;
+
             chargeValue = 0f;
+            serveOscillationTime = 0f;
+
             serveChargeBar.value = 0f;
             serveChargeBar.gameObject.SetActive(true);
         }
 
-        // Mientras carga, ignoramos cualquier otra tecla y solo usamos la que inició el saque
+        // 2) Mientras mantenés la tecla: cargar barra + mover pelota
         if (isCharging)
         {
             if (Input.GetKey(currentServeKey))
@@ -181,38 +189,62 @@ public class PlayerHit_Controller : MonoBehaviour
                 chargeValue = Mathf.Clamp01(chargeValue);
                 serveChargeBar.value = chargeValue;
 
+                serveOscillationTime += Time.deltaTime * chargeSpeed;
+
                 float yOffset = Mathf.Clamp(
-                    Mathf.Sin(chargeValue * Mathf.PI * frequency) * amplitude,
+                    Mathf.Sin(serveOscillationTime * Mathf.PI * frequency) * amplitude,
                     -maxHeight,
                     maxHeight
                 );
 
                 ballTransform.position = new Vector3(
-                    ballTransform.position.x,
+                    ballHoldPosition.position.x,
                     originalY + yOffset,
-                    ballTransform.position.z
+                    ballHoldPosition.position.z
                 );
 
-                float currentValue = serveChargeBar.value;
-                bool isInIdealRange = currentValue >= idealChargeMin && currentValue <= idealChargeMax;
-
-                Image fillImage = serveChargeBar.fillRect.GetComponent<Image>();
-                fillImage.color = isInIdealRange ? glowColor : normalColor;
-
-                if (isInIdealRange)
-                {
-                    ShowPerfectFeedback();
-                }
+                UpdateServeBarVisual();
             }
 
-            // Solo se sirve cuando se suelta LA MISMA tecla con la que empezó el saque
+            // 3) Soltaste la tecla: fijar potencia, pero NO sacar todavía
             if (Input.GetKeyUp(currentServeKey))
             {
-                ServeBall(currentServeKey == KeyCode.Z ? "Topspin" : "Slice");
+                isCharging = false;
+                serveReleaseRequested = true;
+                pendingServeType = currentServeKey == KeyCode.Z ? "Topspin" : "Slice";
+            }
+        }
+
+        // 4) Después de soltar: seguir movimiento natural hasta volver al punto de golpe
+        if (serveReleaseRequested)
+        {
+            serveOscillationTime += Time.deltaTime * chargeSpeed;
+
+            float yOffset = Mathf.Clamp(
+                Mathf.Sin(serveOscillationTime * Mathf.PI * frequency) * amplitude,
+                -maxHeight,
+                maxHeight
+            );
+
+            ballTransform.position = new Vector3(
+                ballHoldPosition.position.x,
+                originalY + yOffset,
+                ballHoldPosition.position.z
+            );
+
+            UpdateServeBarVisual();
+
+            float distanceToHold = Vector3.Distance(ballTransform.position, ballHoldPosition.position);
+
+            if (distanceToHold <= serveReleaseThreshold)
+            {
+                ExecuteServe(pendingServeType);
 
                 serveChargeBar.gameObject.SetActive(false);
-                isCharging = false;
+                serveReleaseRequested = false;
                 isServing = false;
+                pendingServeType = "";
+
                 controller.playing = true;
 
                 AudioManager.Instance.PlayHitBall();
@@ -220,56 +252,19 @@ public class PlayerHit_Controller : MonoBehaviour
         }
     }
 
-    void KeyInput()
+    void ExecuteServe(string type)
     {
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            TryHitBall("topspin");
-        }
-        else if (Input.GetKeyUp(KeyCode.Z))
-        {
-            if (player.superHitActive)
-            {
-                hitForce = 14f;
-                player.SuperHit();
-            }
-            else
-            {
-                hitForce = 11.5f;
-            }
-        }
-        
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            TryHitBall("slice");
-
-            Vector3 posBall = ballTransform.position;
-            float topEffect = Time.deltaTime * 0.5f;
-            posBall.y -= topEffect;
-            ballTransform.position = posBall;
-        }
-        else if (Input.GetKeyUp(KeyCode.X))
-        {
-            hitForce = 9.5f;
-        }
-    }
-
-    void ServeBall(string type)
-    {
+        ballHeld = false;
         ballRb.useGravity = true;
-        isServing = false;
-        Vector3 direction = GetServeDirection();
-        
 
-        // Aplicar efecto
+        Vector3 direction = GetServeDirection();
+
         if (type == "Topspin")
         {
-            //finalForce += 3f;
             direction += Vector3.down * 0.1f;
         }
         else if (type == "Slice")
         {
-            //finalForce *= 0.7f;
             direction += Vector3.up * 0.15f;
         }
 
@@ -285,10 +280,63 @@ public class PlayerHit_Controller : MonoBehaviour
         ballGame.RegisterHit("Player");
     }
 
+    void UpdateServeBarVisual()
+    {
+        float currentValue = serveChargeBar.value;
+        bool isInIdealRange = currentValue >= idealChargeMin && currentValue <= idealChargeMax;
+
+        Image fillImage = serveChargeBar.fillRect.GetComponent<Image>();
+        fillImage.color = isInIdealRange ? glowColor : normalColor;
+
+        if (isInIdealRange)
+        {
+            ShowPerfectFeedback();
+        }
+    }
+
+    void KeyInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            if (player.superHitActive)
+            {
+                hitForce = 14f;
+                player.SuperHit();
+            }
+            else
+            {
+                hitForce = 11.5f;
+            }
+
+            TryHitBall("topspin");
+        }
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            hitForce = 9.5f;
+            TryHitBall("slice");
+
+            Vector3 posBall = ballTransform.position;
+            float topEffect = Time.deltaTime * 0.5f;
+            posBall.y -= topEffect;
+            ballTransform.position = posBall;
+        }
+    }
+
     public void ResetServe()
     {
-        isServing = true;
+        isServing = false;
+        isCharging = false;
+        serveReleaseRequested = false;
         serveInProgress = false;
+
+        pendingServeType = "";
+        chargeValue = 0f;
+        serveOscillationTime = 0f;
+
+        ballHeld = true;
+
+        serveChargeBar.gameObject.SetActive(false);
     }
 
     void TryHitBall(string type)
@@ -342,6 +390,9 @@ public class PlayerHit_Controller : MonoBehaviour
         Vector3 force = dir * hitForce + Vector3.up * upForce;
 
         ballRb.velocity = force;
+
+        Debug.Log("Dir: " + dir);
+        Debug.Log("Force: " + force);
 
         // Registrar golpe apenas se aplica
         ballGame.hasTouchedTable = false;
@@ -556,9 +607,12 @@ public class PlayerHit_Controller : MonoBehaviour
         feedbackText.color = perfectColor;
         feedbackText.gameObject.SetActive(true);
 
-        // Iniciar fade-out
-        StopAllCoroutines();
-        StartCoroutine(HideFeedbackAfterDelay());
+        if (feedbackCoroutine != null)
+        {
+            StopCoroutine(feedbackCoroutine);
+        }
+
+        feedbackCoroutine = StartCoroutine(HideFeedbackAfterDelay());
     }
 
     IEnumerator HideFeedbackAfterDelay()
