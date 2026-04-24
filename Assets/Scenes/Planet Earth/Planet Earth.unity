@@ -5124,6 +5124,51 @@ PrefabInstance:
       propertyPath: player_hit_Controller
       value: 
       objectReference: {fileID: 984709682}
+    - target: {fileID: 3481571762474376783, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+        type: 3}
+      propertyPath: ballRb
+      value: 
+      objectReference: {fileID: 1648606452}
+    - target: {fileID: 3481571762474376783, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+        type: 3}
+      propertyPath: ballGame
+      value: 
+      objectReference: {fileID: 1648606457}
+    - target: {fileID: 3481571762474376783, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+        type: 3}
+      propertyPath: amplitude
+      value: 1.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3481571762474376783, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+        type: 3}
+      propertyPath: frequency
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3481571762474376783, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+        type: 3}
+      propertyPath: maxHeight
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3481571762474376783, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+        type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 1509218704}
+    - target: {fileID: 3481571762474376783, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+        type: 3}
+      propertyPath: ballTransform
+      value: 
+      objectReference: {fileID: 1648606456}
+    - target: {fileID: 3481571762474376783, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+        type: 3}
+      propertyPath: ballHoldPosition
+      value: 
+      objectReference: {fileID: 984709686}
+    - target: {fileID: 3481571762474376783, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+        type: 3}
+      propertyPath: serveStartPosition
+      value: 
+      objectReference: {fileID: 1831812076}
     - target: {fileID: 6915948703801120436, guid: 8c90e9a2f1e6c7745980b916c52617d6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5174,6 +5219,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7653649279333182725, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+        type: 3}
+      propertyPath: feedbackText
+      value: 
+      objectReference: {fileID: 885791357}
+    - target: {fileID: 7653649279333182725, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+        type: 3}
+      propertyPath: idealZoneImage
+      value: 
+      objectReference: {fileID: 1538013201}
+    - target: {fileID: 7653649279333182725, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+        type: 3}
+      propertyPath: serveChargeBar
+      value: 
+      objectReference: {fileID: 1829896715}
     - target: {fileID: 9122324252432910008, guid: 8c90e9a2f1e6c7745980b916c52617d6,
         type: 3}
       propertyPath: ballRb
@@ -5269,6 +5329,24 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c90e9a2f1e6c7745980b916c52617d6, type: 3}
+--- !u!114 &1831812075 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3481571762474376783, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1831812074}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce02e52dff701e343a06f24f536ee337, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1831812076 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2448732749953379486, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1831812074}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1883114789
 GameObject:
   m_ObjectHideFlags: 0
@@ -6241,6 +6319,11 @@ PrefabInstance:
       propertyPath: playerHitController
       value: 
       objectReference: {fileID: 984709682}
+    - target: {fileID: 2408320973776461925, guid: c29d8e0c5be1a05498e888c5949e9631,
+        type: 3}
+      propertyPath: playerServeController
+      value: 
+      objectReference: {fileID: 1831812075}
     - target: {fileID: 2408320973776461925, guid: c29d8e0c5be1a05498e888c5949e9631,
         type: 3}
       propertyPath: keyImages.Array.data[0]

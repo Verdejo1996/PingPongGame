@@ -11,6 +11,8 @@ public class PlayerHit_Controller : MonoBehaviour
     [Header("Gameplay")]
     public Game_Controller controller;
     public Player_Controller player;
+    [SerializeField] private ServeUIFeedback serveUIFeedback;
+    [SerializeField] private PlayerServeController serveController;
 
     [Header("Movimiento del jugador")]
     public float moveSpeed = 5f;
@@ -27,44 +29,11 @@ public class PlayerHit_Controller : MonoBehaviour
     [SerializeField] private float hitCooldown = 0.15f;
     private float nextHitTime = 0f;
 
-    [Header("Servicio")]
-    [SerializeField] Transform serveStartPosition;
-    [SerializeField] Transform ballHoldPosition;
-    [SerializeField] float serveForce;
-    [SerializeField] Slider serveChargeBar;
-    [SerializeField] Image idealZoneImage;
-    [SerializeField] float chargeSpeed = 1.0f; // velocidad de carga visual
-    [SerializeField] float minServeForce = 7f;
-    [SerializeField] float maxServeForce = 12f;
-    [SerializeField] float idealChargeMin = 0.8f;
-    [SerializeField] float idealChargeMax = 1f;
-    [SerializeField] Color normalColor = new(0, 1, 0, 0.4f); // verde suave
-    [SerializeField] Color glowColor = new(1, 1, 0, 0.7f);   // amarillo brillante
-    [SerializeField] private TMP_Text feedbackText;
-    [SerializeField] private float feedbackDuration = 1.5f;
-    [SerializeField] private Color perfectColor = Color.red;
-    [SerializeField] float maxHeight = 0.5f;  // La altura máxima que alcanzará la pelota
-    [SerializeField] float frequency = 2f;    // La frecuencia con la que sube y baja (más alto es más rápido)
-    [SerializeField] float amplitude = 0.1f;  // La amplitud del movimiento (cuánto se desplaza en Y)
-    private float originalY;        // La posición Y original de la pelota
-    private bool serveReleaseRequested = false;
-    private string pendingServeType = "";
-    private float serveOscillationTime = 0f;
-    [SerializeField] private float serveReleaseThreshold = 0.08f;
-
-
-
     [Header("Paleta")]
     public float racketSpeed = 20f;
     public float racketReturnSpeed = 10f;
     private Vector3 initialRacketLocalPos;
     private bool isHitting;
-    private bool isServing;
-    private bool serveInProgress;
-    private bool ballHeld = true;
-    private bool isCharging;
-    private float chargeValue = 0f;
-    private KeyCode currentServeKey;
 
     private Vector3 posInicial;
 
@@ -75,18 +44,11 @@ public class PlayerHit_Controller : MonoBehaviour
     private bool fireExplosionActive = false;
     private Color fireExplosionColor;
 
-    private Coroutine feedbackCoroutine;
-
     private void Start()
     {
-        UpdateIdealZoneIndicator();
         originalSpeed = moveSpeed;
-        isCharging = false;
-        serveInProgress = false;
-        isServing = false;
         isHitting = false;
         initialRacketLocalPos = racketTransform.localPosition;
-        originalY = serveStartPosition.position.y;
     }
     void Update()
     {
@@ -95,15 +57,12 @@ public class PlayerHit_Controller : MonoBehaviour
             Movement();
         }
 
-        if (!serveInProgress && !controller.playing)
+        if (!controller.playing)
         {
-            if (ballHeld && controller.currentServer == "Player")
-            {
-                ServeBall();
-            }
+            serveController.HandleServe();
         }
 
-        if (!isHitting && !isServing && controller.playing)
+        if (!isHitting && !serveController.IsServing && controller.playing)
         {
             KeyInput();
         }
@@ -111,7 +70,9 @@ public class PlayerHit_Controller : MonoBehaviour
 
     bool CanMove()
     {
-        return !isCharging && !serveInProgress && !isServing && !serveReleaseRequested; ;
+        return !serveController.IsCharging &&
+               !serveController.IsServing &&
+               !serveController.ServeReleaseRequested;
     }
 
     void Movement()
@@ -157,143 +118,6 @@ public class PlayerHit_Controller : MonoBehaviour
         }
     }
 
-    void ServeBall()
-    {
-        // Mantener la pelota en la posición base solo si todavía no empezó la carga
-        if (!isCharging && !serveReleaseRequested)
-        {
-            ballTransform.position = ballHoldPosition.position;
-        }
-
-        // 1) Iniciar carga
-        if (!isCharging && !serveReleaseRequested && (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.X)))
-        {
-            currentServeKey = Input.GetKeyDown(KeyCode.Z) ? KeyCode.Z : KeyCode.X;
-
-            isCharging = true;
-            isServing = true;
-
-            chargeValue = 0f;
-            serveOscillationTime = 0f;
-
-            serveChargeBar.value = 0f;
-            serveChargeBar.gameObject.SetActive(true);
-        }
-
-        // 2) Mientras mantenés la tecla: cargar barra + mover pelota
-        if (isCharging)
-        {
-            if (Input.GetKey(currentServeKey))
-            {
-                chargeValue += Time.deltaTime * chargeSpeed;
-                chargeValue = Mathf.Clamp01(chargeValue);
-                serveChargeBar.value = chargeValue;
-
-                serveOscillationTime += Time.deltaTime * chargeSpeed;
-
-                float yOffset = Mathf.Clamp(
-                    Mathf.Sin(serveOscillationTime * Mathf.PI * frequency) * amplitude,
-                    -maxHeight,
-                    maxHeight
-                );
-
-                ballTransform.position = new Vector3(
-                    ballHoldPosition.position.x,
-                    originalY + yOffset,
-                    ballHoldPosition.position.z
-                );
-
-                UpdateServeBarVisual();
-            }
-
-            // 3) Soltaste la tecla: fijar potencia, pero NO sacar todavía
-            if (Input.GetKeyUp(currentServeKey))
-            {
-                isCharging = false;
-                serveReleaseRequested = true;
-                pendingServeType = currentServeKey == KeyCode.Z ? "Topspin" : "Slice";
-            }
-        }
-
-        // 4) Después de soltar: seguir movimiento natural hasta volver al punto de golpe
-        if (serveReleaseRequested)
-        {
-            serveOscillationTime += Time.deltaTime * chargeSpeed;
-
-            float yOffset = Mathf.Clamp(
-                Mathf.Sin(serveOscillationTime * Mathf.PI * frequency) * amplitude,
-                -maxHeight,
-                maxHeight
-            );
-
-            ballTransform.position = new Vector3(
-                ballHoldPosition.position.x,
-                originalY + yOffset,
-                ballHoldPosition.position.z
-            );
-
-            UpdateServeBarVisual();
-
-            float distanceToHold = Vector3.Distance(ballTransform.position, ballHoldPosition.position);
-
-            if (distanceToHold <= serveReleaseThreshold)
-            {
-                ExecuteServe(pendingServeType);
-
-                serveChargeBar.gameObject.SetActive(false);
-                serveReleaseRequested = false;
-                isServing = false;
-                pendingServeType = "";
-
-                controller.playing = true;
-
-                AudioManager.Instance.PlayHitBall();
-            }
-        }
-    }
-
-    void ExecuteServe(string type)
-    {
-        ballHeld = false;
-        ballRb.useGravity = true;
-
-        Vector3 direction = GetServeDirection();
-
-        if (type == "Topspin")
-        {
-            direction += Vector3.down * 0.1f;
-        }
-        else if (type == "Slice")
-        {
-            direction += Vector3.up * 0.15f;
-        }
-
-        serveForce = Mathf.Lerp(minServeForce, maxServeForce, chargeValue);
-
-        bool perfectTiming = chargeValue >= idealChargeMin && chargeValue <= idealChargeMax;
-        if (perfectTiming)
-        {
-            Debug.Log("Saque perfecto");
-        }
-
-        ballRb.velocity = direction.normalized * serveForce;
-        ballGame.RegisterHit("Player");
-    }
-
-    void UpdateServeBarVisual()
-    {
-        float currentValue = serveChargeBar.value;
-        bool isInIdealRange = currentValue >= idealChargeMin && currentValue <= idealChargeMax;
-
-        Image fillImage = serveChargeBar.fillRect.GetComponent<Image>();
-        fillImage.color = isInIdealRange ? glowColor : normalColor;
-
-        if (isInIdealRange)
-        {
-            ShowPerfectFeedback();
-        }
-    }
-
     void KeyInput()
     {
         if (Input.GetKeyDown(KeyCode.Z))
@@ -321,22 +145,6 @@ public class PlayerHit_Controller : MonoBehaviour
             posBall.y -= topEffect;
             ballTransform.position = posBall;
         }
-    }
-
-    public void ResetServe()
-    {
-        isServing = false;
-        isCharging = false;
-        serveReleaseRequested = false;
-        serveInProgress = false;
-
-        pendingServeType = "";
-        chargeValue = 0f;
-        serveOscillationTime = 0f;
-
-        ballHeld = true;
-
-        serveChargeBar.gameObject.SetActive(false);
     }
 
     void TryHitBall(string type)
@@ -581,44 +389,6 @@ public class PlayerHit_Controller : MonoBehaviour
                 Gizmos.DrawLine(racketTransform.position, racketTransform.position + direction * hitRange);
             }
         }
-    }
-
-    void UpdateIdealZoneIndicator()
-    {
-        RectTransform rt = idealZoneImage.GetComponent<RectTransform>();
-
-        float totalWidth = serveChargeBar.GetComponent<RectTransform>().rect.width;
-
-        float idealStart = idealChargeMin * totalWidth;
-        float idealEnd = idealChargeMax * totalWidth;
-        float idealWidth = idealEnd - idealStart;
-
-        // Ajustar la posición y el tamaño
-        rt.anchorMin = new Vector2(0, 0);
-        rt.anchorMax = new Vector2(0, 1);
-        rt.pivot = new Vector2(0, 0.5f);
-        rt.anchoredPosition = new Vector2(idealStart, 0);
-        rt.sizeDelta = new Vector2(idealWidth, 0);
-    }
-
-    void ShowPerfectFeedback()
-    {
-        feedbackText.text = "¡Max!";
-        feedbackText.color = perfectColor;
-        feedbackText.gameObject.SetActive(true);
-
-        if (feedbackCoroutine != null)
-        {
-            StopCoroutine(feedbackCoroutine);
-        }
-
-        feedbackCoroutine = StartCoroutine(HideFeedbackAfterDelay());
-    }
-
-    IEnumerator HideFeedbackAfterDelay()
-    {
-        yield return new WaitForSeconds(feedbackDuration);
-        feedbackText.gameObject.SetActive(false);
     }
 
     internal void ApplySlowEffect(float v)

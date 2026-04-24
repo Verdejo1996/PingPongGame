@@ -25,6 +25,7 @@ public class Game_Controller : MonoBehaviour
     [Header("Player/IA")]
     public IA_Controller iaGameObject;
     public PlayerHit_Controller playerHitController;
+    public PlayerServeController playerServeController;
 
     [Header("Banderas")]
     public bool playing;
@@ -129,7 +130,7 @@ public class Game_Controller : MonoBehaviour
     {
         if (currentServer == "Player" && !playing)
         {
-            playerHitController.ResetServe();
+            playerServeController.ResetServe();
             ball.SetServePosition(playerHitController.transform.position); // Ajusta la posición para el jugador
             ball.GetComponent<Rigidbody>().useGravity = false;
         }

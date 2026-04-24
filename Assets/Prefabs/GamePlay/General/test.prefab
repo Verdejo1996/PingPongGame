@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 5204818048651292342}
   - component: {fileID: 2449169942306494392}
   - component: {fileID: 9122324252432910008}
+  - component: {fileID: 7653649279333182725}
+  - component: {fileID: 3481571762474376783}
   - component: {fileID: 601135518575108938}
   m_Layer: 0
   m_Name: test
@@ -35,6 +37,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3583336129098733072}
+  - {fileID: 8407341207422975752}
+  - {fileID: 2448732749953379486}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &2163099122012420702
@@ -128,6 +132,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
   player: {fileID: 0}
+  serveUIFeedback: {fileID: 7653649279333182725}
+  serveController: {fileID: 3481571762474376783}
   moveSpeed: 5
   isMoving: 0
   ballGame: {fileID: 0}
@@ -137,27 +143,57 @@ MonoBehaviour:
   hitRange: 2
   hitForce: 0
   upForce: 5
-  serveStartPosition: {fileID: 0}
-  ballHoldPosition: {fileID: 0}
-  serveForce: 0
-  serveChargeBar: {fileID: 0}
-  idealZoneImage: {fileID: 0}
-  chargeSpeed: 1
-  minServeForce: 7
-  maxServeForce: 12
-  idealChargeMin: 0.6
-  idealChargeMax: 0.8
-  normalColor: {r: 0, g: 1, b: 0, a: 0.4}
-  glowColor: {r: 1, g: 0, b: 0.06661177, a: 0.7}
-  feedbackText: {fileID: 0}
-  feedbackDuration: 1.5
-  perfectColor: {r: 1, g: 0, b: 0, a: 1}
-  maxHeight: 0.5
-  frequency: 2
-  amplitude: 0.1
+  hitCooldown: 0.15
   racketSpeed: 20
   racketReturnSpeed: 10
   isSlowed: 0
+--- !u!114 &7653649279333182725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2154030997488750444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54e93e19e9d2792409ecb1dbb8aa4082, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serveChargeBar: {fileID: 0}
+  idealZoneImage: {fileID: 0}
+  feedbackText: {fileID: 0}
+  normalColor: {r: 0, g: 1, b: 0, a: 0.4}
+  glowColor: {r: 1, g: 1, b: 0, a: 0.7}
+  perfectColor: {r: 1, g: 0, b: 0, a: 1}
+  feedbackDuration: 1.5
+--- !u!114 &3481571762474376783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2154030997488750444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce02e52dff701e343a06f24f536ee337, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  serveUIFeedback: {fileID: 7653649279333182725}
+  ballGame: {fileID: 0}
+  ballRb: {fileID: 0}
+  ballTransform: {fileID: 0}
+  ballHoldPosition: {fileID: 0}
+  serveStartPosition: {fileID: 0}
+  chargeSpeed: 1
+  minServeForce: 7
+  maxServeForce: 12
+  idealChargeMin: 0.8
+  idealChargeMax: 1
+  maxHeight: 4
+  frequency: 4
+  amplitude: 8
+  serveReleaseThreshold: 0.08
 --- !u!114 &601135518575108938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,6 +208,68 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visualRoot: {fileID: 3583336129098733072}
   defaultVisualPrefab: {fileID: 0}
+--- !u!1 &7134393113881846344
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8407341207422975752}
+  m_Layer: 0
+  m_Name: BallHoldPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8407341207422975752
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7134393113881846344}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6915948703801120436}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8249908491959088287
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2448732749953379486}
+  m_Layer: 0
+  m_Name: ServeStartPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2448732749953379486
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8249908491959088287}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6915948703801120436}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8742962051093625092
 GameObject:
   m_ObjectHideFlags: 0
