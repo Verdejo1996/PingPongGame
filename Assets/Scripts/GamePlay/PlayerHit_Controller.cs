@@ -19,7 +19,7 @@ public class PlayerHit_Controller : MonoBehaviour
     public bool isMoving = false;
 
     [Header("Golpe")]
-    public Ball ballGame;
+    public BallRuleValidator ballGame;
     public BallPowerEffects ballPowers;
     public Transform ballTransform;
     public Rigidbody ballRb;

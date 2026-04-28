@@ -5,7 +5,7 @@ public class PlayerServeController : MonoBehaviour
     [Header("Referencias")]
     [SerializeField] private Game_Controller controller;
     [SerializeField] private ServeUIFeedback serveUIFeedback;
-    [SerializeField] private Ball ballGame;
+    [SerializeField] private BallRuleValidator ballGame;
     [SerializeField] private Rigidbody ballRb;
     [SerializeField] private Transform ballTransform;
     [SerializeField] private Transform ballHoldPosition;

@@ -14,7 +14,7 @@ public class Paddle : MonoBehaviour
     public Transform aimTarget;
     public Transform serveTarget;
     public Transform ball;
-    public Ball ballGameObject;
+    public BallRuleValidator ballGameObject;
     [SerializeField]
     bool hitting;
     [SerializeField]
@@ -167,7 +167,7 @@ public class Paddle : MonoBehaviour
             Vector3 dir = aimTarget.position - transform.position;
             other.GetComponent<Rigidbody>().velocity = dir.normalized * currentShot.hitForce + new Vector3(0, currentShot.upForce, 0);
             BallVisualEffects ball = other.gameObject.GetComponent<BallVisualEffects>();
-            Ball ballRules = other.gameObject.GetComponent<Ball>();
+            BallRuleValidator ballRules = other.gameObject.GetComponent<BallRuleValidator>();
             ball.ChangeColorTrail(currentShot.hitForce);
             ballRules.hasTouchedTable = false;
             ballRules.tableAfterNet = false;

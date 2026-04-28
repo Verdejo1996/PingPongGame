@@ -27,11 +27,11 @@ public class LavaTrail : Base_PowerUp
 
         trail.material = lavaMaterial;
 
-        ball.GetComponent<Ball>().isLavaActive = true;
+        ball.GetComponent<BallPowerEffects>().isLavaActive = true;
 
         yield return new WaitForSeconds(duration);
 
         trail.material = originalMat;
-        ball.GetComponent<Ball>().isLavaActive = false;
+        ball.GetComponent<BallPowerEffects>().isLavaActive = false;
     }
 }

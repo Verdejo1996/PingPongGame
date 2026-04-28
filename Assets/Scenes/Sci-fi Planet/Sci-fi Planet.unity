@@ -12044,6 +12044,16 @@ PrefabInstance:
       objectReference: {fileID: 1965905297}
     - target: {fileID: 2647781572340080506, guid: 0ac7f0a8ece2a564bb515dcff06954b6,
         type: 3}
+      propertyPath: powerEffects
+      value: 
+      objectReference: {fileID: 1650353299}
+    - target: {fileID: 2647781572340080506, guid: 0ac7f0a8ece2a564bb515dcff06954b6,
+        type: 3}
+      propertyPath: ruleValidator
+      value: 
+      objectReference: {fileID: 1650353298}
+    - target: {fileID: 2647781572340080506, guid: 0ac7f0a8ece2a564bb515dcff06954b6,
+        type: 3}
       propertyPath: lavaAreaPrefab
       value: 
       objectReference: {fileID: 5221371134549783356, guid: 400677e2fe987584a8c408454c93d578,
@@ -12059,6 +12069,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7278373316502051622, guid: 4d7c46bfbef04d04e856c1f3bf349e51,
         type: 3}
+    - target: {fileID: 7319886242998953150, guid: 0ac7f0a8ece2a564bb515dcff06954b6,
+        type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 1650353295}
+    - target: {fileID: 7319886242998953150, guid: 0ac7f0a8ece2a564bb515dcff06954b6,
+        type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 962209495}
     - target: {fileID: 9203847066887631826, guid: 0ac7f0a8ece2a564bb515dcff06954b6,
         type: 3}
       propertyPath: m_Name
@@ -12095,6 +12115,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 93de2f81a633fc1489818b3dadefb2eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1650353298 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7319886242998953150, guid: 0ac7f0a8ece2a564bb515dcff06954b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1650353294}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a15ea49a63e5654188e2fffee99d68c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1650353299 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6145147222163226084, guid: 0ac7f0a8ece2a564bb515dcff06954b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1650353294}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd63c9600a0d8419918f4362c9357b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1675090524
@@ -12323,6 +12367,11 @@ PrefabInstance:
       objectReference: {fileID: 225493353}
     - target: {fileID: 6600413804517884092, guid: 6e85acfe1b23ed04a91e6002df9d4c6f,
         type: 3}
+      propertyPath: ballPowers
+      value: 
+      objectReference: {fileID: 1650353299}
+    - target: {fileID: 6600413804517884092, guid: 6e85acfe1b23ed04a91e6002df9d4c6f,
+        type: 3}
       propertyPath: controller
       value: 
       objectReference: {fileID: 962209495}
@@ -12330,7 +12379,7 @@ PrefabInstance:
         type: 3}
       propertyPath: ballGameObject
       value: 
-      objectReference: {fileID: 1650353297}
+      objectReference: {fileID: 1650353298}
     - target: {fileID: 6600413804517884092, guid: 6e85acfe1b23ed04a91e6002df9d4c6f,
         type: 3}
       propertyPath: targets.Array.data[0]
@@ -13131,6 +13180,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1908030158}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1917266526 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -7550312948962857332, guid: 0ac7f0a8ece2a564bb515dcff06954b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1650353294}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82e8252d0f74e6341aaeb1d577048bae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1934363029
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19891,7 +19952,12 @@ PrefabInstance:
         type: 3}
       propertyPath: ball
       value: 
-      objectReference: {fileID: 1650353297}
+      objectReference: {fileID: 1917266526}
+    - target: {fileID: 258985148175904357, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+        type: 3}
+      propertyPath: ballPowers
+      value: 
+      objectReference: {fileID: 1650353299}
     - target: {fileID: 258985148175904357, guid: 8c90e9a2f1e6c7745980b916c52617d6,
         type: 3}
       propertyPath: hudController
@@ -19986,7 +20052,7 @@ PrefabInstance:
         type: 3}
       propertyPath: ballGame
       value: 
-      objectReference: {fileID: 1650353297}
+      objectReference: {fileID: 1650353298}
     - target: {fileID: 3481571762474376783, guid: 8c90e9a2f1e6c7745980b916c52617d6,
         type: 3}
       propertyPath: amplitude
@@ -20121,7 +20187,7 @@ PrefabInstance:
         type: 3}
       propertyPath: ballGame
       value: 
-      objectReference: {fileID: 1650353297}
+      objectReference: {fileID: 1650353298}
     - target: {fileID: 9122324252432910008, guid: 8c90e9a2f1e6c7745980b916c52617d6,
         type: 3}
       propertyPath: hitRange
@@ -20147,6 +20213,11 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 5.7
       objectReference: {fileID: 0}
+    - target: {fileID: 9122324252432910008, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+        type: 3}
+      propertyPath: ballPowers
+      value: 
+      objectReference: {fileID: 1650353299}
     - target: {fileID: 9122324252432910008, guid: 8c90e9a2f1e6c7745980b916c52617d6,
         type: 3}
       propertyPath: controller

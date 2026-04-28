@@ -7,6 +7,8 @@ public class BallPowerEffects : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private TrailRenderer trail;
     [SerializeField] private ParticleSystem explosionParticles;
+    [SerializeField] private GameObject lavaAreaPrefab;
+    public bool isLavaActive;
 
     [Header("Curve Shot")]
     [SerializeField] private float curveDuration = 3f;
@@ -73,6 +75,15 @@ public class BallPowerEffects : MonoBehaviour
 
             if (explosionParticles != null)
                 explosionParticles.Play();
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (isLavaActive && collision.gameObject.CompareTag("tableBot"))
+        {
+            ContactPoint contact = collision.contacts[0];
+            Instantiate(lavaAreaPrefab, contact.point + new Vector3(0, 1, 4), Quaternion.identity);
         }
     }
 }

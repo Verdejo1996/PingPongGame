@@ -10,7 +10,7 @@ public class IA_Controller : MonoBehaviour
     public Game_Controller controller;
     public Transform ball;
     public Rigidbody ballRb;
-    public Ball ballGameObject;
+    public BallRuleValidator ballGameObject;
     public BallPowerEffects ballPowers;
     public float speed;
     public float slipperyFactor = 3f;
@@ -169,7 +169,7 @@ public class IA_Controller : MonoBehaviour
                 other.GetComponent<Rigidbody>().velocity = dir.normalized * currentShot.hitForce + new Vector3(0, currentShot.upForce, 0) * 0.7f; ;
             }
 
-            Ball ball = other.gameObject.GetComponent<Ball>();
+            BallRuleValidator ball = other.gameObject.GetComponent<BallRuleValidator>();
             ball.hasTouchedTable = false;
             ball.tableAfterNet = false;
             ball.RegisterHit("Bot");

@@ -25,7 +25,7 @@ public class Shield_Controller : MonoBehaviour
             //aimTarget = gameObject.GetComponent<Transform>().Find("aimTarget");
             Vector3 dir = aimTarget.position - transform.position;
             other.GetComponent<Rigidbody>().velocity = dir.normalized * currentShot.hitForce + new Vector3(0, currentShot.upForce, 0);
-            Ball ballRules = other.gameObject.GetComponent<Ball>();
+            BallRuleValidator ballRules = other.gameObject.GetComponent<BallRuleValidator>();
             BallVisualEffects ball = other.gameObject.GetComponent<BallVisualEffects>();
             ball.ChangeColorTrail(currentShot.hitForce);
             ballRules.hasTouchedTable = false;

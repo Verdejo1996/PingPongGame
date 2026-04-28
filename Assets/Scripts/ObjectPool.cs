@@ -8,7 +8,7 @@ public class ObjectPool : MonoBehaviour
     public GameObject cubePrefab;       // Prefab del cubo
     public int poolSize = 50;           // Tamaño inicial del pool
     private Queue<GameObject> cubePool = new();  // Cola de cubos disponibles
-    private Dictionary<GameObject, Vector3> cubePositions = new Dictionary<GameObject, Vector3>(); // Diccionario para almacenar las posiciones originales de los cubos
+    private Dictionary<GameObject, Vector3> cubePositions = new(); // Diccionario para almacenar las posiciones originales de los cubos
 
 
     void Start()
