@@ -19,7 +19,7 @@ public class PickUp_PowerUp : MonoBehaviour
             AudioManager.Instance.PlayPowerUp();
             if (other.TryGetComponent<Player_Controller>(out var player))
             {
-                player.ColectPowerUp(powerUp);
+                player.PowerUps.CollectPowerUp(powerUp);
             }
             if (PowerUp_Manager.Instance != null)
             {

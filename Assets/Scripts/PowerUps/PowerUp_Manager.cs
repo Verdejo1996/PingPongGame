@@ -9,7 +9,7 @@ public class PowerUp_Manager : MonoBehaviour
     private List<GameObject> activeScenePowerUps = new();
     [Header("Instancia")]
     public PowerUp_Controller powerUpController;
-    public Player_Controller player;
+    public PlayerPowerUp_Controller player;
 
     private void Awake()
     {
@@ -42,7 +42,7 @@ public class PowerUp_Manager : MonoBehaviour
         CheckIfShouldResume();
     }
 
-    public bool CanSpawnPowerUp(Player_Controller player)
+    public bool CanSpawnPowerUp(PlayerPowerUp_Controller player)
     {
         return activeScenePowerUps.Count < 3;
     }

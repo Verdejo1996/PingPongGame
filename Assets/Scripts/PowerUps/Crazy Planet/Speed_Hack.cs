@@ -10,7 +10,7 @@ public class Speed_Hack : Base_PowerUp
     float speedFactor = 3f;
     public override void Activate(Player_Controller player)
     {
-        PlayerHit_Controller playerhit = player.player_hit_Controller;
+        PlayerHit_Controller playerhit = player.PowerUps.player_hit_Controller;
         if(playerhit != null)
         {
             player.StartCoroutine(ApplySpeedHack(playerhit));

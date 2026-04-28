@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8787888373751028180}
   - component: {fileID: 2647781572340080506}
   - component: {fileID: 7008580535570736792}
+  - component: {fileID: -7550312948962857332}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Ball
@@ -148,16 +149,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
+  lavaAreaPrefab: {fileID: 0}
+  isLavaActive: 0
+  poolPlayer: {fileID: 0}
+  poolBot: {fileID: 0}
   bounceTable: 0
   hasTouchedTable: 0
   hitNetLast: 0
+  lastHitterAfterTable: 
   validServe: 0
   tableAfterNet: 0
   isCurveShotActive: 0
+  fireExplosionActive: 0
+  isHeavy: 0
   trailBall: {fileID: 7008580535570736792}
   colorSoft: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   colorStrong: {r: 1, g: 0, b: 0, a: 1}
   cameraShake: {fileID: 0}
+  explosionParticles: {fileID: 0}
 --- !u!96 &7008580535570736792
 TrailRenderer:
   serializedVersion: 3
@@ -262,3 +271,20 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!114 &-7550312948962857332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9203847066887631826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82e8252d0f74e6341aaeb1d577048bae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trailBall: {fileID: 7008580535570736792}
+  colorSoft: {r: 0, g: 0, b: 1, a: 1}
+  colorStrong: {r: 1, g: 0, b: 0, a: 1}
+  cameraShake: {fileID: 0}
+  effectParticles: {fileID: 0}

@@ -11,7 +11,7 @@ public class Freeze_PowerUp : Base_PowerUp
 
     public override void Activate(Player_Controller player)
     {
-        IA_Controller opponent = player.iA_Controller;
+        IA_Controller opponent = player.PowerUps.iA_Controller;
         if (opponent != null)
         {
             opponent.StartCoroutine(ApplyFreeze(opponent));

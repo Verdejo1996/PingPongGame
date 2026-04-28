@@ -2986,6 +2986,11 @@ PrefabInstance:
       objectReference: {fileID: 1395083355}
     - target: {fileID: 2408320973776461925, guid: c29d8e0c5be1a05498e888c5949e9631,
         type: 3}
+      propertyPath: playerServeController
+      value: 
+      objectReference: {fileID: 1707193584}
+    - target: {fileID: 2408320973776461925, guid: c29d8e0c5be1a05498e888c5949e9631,
+        type: 3}
       propertyPath: keyImages.Array.data[0]
       value: 
       objectReference: {fileID: 103696765}
@@ -8531,6 +8536,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 629908455}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &630210436 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 258985148175904357, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1395083354}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53ebd96dbc131984396898cdc2b5cb60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &638457189
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17405,6 +17422,51 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 258985148175904357, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+        type: 3}
+      propertyPath: ball
+      value: 
+      objectReference: {fileID: 1054771260}
+    - target: {fileID: 258985148175904357, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+        type: 3}
+      propertyPath: hudController
+      value: 
+      objectReference: {fileID: 1176911970}
+    - target: {fileID: 258985148175904357, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+        type: 3}
+      propertyPath: iA_Controller
+      value: 
+      objectReference: {fileID: 1523489399}
+    - target: {fileID: 258985148175904357, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+        type: 3}
+      propertyPath: powerUpManager
+      value: 
+      objectReference: {fileID: 1976310261}
+    - target: {fileID: 258985148175904357, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+        type: 3}
+      propertyPath: original_Scale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 258985148175904357, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+        type: 3}
+      propertyPath: original_Scale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 258985148175904357, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+        type: 3}
+      propertyPath: original_Scale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 258985148175904357, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1395083356}
+    - target: {fileID: 258985148175904357, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+        type: 3}
+      propertyPath: player_hit_Controller
+      value: 
+      objectReference: {fileID: 1395083355}
     - target: {fileID: 2154030997488750444, guid: 8c90e9a2f1e6c7745980b916c52617d6,
         type: 3}
       propertyPath: m_Name
@@ -17442,9 +17504,64 @@ PrefabInstance:
       objectReference: {fileID: 1976310261}
     - target: {fileID: 2449169942306494392, guid: 8c90e9a2f1e6c7745980b916c52617d6,
         type: 3}
+      propertyPath: powerUpController
+      value: 
+      objectReference: {fileID: 630210436}
+    - target: {fileID: 2449169942306494392, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+        type: 3}
       propertyPath: player_hit_Controller
       value: 
       objectReference: {fileID: 1395083355}
+    - target: {fileID: 3481571762474376783, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+        type: 3}
+      propertyPath: ballRb
+      value: 
+      objectReference: {fileID: 1054771261}
+    - target: {fileID: 3481571762474376783, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+        type: 3}
+      propertyPath: ballGame
+      value: 
+      objectReference: {fileID: 1054771260}
+    - target: {fileID: 3481571762474376783, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+        type: 3}
+      propertyPath: amplitude
+      value: 1.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3481571762474376783, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+        type: 3}
+      propertyPath: frequency
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3481571762474376783, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+        type: 3}
+      propertyPath: maxHeight
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3481571762474376783, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+        type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 270227231}
+    - target: {fileID: 3481571762474376783, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+        type: 3}
+      propertyPath: ballTransform
+      value: 
+      objectReference: {fileID: 1054771262}
+    - target: {fileID: 3481571762474376783, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+        type: 3}
+      propertyPath: serveUIFeedback
+      value: 
+      objectReference: {fileID: 1395083360}
+    - target: {fileID: 3481571762474376783, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+        type: 3}
+      propertyPath: ballHoldPosition
+      value: 
+      objectReference: {fileID: 1395083359}
+    - target: {fileID: 3481571762474376783, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+        type: 3}
+      propertyPath: serveStartPosition
+      value: 
+      objectReference: {fileID: 1395083358}
     - target: {fileID: 6915948703801120436, guid: 8c90e9a2f1e6c7745980b916c52617d6,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -17510,6 +17627,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7653649279333182725, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+        type: 3}
+      propertyPath: feedbackText
+      value: 
+      objectReference: {fileID: 584420153}
+    - target: {fileID: 7653649279333182725, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+        type: 3}
+      propertyPath: idealZoneImage
+      value: 
+      objectReference: {fileID: 872021066}
+    - target: {fileID: 7653649279333182725, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+        type: 3}
+      propertyPath: serveChargeBar
+      value: 
+      objectReference: {fileID: 1171280018}
     - target: {fileID: 9122324252432910008, guid: 8c90e9a2f1e6c7745980b916c52617d6,
         type: 3}
       propertyPath: ballRb
@@ -17644,6 +17776,30 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1395083354}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1395083358 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2448732749953379486, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1395083354}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1395083359 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8407341207422975752, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1395083354}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1395083360 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7653649279333182725, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1395083354}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54e93e19e9d2792409ecb1dbb8aa4082, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1406196936
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21253,6 +21409,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1701558800}
   m_CullTransparentMesh: 1
+--- !u!114 &1707193584 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3481571762474376783, guid: 8c90e9a2f1e6c7745980b916c52617d6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1395083354}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce02e52dff701e343a06f24f536ee337, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1709336329
 GameObject:
   m_ObjectHideFlags: 0
@@ -24540,7 +24708,7 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1395083356}
+      objectReference: {fileID: 630210436}
     - target: {fileID: 2637254926937083356, guid: 8eb6a9ca7cc08e04f96e654d296741ae,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -24610,7 +24778,7 @@ PrefabInstance:
         type: 3}
       propertyPath: playerController
       value: 
-      objectReference: {fileID: 1395083356}
+      objectReference: {fileID: 630210436}
     - target: {fileID: 6689808395693631693, guid: 8eb6a9ca7cc08e04f96e654d296741ae,
         type: 3}
       propertyPath: powerUpPrefabs.Array.size

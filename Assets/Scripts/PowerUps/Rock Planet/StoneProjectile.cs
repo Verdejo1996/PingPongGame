@@ -20,7 +20,7 @@ public class StoneProjectile : Base_PowerUp
         RockProjectileBehaviour behaviour = rock.GetComponent<RockProjectileBehaviour>();
         if (behaviour != null)
         {
-            behaviour.Init(player.iA_Controller, speed, slowDuration);
+            behaviour.Init(player.PowerUps.iA_Controller, speed, slowDuration);
         }
 
         GameObject.Destroy(rock, lifetime);

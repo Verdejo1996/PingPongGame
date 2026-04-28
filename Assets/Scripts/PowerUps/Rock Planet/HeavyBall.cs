@@ -12,7 +12,7 @@ public class HeavyBall : Base_PowerUp
 
     public override void Activate(Player_Controller player)
     {
-        Ball ball = player.ball;
+        BallPowerEffects ball = player.PowerUps.ballPowers;
 
         if (ball != null) 
         {
@@ -20,7 +20,7 @@ public class HeavyBall : Base_PowerUp
         }
     }
 
-    private IEnumerator ApplyHeavyBallEffect(Ball ball)
+    private IEnumerator ApplyHeavyBallEffect(BallPowerEffects ball)
     {
         Rigidbody rb = ball.GetComponent<Rigidbody>();
         if (rb == null) yield break;

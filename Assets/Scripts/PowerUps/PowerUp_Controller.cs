@@ -12,7 +12,7 @@ public class PowerUp_Controller : MonoBehaviour
     public float spawnInterval = 10f;
 
     [Header("Instancia")]
-    public Player_Controller playerController;
+    public PlayerPowerUp_Controller playerController;
     public PowerUp_Manager powerUpManager;
 
     private bool canSpawn = true;

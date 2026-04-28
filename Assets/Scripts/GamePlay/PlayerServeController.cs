@@ -19,10 +19,9 @@ public class PlayerServeController : MonoBehaviour
     [SerializeField] private float idealChargeMax = 1f;
 
     [Header("Movimiento visual de pelota")]
-    [SerializeField] private float maxHeight = 0.5f;
+    //[SerializeField] private float maxHeight = 0.5f;
     [SerializeField] private float frequency = 2f;
     [SerializeField] private float amplitude = 0.1f;
-    [SerializeField] private float serveReleaseThreshold = 0.08f;
 
     private float originalY;
     private float serveForce;
@@ -33,7 +32,6 @@ public class PlayerServeController : MonoBehaviour
     private float chargeValue;
     private KeyCode currentServeKey;
     private string pendingServeType = "";
-    private float serveOscillationTime;
     private float tossProgress = 0f;
 
     public bool IsCharging => isCharging;
@@ -226,7 +224,6 @@ public class PlayerServeController : MonoBehaviour
 
         pendingServeType = "";
         chargeValue = 0f;
-        serveOscillationTime = 0f;
 
         ballHeld = true;
 

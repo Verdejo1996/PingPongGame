@@ -10,7 +10,7 @@ public class CurvePowerUp : Base_PowerUp
 
     public override void Activate(Player_Controller player)
     {
-        Ball controller = player.ball;
+        BallPowerEffects controller = player.PowerUps.ballPowers;
         if (controller != null)
         {
             controller.isCurveShotActive = true;

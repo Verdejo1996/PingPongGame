@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 9122324252432910008}
   - component: {fileID: 7653649279333182725}
   - component: {fileID: 3481571762474376783}
+  - component: {fileID: 258985148175904357}
   - component: {fileID: 601135518575108938}
   m_Layer: 0
   m_Name: test
@@ -131,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
-  player: {fileID: 0}
+  playerPower: {fileID: 0}
   serveUIFeedback: {fileID: 7653649279333182725}
   serveController: {fileID: 3481571762474376783}
   moveSpeed: 5
@@ -190,10 +191,37 @@ MonoBehaviour:
   maxServeForce: 12
   idealChargeMin: 0.8
   idealChargeMax: 1
-  maxHeight: 4
   frequency: 4
   amplitude: 8
-  serveReleaseThreshold: 0.08
+--- !u!114 &258985148175904357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2154030997488750444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53ebd96dbc131984396898cdc2b5cb60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUpManager: {fileID: 0}
+  hudController: {fileID: 0}
+  iA_Controller: {fileID: 0}
+  ball: {fileID: 0}
+  player_hit_Controller: {fileID: 0}
+  prefabShield: {fileID: 0}
+  player_Scale: {x: 0, y: 0, z: 0}
+  original_Scale: {x: 0, y: 0, z: 0}
+  defaultDuration: 5
+  precisionActive: 0
+  superHitActive: 0
+  shieldActive: 0
+  isBigPaddle: 0
+  hasPrecisionPowerUp: 0
+  hasSuperHitPowerUp: 0
+  hasShieldPowerUp: 0
+  hasFreezePowerUp: 0
 --- !u!114 &601135518575108938
 MonoBehaviour:
   m_ObjectHideFlags: 0

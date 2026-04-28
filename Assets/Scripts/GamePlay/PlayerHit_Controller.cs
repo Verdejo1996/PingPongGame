@@ -20,6 +20,7 @@ public class PlayerHit_Controller : MonoBehaviour
 
     [Header("Golpe")]
     public Ball ballGame;
+    public BallPowerEffects ballPowers;
     public Transform ballTransform;
     public Rigidbody ballRb;
     public Transform racketTransform;
@@ -122,10 +123,10 @@ public class PlayerHit_Controller : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            if (player.superHitActive)
+            if (player.PowerUps.superHitActive)
             {
                 hitForce = 14f;
-                player.SuperHit();
+                player.PowerUps.SuperHit();
             }
             else
             {
@@ -209,7 +210,7 @@ public class PlayerHit_Controller : MonoBehaviour
 
         if (fireExplosionActive)
         {
-            ballGame.EnableFireExplosion(fireExplosionColor);
+            ballPowers.EnableFireExplosion(fireExplosionColor);
             fireExplosionActive = false;
         }
 

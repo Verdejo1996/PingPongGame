@@ -10,11 +10,11 @@ public class ControlBall : Base_PowerUp
     public float controlForce = 5f;
     public override void Activate(Player_Controller player)
     {
-        Ball ball = player.ball;
+        BallVisualEffects ball = player.PowerUps.ball;
         player.StartCoroutine(ControlBallShot(duration, controlForce, ball));
     }
 
-    private IEnumerator ControlBallShot(float duration, float controlForce, Ball ball)
+    private IEnumerator ControlBallShot(float duration, float controlForce, BallVisualEffects ball)
     {
         //Ball ball = FindObjectOfType<Ball>();
         if (ball == null) yield break;

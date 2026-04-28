@@ -8,10 +8,14 @@ public class Ball : MonoBehaviour
     [Header("Gameplay")]
     private Rigidbody rb;
     public Game_Controller controller;
+    [SerializeField] private BallPowerEffects powerEffects;
+    [SerializeField] private GameObject lavaAreaPrefab;
+    public bool isLavaActive;
+
+    [Header("Rock Planet PoolTable")]
     public ObjectPool poolPlayer;
     public ObjectPool poolBot;
-    //public ParticleSystem effectControlBall;
-    [SerializeField] private GameObject lavaAreaPrefab;
+    
     private int playerBounceCount = 0;
     private int botBounceCount = 0;
     private string lastTableSide = ""; // "Player" o "Bot"
@@ -20,69 +24,21 @@ public class Ball : MonoBehaviour
     public bool bounceTable = false;
     public bool hasTouchedTable = false;
     [SerializeField] private bool hitNetLast = false;
-    private string lastHitterAfterTable = "";
+    [SerializeField] private string lastHitterAfterTable = "";
     [SerializeField] bool validServe = false;
     public bool tableAfterNet = false;
-    public bool isCurveShotActive = false;
-    public bool fireExplosionActive = false;
-    public bool isHeavy = false;
 
     [Header("Trail Renderer")]
     [SerializeField] private TrailRenderer trailBall;
     [SerializeField] private Color colorSoft = Color.blue;
     [SerializeField] private Color colorStrong = Color.red;
     [SerializeField] private Camera_Shake cameraShake;
-    public bool isLavaActive;
-    private Color fireExplosionColor;
-    private bool fireExplosionEnabled = false;
-    private Color originalColor;
-    private Color explosionColor;
-    public ParticleSystem explosionParticles;
-
-
-    private float duration = 3f;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         ResetState();
-    }
-
-    public void EnableFireExplosion(Color color)
-    {
-        fireExplosionEnabled = true;
-        explosionColor = color;
-        var trail = GetComponent<TrailRenderer>();
-        if (trail != null)
-        {
-            originalColor = trail.material.color;
-            trail.material.color = explosionColor;
-        }
-    }
-
-    public void ChangeColorTrail(float force)
-    {
-        if(force < 10)
-        {
-            trailBall.material.color = colorSoft;
-        }
-        else
-        {
-            trailBall.material.color = colorStrong;
-            StartCoroutine(cameraShake.Shake(0.2f, 0.1f));
-        }
-    }
-
-    public IEnumerator CurveShot(float force)
-    {
-        Vector3 curve = new(0.17f, 0, 0);
-        if(isCurveShotActive)
-        {
-            rb.AddForce(curve * force, ForceMode.Impulse);
-            yield return new WaitForSeconds(duration);
-            isCurveShotActive = false;
-        }
     }
 
     public void SetServePosition(Vector3 position)
@@ -216,35 +172,8 @@ public class Ball : MonoBehaviour
             hasTouchedTable = true;
             AudioManager.Instance.PlayHitBallOnTable();
         }
-        if (fireExplosionEnabled && other.CompareTag("Bot"))
-        {
-            if (other.TryGetComponent<IA_Controller>(out var ia))
-            {
-                ia.ApplyDisorientation(2f); // por ejemplo
-                fireExplosionEnabled = false;
 
-                // Restaurar visual
-                if (TryGetComponent<TrailRenderer>(out var trail))
-                    trail.material.color = originalColor;
-
-                if (explosionParticles != null)
-                    explosionParticles.Play();
-            }
-        }
-        /*        if(other.CompareTag("Out"))
-                {
-                    controller.playing = false;
-
-                    Debug.Log(hasTouchedTable);
-                    Debug.Log(hitNetLast);
-                    Debug.Log(validServe);
-                    Debug.Log("Golpe por " + lastHitterAfterTable);
-                    if (!controller.endGame)
-                    {
-                        ScoreValidation();  
-                        ResetState();
-                    }
-                }*/
+        powerEffects.TryApplyFireExplosion(other);
     }
 
     //Metodo para validar las distintas opciones que hay para sumar puntos.
@@ -297,21 +226,6 @@ public class Ball : MonoBehaviour
         }
     }
 
-    void EndPointToOpponent(string reason)
-    {
-        controller.playing = false;
-        GetComponent<Rigidbody>().velocity = Vector3.zero;
-        GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-
-        Debug.Log(reason);
-
-        if (!controller.endGame)
-        {
-            controller.AddPointToOpponent();
-            ResetState();
-        }
-    }
-
     //Registramos al ultimo en golpear la pelota.
     public void RegisterHit(string hitterTag)
     {
@@ -357,18 +271,5 @@ public class Ball : MonoBehaviour
         lastTableSide = "";
 
         controller.ResetLastHitter();
-    }
-
-    public void ActiveEffectControl()
-    {
-        var ps = GetComponentInChildren<ParticleSystem>();
-        if (ps != null)
-            ps.Play();
-    }
-    public void DeactivateEffectControl()
-    {
-        var ps = GetComponentInChildren<ParticleSystem>();
-        if (ps != null)
-            ps.Stop();
     }
 }

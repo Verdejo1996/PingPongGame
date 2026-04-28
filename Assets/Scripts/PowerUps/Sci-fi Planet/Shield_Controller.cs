@@ -25,11 +25,12 @@ public class Shield_Controller : MonoBehaviour
             //aimTarget = gameObject.GetComponent<Transform>().Find("aimTarget");
             Vector3 dir = aimTarget.position - transform.position;
             other.GetComponent<Rigidbody>().velocity = dir.normalized * currentShot.hitForce + new Vector3(0, currentShot.upForce, 0);
-            Ball ball = other.gameObject.GetComponent<Ball>();
+            Ball ballRules = other.gameObject.GetComponent<Ball>();
+            BallVisualEffects ball = other.gameObject.GetComponent<BallVisualEffects>();
             ball.ChangeColorTrail(currentShot.hitForce);
-            ball.hasTouchedTable = false;
-            ball.tableAfterNet = false;
-            ball.RegisterHit("Player");
+            ballRules.hasTouchedTable = false;
+            ballRules.tableAfterNet = false;
+            ballRules.RegisterHit("Player");
             Destroy(gameObject);
         }
     }

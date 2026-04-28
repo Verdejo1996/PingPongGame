@@ -11,6 +11,7 @@ public class IA_Controller : MonoBehaviour
     public Transform ball;
     public Rigidbody ballRb;
     public Ball ballGameObject;
+    public BallPowerEffects ballPowers;
     public float speed;
     public float slipperyFactor = 3f;
     public float minZ = 6f;   // hasta donde puede acercarse a la red
@@ -159,7 +160,7 @@ public class IA_Controller : MonoBehaviour
             Shot currentShot = PickShot();
 
             Vector3 dir = PickTarget() - transform.position;
-            if (!ballGameObject.isHeavy)
+            if (!ballPowers.isHeavy)
             {
                 other.GetComponent<Rigidbody>().velocity = dir.normalized * currentShot.hitForce + new Vector3(0, currentShot.upForce, 0);
             }

@@ -67,7 +67,7 @@ public class Paddle : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z))
         {
             hitting = true;
-            if(player.superHitActive)
+            if(player.PowerUps.superHitActive)
             {
                 currentShot = shot_Controller.powerHit;
             }
@@ -107,7 +107,7 @@ public class Paddle : MonoBehaviour
         if (hitting && controller.playing)
         {
             //Movemos el target de tiro pero no podemos movernos nosotros.
-            if (player.precisionActive)
+            if (player.PowerUps.precisionActive)
             {
                 Vector3 aimNewPosition = aimTarget.position + speed * 2 * Time.deltaTime * new Vector3(h, 0, v);
 
@@ -166,11 +166,12 @@ public class Paddle : MonoBehaviour
         {
             Vector3 dir = aimTarget.position - transform.position;
             other.GetComponent<Rigidbody>().velocity = dir.normalized * currentShot.hitForce + new Vector3(0, currentShot.upForce, 0);
-            Ball ball = other.gameObject.GetComponent<Ball>();
+            BallVisualEffects ball = other.gameObject.GetComponent<BallVisualEffects>();
+            Ball ballRules = other.gameObject.GetComponent<Ball>();
             ball.ChangeColorTrail(currentShot.hitForce);
-            ball.hasTouchedTable = false;
-            ball.tableAfterNet = false;
-            ball.RegisterHit("Player");
+            ballRules.hasTouchedTable = false;
+            ballRules.tableAfterNet = false;
+            ballRules.RegisterHit("Player");
         }
     }
 

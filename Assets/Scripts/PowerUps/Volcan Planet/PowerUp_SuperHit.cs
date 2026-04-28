@@ -14,7 +14,7 @@ public class PowerUp_SuperHit : Base_PowerUp
 
     private IEnumerator ApplySuperHit(Player_Controller player)
     {
-        player.superHitActive = true;
+        player.PowerUps.superHitActive = true;
 
         yield return new WaitForSeconds(duration);
     }

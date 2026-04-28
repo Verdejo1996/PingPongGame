@@ -13,14 +13,14 @@ public class LavaTrail : Base_PowerUp
     public override void Activate(Player_Controller player)
     {
         Debug.Log("Lava Trail activado");
-        Ball ball = player.ball;
+        BallPowerEffects ball = player.PowerUps.ballPowers;
         if (ball != null)
         {
             player.StartCoroutine(ActivateLavaTrail(ball));
         }
     }
 
-    private IEnumerator ActivateLavaTrail(Ball ball)
+    private IEnumerator ActivateLavaTrail(BallPowerEffects ball)
     {
         var trail = ball.GetComponent<TrailRenderer>();
         var originalMat = trail.material;
